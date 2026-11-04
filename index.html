@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS Tech Summit 2027 | The Future of AI & Intelligent Systems</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- QR Code Generator -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#0b0f19] text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- Ambient Glow Gradients -->
+  <div class="glow-orb-primary top-0 left-1/4 -translate-x-1/2"></div>
+  <div class="glow-orb-cyan top-96 right-0"></div>
+
+  <!-- 1. NAVIGATION BAR -->
+  <nav class="sticky top-0 z-40 w-full border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-cyan-400 p-[1px] shadow-lg shadow-indigo-500/20">
+            <div class="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center">
+              <span class="font-heading font-extrabold text-lg text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-300">N</span>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-heading font-black text-xl tracking-tight text-white group-hover:text-indigo-300 transition-colors">NEXUS '27</span>
+            <span class="text-[10px] uppercase font-bold tracking-widest text-indigo-400 -mt-1">TECH SUMMIT</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
+          <a href="#about" class="hover:text-white transition-colors">About</a>
+          <a href="#speakers" class="hover:text-white transition-colors">Speakers</a>
+          <a href="#schedule" class="hover:text-white transition-colors flex items-center gap-1.5">
+            <span>Schedule</span>
+            <span id="saved-sessions-count" class="hidden px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-amber-500 text-slate-950">0</span>
+          </a>
+          <a href="#venue" class="hover:text-white transition-colors">Venue</a>
+          <a href="#tickets" class="hover:text-white transition-colors">Tickets</a>
+          <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+        </div>
+
+        <!-- Action CTA Buttons -->
+        <div class="hidden sm:flex items-center gap-4">
+          <a href="admin.html" class="px-3.5 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-white/5 transition-colors border border-white/10 flex items-center gap-1.5">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-indigo-400"></i>
+            <span>Organizer Portal</span>
+          </a>
+          <a href="#tickets" class="px-5 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white shadow-lg shadow-indigo-500/25 transition-all duration-300 transform hover:-translate-y-0.5">
+            Register Now
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-400 hover:text-white focus:outline-none">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Overlay -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-2xl p-6 flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-white/10">
+          <div class="flex items-center gap-3">
+            <span class="font-heading font-black text-xl text-white">NEXUS '27</span>
+          </div>
+          <button id="close-mobile-menu" class="p-2 text-slate-400 hover:text-white">
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
+        </div>
+        <div class="flex flex-col gap-5 mt-8 text-lg font-bold text-slate-200">
+          <a href="#about" class="hover:text-indigo-400 transition-colors">About Summit</a>
+          <a href="#speakers" class="hover:text-indigo-400 transition-colors">Speakers</a>
+          <a href="#schedule" class="hover:text-indigo-400 transition-colors">Schedule & Agenda</a>
+          <a href="#venue" class="hover:text-indigo-400 transition-colors">Venue & Location</a>
+          <a href="#tickets" class="hover:text-indigo-400 transition-colors">Tickets & Passes</a>
+          <a href="#faq" class="hover:text-indigo-400 transition-colors">FAQ</a>
+          <a href="admin.html" class="hover:text-indigo-400 transition-colors text-indigo-400">Organizer Dashboard</a>
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-white/10">
+        <a href="#tickets" class="w-full block text-center py-3.5 rounded-xl font-bold bg-indigo-600 text-white shadow-lg shadow-indigo-500/30">
+          Get Tickets Now
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 2. HERO SECTION -->
+  <section id="hero" class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden bg-ambient-grid">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- Date & Location Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs sm:text-sm font-semibold mb-8 animate-pulse-subtle">
+          <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+          <span>October 14-16, 2027 • San Francisco, CA & Global 4K Stream</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.1]">
+          The Future of <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-cyan-300">Intelligent Systems</span> & AI Architecture
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+          Join 3,500+ world-class engineers, founders, and AI researchers for three transformative days of frontier keynotes, deep-dive workshops, and industry-defining connections.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+          <a href="#tickets" class="w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-base bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white shadow-2xl shadow-indigo-500/30 flex items-center justify-center gap-2 transition-all transform hover:-translate-y-1">
+            <span>Register & Reserve Pass</span>
+            <i data-lucide="ticket" class="w-5 h-5"></i>
+          </a>
+          <a href="#schedule" class="w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-base bg-white/5 hover:bg-white/10 text-white border border-white/10 flex items-center justify-center gap-2 transition-all">
+            <i data-lucide="calendar" class="w-5 h-5 text-indigo-400"></i>
+            <span>Explore Schedule</span>
+          </a>
+        </div>
+
+        <!-- LIVE COUNTDOWN TIMER CARD -->
+        <div class="max-w-2xl mx-auto glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl relative">
+          <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-indigo-400">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+              <span>Event Countdown</span>
+            </div>
+            <!-- Calendar Quick Add -->
+            <div class="flex items-center gap-2 text-xs">
+              <a id="btn-add-google-cal" href="#" target="_blank" rel="noopener" class="text-slate-400 hover:text-white flex items-center gap-1 font-semibold">
+                <i data-lucide="plus" class="w-3.5 h-3.5 text-indigo-400"></i> Google Cal
+              </a>
+              <span class="text-slate-600">•</span>
+              <a id="btn-download-ics" href="#" class="text-slate-400 hover:text-white flex items-center gap-1 font-semibold">
+                <i data-lucide="download" class="w-3.5 h-3.5 text-indigo-400"></i> .ICS File
+              </a>
+            </div>
+          </div>
+
+          <!-- Countdown Grid -->
+          <div class="grid grid-cols-4 gap-3 sm:gap-6 text-center">
+            <div class="p-3 sm:p-4 rounded-2xl bg-slate-950/70 border border-white/5">
+              <div id="countdown-days" class="font-heading text-3xl sm:text-5xl font-extrabold text-white">00</div>
+              <div class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Days</div>
+            </div>
+            <div class="p-3 sm:p-4 rounded-2xl bg-slate-950/70 border border-white/5">
+              <div id="countdown-hours" class="font-heading text-3xl sm:text-5xl font-extrabold text-white">00</div>
+              <div class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Hours</div>
+            </div>
+            <div class="p-3 sm:p-4 rounded-2xl bg-slate-950/70 border border-white/5">
+              <div id="countdown-minutes" class="font-heading text-3xl sm:text-5xl font-extrabold text-white">00</div>
+              <div class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Minutes</div>
+            </div>
+            <div class="p-3 sm:p-4 rounded-2xl bg-slate-950/70 border border-white/5">
+              <div id="countdown-seconds" class="font-heading text-3xl sm:text-5xl font-extrabold text-indigo-400">00</div>
+              <div class="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-indigo-400 mt-1">Seconds</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- KEY METRICS ROW -->
+      <div id="stats-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-16 max-w-5xl mx-auto">
+        <!-- Rendered by js/app.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. ABOUT / EXPERIENCE SECTION -->
+  <section id="about" class="py-20 md:py-28 relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-400">Why Attend NEXUS '27</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4">
+          Engineered for Deep Learning & High-Impact Networking
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+          More than just slide decks. Experience hands-on technical labs, live system demos, unscripted debate salons, and curated dinners designed for real builders.
+        </p>
+      </div>
+
+      <!-- Highlights Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        
+        <div class="glass-panel glass-panel-hover rounded-3xl p-8 border border-white/5 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center mb-6 border border-indigo-500/30">
+              <i data-lucide="cpu" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white mb-3">Frontier AI Architectures</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Explore the transition from passive large language models to autonomous tool-using agents, multimodal reasoners, and high-throughput inference engines.
+            </p>
+          </div>
+          <div class="text-xs text-indigo-400 font-semibold flex items-center gap-1">
+            <span>20+ Technical Tracks</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-3xl p-8 border border-white/5 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center mb-6 border border-purple-500/30">
+              <i data-lucide="terminal" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white mb-3">Hands-On Code Labs</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Bring your laptop! Work directly alongside lead engineers from top labs in deep-dive implementation clinics, building production-grade agentic stacks.
+            </p>
+          </div>
+          <div class="text-xs text-purple-400 font-semibold flex items-center gap-1">
+            <span>Interactive Workstations</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-3xl p-8 border border-white/5 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center mb-6 border border-cyan-500/30">
+              <i data-lucide="trophy" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white mb-3">$100K Pitch & Hackathon</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Watch top finalists pitch live on the main stage to Tier-1 venture partners, or compete in the 48-hour hackathon track for equity-free grants.
+            </p>
+          </div>
+          <div class="text-xs text-cyan-400 font-semibold flex items-center gap-1">
+            <span>Live Pitch Finale</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. KEYNOTE & FEATURED SPEAKERS -->
+  <section id="speakers" class="py-20 md:py-28 relative border-t border-white/5 bg-slate-950/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-400">World-Class Lineup</span>
+          <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-2">
+            Meet the Pioneers
+          </h2>
+          <p class="text-sm sm:text-base text-slate-300 mt-2 max-w-xl">
+            Hear directly from the minds architecting the next era of computing, robotics, and cloud intelligence.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="currentSpeakerFilter='all'; renderSpeakers();" class="px-4 py-2 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/15 text-white transition-colors">
+            All Speakers (65+)
+          </button>
+          <button onclick="currentSpeakerFilter='featured'; renderSpeakers();" class="px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-sm transition-colors">
+            Keynotes Only
+          </button>
+        </div>
+      </div>
+
+      <!-- Speakers Grid -->
+      <div id="speakers-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <!-- Rendered by js/app.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. INTERACTIVE SCHEDULE & AGENDA -->
+  <section id="schedule" class="py-20 md:py-28 relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-400">3 Comprehensive Days</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4">
+          Summit Schedule & Tracks
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300">
+          Filter sessions by track, explore topics, and bookmark talks to personalize your attendance.
+        </p>
+      </div>
+
+      <!-- Day Selector Switcher -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-8">
+        <button onclick="selectDay('day1')" data-day="day1" class="day-tab-btn px-6 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/25 transition-all">
+          Day 1: Foundations & AI
+        </button>
+        <button onclick="selectDay('day2')" data-day="day2" class="day-tab-btn px-6 py-3 rounded-xl font-bold text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-all">
+          Day 2: Architecture & Scale
+        </button>
+        <button onclick="selectDay('day3')" data-day="day3" class="day-tab-btn px-6 py-3 rounded-xl font-bold text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-all">
+          Day 3: The Frontier & Gala
+        </button>
+      </div>
+
+      <!-- Track Filter Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-10 max-w-4xl mx-auto">
+        <button onclick="filterTrack('all')" data-track="all" class="track-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-indigo-500 text-white shadow transition-all">All Tracks</button>
+        <button onclick="filterTrack('Keynote')" data-track="Keynote" class="track-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-all">Keynotes</button>
+        <button onclick="filterTrack('Infrastructure')" data-track="Infrastructure" class="track-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-all">Infrastructure</button>
+        <button onclick="filterTrack('Product & UX')" data-track="Product & UX" class="track-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-all">Product & UX</button>
+        <button onclick="filterTrack('Workshop')" data-track="Workshop" class="track-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-all">Workshops</button>
+        <button onclick="filterTrack('Security')" data-track="Security" class="track-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-all">Security</button>
+        <button onclick="filterTrack('Social')" data-track="Social" class="track-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-all">Social & Afterparty</button>
+      </div>
+
+      <!-- Day Meta Info -->
+      <div id="day-meta-info" class="max-w-4xl mx-auto">
+        <!-- Rendered by js/app.js -->
+      </div>
+
+      <!-- Schedule Timeline Container -->
+      <div id="schedule-timeline" class="max-w-4xl mx-auto space-y-4">
+        <!-- Rendered by js/app.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. TICKETS & REGISTRATION PASSES -->
+  <section id="tickets" class="py-20 md:py-28 relative border-t border-white/5 bg-slate-950/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-400">Passes & Registration</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4">
+          Choose Your Summit Experience
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300">
+          All registrations include instant digital QR passes, mobile badge check-in, and full session recordings.
+        </p>
+      </div>
+
+      <!-- Ticket Pricing Cards -->
+      <div id="ticket-tiers-container" class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+        <!-- Rendered by js/tickets.js -->
+      </div>
+
+      <!-- Enterprise / Group Pass Callout -->
+      <div class="mt-12 max-w-3xl mx-auto glass-panel rounded-2xl p-6 text-center border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-left">
+          <h4 class="font-bold text-white text-base">Bringing your engineering team?</h4>
+          <p class="text-xs text-slate-300 mt-0.5">Discounts of 20% for groups of 5+ and custom invoicing available.</p>
+        </div>
+        <a href="mailto:tickets@nexussummit.io?subject=Group%20Pass%20Inquiry" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white border border-white/15 whitespace-nowrap transition-colors">
+          Contact Group Sales
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. VENUE & MAP -->
+  <section id="venue" class="py-20 md:py-28 relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-400">Location & Transit</span>
+          <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-6">
+            In the Heart of San Francisco
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+            NEXUS '27 takes place at the premier convention hub in downtown San Francisco, walking distance from top tech headquarters, boutique hotels, and world-class dining.
+          </p>
+
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">Metropolitan Convention Center</h4>
+                <p class="text-xs text-slate-400">747 Howard Street, San Francisco, CA 94103</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="plane" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">Airport & Transit</h4>
+                <p class="text-xs text-slate-400">20 mins from SFO Airport via BART (Powell St Station) or Rideshare.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="building" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">Partner Hotels</h4>
+                <p class="text-xs text-slate-400">Exclusive group room rates at W Hotel SF and Marriott Marquis.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://maps.google.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/15 text-white border border-white/10 transition-colors">
+            <i data-lucide="navigation" class="w-3.5 h-3.5 text-indigo-400"></i>
+            <span>Open in Google Maps</span>
+          </a>
+        </div>
+
+        <!-- Map Embed Container -->
+        <div class="glass-panel rounded-3xl overflow-hidden border border-white/15 shadow-2xl h-80 sm:h-96 relative">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.086307135084!2d-122.40366762361664!3d37.78393397198305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858087d3a040b1%3A0x6b4f3bfa6f5a34f0!2sMoscone%20Center!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+            width="100%" 
+            height="100%" 
+            style="border:0; filter: invert(90%) hue-rotate(180deg) contrast(1.1);" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Convention Center Map"
+          ></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. SPONSORS & PARTNERS -->
+  <section id="sponsors" class="py-20 relative border-t border-white/5 bg-slate-950/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-400">Industry Backing</span>
+        <h2 class="font-heading text-2xl sm:text-4xl font-extrabold text-white mt-2">
+          Backed by Leading Tech Giants
+        </h2>
+      </div>
+
+      <div id="sponsors-container">
+        <!-- Rendered by js/app.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 9. FAQ ACCORDION -->
+  <section id="faq" class="py-20 md:py-28 relative border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-400">Got Questions?</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base">
+          Everything you need to know about attendance, badges, schedules, and travel.
+        </p>
+      </div>
+
+      <div id="faq-accordion" class="space-y-4">
+        <!-- Rendered by js/app.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 10. FOOTER -->
+  <footer class="border-t border-white/10 bg-slate-950 py-16 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <!-- Brand col -->
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white text-sm">
+              N
+            </div>
+            <span class="font-heading font-black text-xl text-white">NEXUS '27</span>
+          </div>
+          <p class="text-sm text-slate-400 max-w-sm mb-6 leading-relaxed">
+            The premier international gathering for AI researchers, systems architects, and technology innovators.
+          </p>
+          <div class="flex items-center gap-3 text-slate-400">
+            <a href="#" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+            <a href="#" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+            <a href="#" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition-colors"><i data-lucide="github" class="w-4 h-4"></i></a>
+            <a href="#" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition-colors"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-xs uppercase font-extrabold tracking-widest text-slate-300 mb-4">Summit</h4>
+          <ul class="space-y-2.5 text-xs text-slate-400">
+            <li><a href="#speakers" class="hover:text-white transition-colors">Keynote Speakers</a></li>
+            <li><a href="#schedule" class="hover:text-white transition-colors">Track Agendas</a></li>
+            <li><a href="#tickets" class="hover:text-white transition-colors">Tickets & Pricing</a></li>
+            <li><a href="#venue" class="hover:text-white transition-colors">Venue & Lodging</a></li>
+            <li><a href="admin.html" class="hover:text-indigo-400 transition-colors">Organizer Admin Portal</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal & Contact -->
+        <div>
+          <h4 class="text-xs uppercase font-extrabold tracking-widest text-slate-300 mb-4">Contact & Support</h4>
+          <ul class="space-y-2.5 text-xs text-slate-400">
+            <li><span>General: info@nexussummit.io</span></li>
+            <li><span>Sponsors: partners@nexussummit.io</span></li>
+            <li><span>Press: press@nexussummit.io</span></li>
+            <li><a href="#" class="hover:text-white transition-colors">Code of Conduct</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <div>&copy; 2027 NEXUS Tech Summit Inc. All rights reserved.</div>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:underline">Terms of Service</a>
+          <a href="#" class="hover:underline">Security</a>
+          <a href="admin.html" class="text-indigo-400 hover:underline">Gate Scanner</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- A. SPEAKER BIO MODAL -->
+  <div id="speaker-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4">
+    <div class="glass-panel rounded-3xl p-6 sm:p-8 max-w-2xl w-full border border-white/15 relative shadow-2xl bg-slate-900/95 max-h-[90vh] overflow-y-auto">
+      <button onclick="closeSpeakerModal()" class="absolute top-5 right-5 p-2 text-slate-400 hover:text-white rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="speaker-modal-content">
+        <!-- Rendered by js/app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- B. TICKET REGISTRATION & CHECKOUT MODAL -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/85 backdrop-blur-md p-4">
+    <div class="glass-panel rounded-3xl p-6 sm:p-8 max-w-xl w-full border border-indigo-500/30 relative shadow-2xl bg-slate-900/95 max-h-[92vh] overflow-y-auto">
+      
+      <button onclick="closeCheckoutModal()" class="absolute top-5 right-5 p-2 text-slate-400 hover:text-white rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-6">
+        <span class="text-xs font-bold uppercase tracking-widest text-indigo-400">Checkout Registration</span>
+        <h2 class="font-heading text-2xl font-extrabold text-white mt-1">Reserve Your Summit Pass</h2>
+      </div>
+
+      <form id="registration-form" class="space-y-4">
+        <!-- Select Tier -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Select Pass Tier</label>
+          <select id="modal-tier-select" class="w-full bg-slate-950/80 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+            <option value="virtual">Virtual Pass ($99)</option>
+            <option value="general">Standard Conference Pass ($499)</option>
+            <option value="vip">VIP Executive All-Access ($1,199)</option>
+          </select>
+        </div>
+
+        <!-- Quantity Selector -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Quantity</label>
+          <div class="flex items-center gap-3">
+            <button type="button" id="btn-qty-minus" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold flex items-center justify-center transition-colors">-</button>
+            <input type="text" id="input-qty" value="1" readonly class="w-16 text-center bg-slate-950/80 border border-white/15 rounded-xl py-2 font-bold text-white text-sm" />
+            <button type="button" id="btn-qty-plus" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold flex items-center justify-center transition-colors">+</button>
+          </div>
+        </div>
+
+        <!-- Personal Information -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Full Name *</label>
+            <input type="text" id="reg-fullname" placeholder="e.g. Jordan Smith" required class="w-full bg-slate-950/80 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Work Email *</label>
+            <input type="email" id="reg-email" placeholder="jordan@company.com" required class="w-full bg-slate-950/80 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Company / Org</label>
+            <input type="text" id="reg-company" placeholder="e.g. Acme AI" class="w-full bg-slate-950/80 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Job Title</label>
+            <input type="text" id="reg-jobtitle" placeholder="e.g. Staff Engineer" class="w-full bg-slate-950/80 border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+          </div>
+        </div>
+
+        <!-- Promo Code -->
+        <div class="pt-2">
+          <label class="block text-xs font-bold text-slate-300 mb-1">Promo / Discount Code</label>
+          <div class="flex gap-2">
+            <input type="text" id="input-coupon" placeholder="Try code: SUMMIT20" class="flex-1 bg-slate-950/80 border border-white/15 rounded-xl px-3.5 py-2 text-xs font-mono uppercase text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+            <button type="button" id="btn-apply-coupon" class="px-4 py-2 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/15 text-white border border-white/10 transition-colors">Apply</button>
+          </div>
+          <div id="coupon-feedback"></div>
+        </div>
+
+        <!-- Price Summary Breakdown -->
+        <div class="p-4 rounded-2xl bg-slate-950/60 border border-white/10 space-y-2 text-xs mt-4">
+          <div class="flex justify-between text-slate-400">
+            <span>Pass Unit Price:</span>
+            <span id="summary-unit-price" class="text-white font-medium">$499</span>
+          </div>
+          <div class="flex justify-between text-slate-400">
+            <span>Quantity:</span>
+            <span id="summary-qty" class="text-white font-medium">1</span>
+          </div>
+          <div class="flex justify-between text-slate-400">
+            <span>Subtotal:</span>
+            <span id="summary-subtotal" class="text-white font-medium">$499</span>
+          </div>
+          <div id="summary-discount-row" class="flex justify-between text-emerald-400 hidden">
+            <span>Discount:</span>
+            <span id="summary-discount">-$0</span>
+          </div>
+          <div class="flex justify-between text-sm font-extrabold text-white border-t border-white/10 pt-2">
+            <span>Total Payable:</span>
+            <span id="summary-total" class="text-indigo-400 font-heading text-lg">$499</span>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full py-3.5 rounded-xl font-bold text-sm bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white shadow-xl shadow-indigo-500/25 flex items-center justify-center gap-2 transition-all mt-4">
+          <i data-lucide="lock" class="w-4 h-4"></i>
+          <span>Complete Registration & Generate Badge</span>
+        </button>
+
+        <p class="text-[11px] text-center text-slate-400 mt-2">
+          Instant contactless QR badge generated upon registration.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- C. SUCCESS CONFIRMATION MODAL -->
+  <div id="success-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/90 backdrop-blur-md p-4">
+    <div class="glass-panel rounded-3xl p-6 sm:p-8 max-w-md w-full border border-emerald-500/40 relative shadow-2xl bg-slate-900/95 text-center">
+      <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
+        <i data-lucide="party-popper" class="w-8 h-8"></i>
+      </div>
+      <h3 class="font-heading text-2xl font-extrabold text-white mb-1">Registration Complete!</h3>
+      <p class="text-xs text-slate-300 mb-6">Welcome to NEXUS '27. Your smart badge and access pass have been generated.</p>
+
+      <div id="success-ticket-details">
+        <!-- Rendered by js/tickets.js -->
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <a id="btn-view-digital-pass" href="#" class="w-full py-3.5 rounded-xl font-bold text-sm bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-500/30 flex items-center justify-center gap-2 transition-colors">
+          <i data-lucide="qr-code" class="w-4 h-4"></i>
+          <span>View Digital Badge & QR Code</span>
+        </a>
+        <button onclick="document.getElementById('success-modal').classList.add('hidden'); document.getElementById('success-modal').classList.remove('flex');" class="py-2.5 text-xs font-semibold text-slate-400 hover:text-white">
+          Close Window
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/tickets.js"></script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Attendee Pass - NEXUS Tech Summit 2027</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- QR Code JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between relative overflow-x-hidden">
+  
+  <!-- Ambient background glow (hidden in print) -->
+  <div class="glow-orb-primary -top-20 left-1/2 -translate-x-1/2 no-print"></div>
+
+  <!-- Navigation Bar (no-print) -->
+  <header class="w-full border-b border-white/10 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 no-print">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-white hover:text-indigo-400 transition-colors">
+        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+        <span class="font-bold text-sm">Back to Summit Homepage</span>
+      </a>
+      <div class="flex items-center gap-3">
+        <a href="admin.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white/10 hover:bg-white/15 text-slate-300 border border-white/10 transition-colors">
+          Organizer Dashboard
+        </a>
+        <button onclick="window.print()" class="px-4 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-500/25 transition-all flex items-center gap-1.5">
+          <i data-lucide="printer" class="w-4 h-4"></i>
+          <span>Print / Save PDF</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-4xl mx-auto w-full px-4 py-8 sm:py-12 flex flex-col items-center justify-center">
+
+    <!-- Instructions Banner (no-print) -->
+    <div class="w-full max-w-md mb-6 glass-panel rounded-2xl p-4 text-center border border-indigo-500/30 no-print">
+      <div class="inline-flex items-center justify-center p-2 bg-emerald-500/20 text-emerald-300 rounded-full mb-2">
+        <i data-lucide="check" class="w-5 h-5"></i>
+      </div>
+      <h2 class="text-base font-bold text-white">Your Registration is Confirmed!</h2>
+      <p class="text-xs text-slate-300 mt-1">Present this QR code on your smartphone or print it out at the badge pickup kiosks at the venue.</p>
+    </div>
+
+    <!-- The Attendee Badge Pass (Print optimized) -->
+    <div id="badge-card" class="print-card w-full max-w-md rounded-3xl overflow-hidden glass-panel border border-white/15 shadow-2xl relative bg-gradient-to-b from-slate-900 via-slate-900/95 to-slate-950">
+      
+      <!-- Lanyard punch hole preview (no-print) -->
+      <div class="w-16 h-2.5 bg-slate-950/80 border border-white/20 rounded-full mx-auto mt-4 no-print"></div>
+
+      <!-- Badge Header -->
+      <div class="p-6 pb-4 border-b border-white/10 text-center relative">
+        <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-widest bg-gradient-to-r from-indigo-500 to-purple-600 text-white mb-2 shadow-sm">
+          NEXUS '27 OFFICIAL PASS
+        </div>
+        <h1 class="font-heading text-2xl font-extrabold text-white tracking-tight">NEXUS TECH SUMMIT</h1>
+        <p class="text-xs text-indigo-300 font-medium">October 14-16, 2027 • San Francisco, CA</p>
+      </div>
+
+      <!-- Attendee Information Body -->
+      <div class="p-6 text-center">
+        <!-- Tier pill -->
+        <div id="pass-tier-badge" class="inline-block px-4 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 mb-4">
+          STANDARD PASS
+        </div>
+
+        <!-- Full Name -->
+        <h2 id="pass-fullname" class="font-heading text-3xl font-extrabold text-white mb-1">
+          Alex Rivera
+        </h2>
+
+        <!-- Role & Company -->
+        <p id="pass-jobtitle" class="text-sm font-semibold text-slate-200">VP of Product</p>
+        <p id="pass-company" class="text-xs text-indigo-400 font-medium">CloudScale Inc</p>
+
+        <!-- QR Code Container -->
+        <div class="my-6 p-4 bg-white rounded-2xl w-48 h-48 mx-auto flex items-center justify-center shadow-lg border-4 border-slate-800">
+          <div id="qrcode"></div>
+        </div>
+
+        <p class="font-mono text-xs text-slate-400 font-bold tracking-widest uppercase" id="pass-ticket-id">
+          REF: NEX-391048
+        </p>
+      </div>
+
+      <!-- Ticket Perks / Details Footer -->
+      <div class="px-6 py-4 bg-slate-950/90 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
+        <div class="text-left">
+          <span class="block text-[10px] uppercase font-bold text-slate-400">Venue</span>
+          <span class="text-slate-200 font-medium">Moscone Center SF</span>
+        </div>
+        <div class="text-center">
+          <span class="block text-[10px] uppercase font-bold text-slate-400">Access</span>
+          <span class="text-slate-200 font-medium" id="pass-access-scope">All 3 Days</span>
+        </div>
+        <div class="text-right">
+          <span class="block text-[10px] uppercase font-bold text-slate-400">Check-in Status</span>
+          <span id="pass-status-pill" class="text-amber-400 font-bold">Pending</span>
+        </div>
+      </div>
+
+      <!-- Simulated barcode graphic -->
+      <div class="px-6 py-3 bg-black border-t border-white/5 flex items-center justify-center gap-1 opacity-70">
+        <div class="h-6 w-1 bg-white"></div>
+        <div class="h-6 w-2 bg-white"></div>
+        <div class="h-6 w-0.5 bg-white"></div>
+        <div class="h-6 w-3 bg-white"></div>
+        <div class="h-6 w-1 bg-white"></div>
+        <div class="h-6 w-2 bg-white"></div>
+        <div class="h-6 w-0.5 bg-white"></div>
+        <div class="h-6 w-4 bg-white"></div>
+        <div class="h-6 w-1 bg-white"></div>
+        <div class="h-6 w-0.5 bg-white"></div>
+        <div class="h-6 w-2 bg-white"></div>
+        <div class="h-6 w-3 bg-white"></div>
+        <div class="h-6 w-1 bg-white"></div>
+        <div class="h-6 w-2 bg-white"></div>
+        <div class="h-6 w-0.5 bg-white"></div>
+        <div class="h-6 w-3 bg-white"></div>
+        <div class="h-6 w-2 bg-white"></div>
+      </div>
+    </div>
+
+    <!-- Quick Action Buttons (no-print) -->
+    <div class="mt-8 flex flex-wrap gap-4 justify-center no-print">
+      <button onclick="window.print()" class="px-6 py-3 rounded-xl font-bold text-sm bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white shadow-xl shadow-indigo-500/25 flex items-center gap-2">
+        <i data-lucide="printer" class="w-4 h-4"></i>
+        <span>Print Physical Badge</span>
+      </button>
+      <button onclick="shareTicket()" class="px-6 py-3 rounded-xl font-bold text-sm bg-white/10 hover:bg-white/15 text-white border border-white/10 flex items-center gap-2">
+        <i data-lucide="share-2" class="w-4 h-4"></i>
+        <span id="share-btn-text">Share Pass Link</span>
+      </button>
+    </div>
+
+  </main>
+
+  <footer class="py-6 text-center text-xs text-slate-500 border-t border-white/5 no-print">
+    &copy; 2027 NEXUS Tech Summit. All rights reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+
+      // Retrieve attendee by ID from URL params or fallback to newest/seed
+      const urlParams = new URLSearchParams(window.location.search);
+      const ticketId = urlParams.get('id');
+
+      const attendees = getStoredAttendees();
+      let attendee = null;
+
+      if (ticketId) {
+        attendee = attendees.find(a => a.id.toLowerCase() === ticketId.toLowerCase());
+      }
+      
+      if (!attendee && attendees.length > 0) {
+        attendee = attendees[0];
+      }
+
+      if (attendee) {
+        renderBadge(attendee);
+      }
+    });
+
+    function renderBadge(attendee) {
+      document.getElementById('pass-fullname').innerText = attendee.fullName;
+      document.getElementById('pass-jobtitle').innerText = attendee.jobTitle;
+      document.getElementById('pass-company').innerText = attendee.company;
+      document.getElementById('pass-ticket-id').innerText = `REF: ${attendee.id}`;
+
+      const tierBadge = document.getElementById('pass-tier-badge');
+      if (tierBadge) {
+        tierBadge.innerText = attendee.ticketName || 'CONFERENCE PASS';
+        if (attendee.ticketTier === 'vip') {
+          tierBadge.className = 'inline-block px-4 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-gradient-to-r from-amber-500/20 to-orange-500/20 text-amber-300 border border-amber-500/40 mb-4';
+        } else if (attendee.ticketTier === 'virtual') {
+          tierBadge.className = 'inline-block px-4 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 mb-4';
+        }
+      }
+
+      const statusPill = document.getElementById('pass-status-pill');
+      if (statusPill) {
+        if (attendee.checkedIn) {
+          statusPill.innerText = "Checked In";
+          statusPill.className = "text-emerald-400 font-bold";
+        } else {
+          statusPill.innerText = "Active / Valid";
+          statusPill.className = "text-indigo-400 font-bold";
+        }
+      }
+
+      // Generate QR Code
+      const qrContainer = document.getElementById('qrcode');
+      qrContainer.innerHTML = '';
+      new QRCode(qrContainer, {
+        text: JSON.stringify({
+          ticketId: attendee.id,
+          name: attendee.fullName,
+          tier: attendee.ticketTier,
+          checkinUrl: window.location.origin + `/admin.html?scan=${attendee.id}`
+        }),
+        width: 160,
+        height: 160,
+        colorDark: "#0f172a",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+
+    function shareTicket() {
+      const shareUrl = window.location.href;
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        const btnText = document.getElementById('share-btn-text');
+        btnText.innerText = 'Copied to Clipboard!';
+        setTimeout(() => {
+          btnText.innerText = 'Share Pass Link';
+        }, 2500);
+      }).catch(err => {
+        alert("Pass link: " + shareUrl);
+      });
+    }
+  </script>
+</body>
+</html>
