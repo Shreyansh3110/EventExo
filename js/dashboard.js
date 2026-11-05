@@ -111,5 +111,9 @@ function viewEventDetails(id) {
   const evt = events.find(e => e.id === id);
   if (!evt) return;
 
-  alert(`Event: ${evt.title}\nClient: ${evt.clientName}\nType: ${evt.type}\nBudget: $${evt.budget.toLocaleString()}\nSpent: $${evt.spent.toLocaleString()}\nStatus: ${evt.status}`);
+  if (typeof showToast === 'function') {
+    showToast(`${evt.type}: ${evt.title}`, `Client: ${evt.clientName} • Budget: $${evt.budget.toLocaleString()} • Status: ${evt.status}`, "calendar");
+  } else {
+    alert(`Event: ${evt.title}\nClient: ${evt.clientName}\nType: ${evt.type}\nBudget: $${evt.budget.toLocaleString()}\nStatus: ${evt.status}`);
+  }
 }

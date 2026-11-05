@@ -88,7 +88,11 @@ function handleAddExpense(e) {
       EventDataStore.updateEventStatus(evt.id, evt.status);
       renderBudgetForEvent(evt.id);
       renderDashboardKPIs();
-      alert(`Added $${amount.toLocaleString()} for "${desc}"`);
+      if (typeof showToast === 'function') {
+        showToast("Expense Recorded", `Added $${amount.toLocaleString()} for "${desc}"`, "dollar-sign");
+      } else {
+        alert(`Added $${amount.toLocaleString()} for "${desc}"`);
+      }
       e.target.reset();
     }
   }
@@ -245,10 +249,14 @@ function handleCreateEventSubmit(e) {
   EventDataStore.saveEvent(newEvent);
 
   if (window.confetti) {
-    confetti({ particleCount: 100, spread: 60 });
+    confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 } });
   }
 
-  alert(`Event "${title}" successfully registered in EventrixControl!`);
+  if (typeof showToast === 'function') {
+    showToast("Event Created Successfully", `"${title}" has been launched into EventrixControl!`, "sparkles");
+  } else {
+    alert(`Event "${title}" successfully registered in EventrixControl!`);
+  }
 
   // Switch to Dashboard view
   switchView('dashboard');

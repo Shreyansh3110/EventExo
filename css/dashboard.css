@@ -1,6 +1,6 @@
 /* 
- * EventrixControl SaaS & EventFlow AI - Dashboard Styles
- * Modeled after the reference dark SaaS design
+ * EventFlow Studio & EventrixControl - Modern SaaS Theme & Animations
+ * 100% English Design System
  */
 
 :root {
@@ -16,18 +16,35 @@ body {
   background-color: var(--bg-dark);
 }
 
+/* Smooth Tab Fade Transition */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.module-view {
+  animation: fadeInUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 /* Glassmorphic SaaS Cards */
 .saas-card {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.25rem;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .saas-card:hover {
-  border-color: rgba(99, 102, 241, 0.3);
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.15);
 }
 
 /* KPI Trend Badges */
@@ -95,10 +112,16 @@ body {
 }
 
 /* Nav Item Active State */
+.sidebar-link {
+  color: #94a3b8;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
 .sidebar-link.active {
   background: linear-gradient(90deg, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0.05) 100%);
   color: #ffffff;
-  border-left: 3px solid #6366f1;
+  border-left-color: #6366f1;
 }
 
 .sidebar-link:hover:not(.active) {

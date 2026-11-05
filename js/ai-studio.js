@@ -211,7 +211,11 @@ function renderAIGeneratedPlan(type, vibe, guests, budget, notes) {
 
 function copyColorCode(hex) {
   navigator.clipboard.writeText(hex).then(() => {
-    alert(`Copied ${hex} to clipboard!`);
+    if (typeof showToast === 'function') {
+      showToast("Color Swatch Copied", `Hex code ${hex} copied to clipboard!`, "palette");
+    } else {
+      alert(`Copied ${hex} to clipboard!`);
+    }
   });
 }
 

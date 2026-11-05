@@ -1,18 +1,19 @@
 /**
- * EventFlow AI & EventrixControl - Central Data Engine
- * Synchronized with LocalStorage for all 12 platform modules.
+ * EventFlow Studio & EventrixControl - Central Data Engine (v2)
+ * Pure English Master Store with reactive LocalStorage persistence.
  */
 
 const STORAGE_KEYS = {
-  EVENTS: 'eventflow_events',
-  VENDORS: 'eventflow_vendors',
-  INVENTORY: 'eventflow_inventory',
-  DECOR: 'eventflow_decor',
-  CLIENT_TASKS: 'eventflow_client_tasks',
-  ANALYTICS: 'eventflow_analytics'
+  VERSION: 'eventflow_v2_installed',
+  EVENTS: 'eventflow_events_v2',
+  VENDORS: 'eventflow_vendors_v2',
+  INVENTORY: 'eventflow_inventory_v2',
+  DECOR: 'eventflow_decor_v2',
+  CLIENT_TASKS: 'eventflow_client_tasks_v2',
+  LANGUAGE: 'eventflow_selected_lang'
 };
 
-// 1. Initial Mock Events (Weddings, Corporate, Birthdays, Galas)
+// 1. Initial Master Events (Weddings, Corporate, Birthdays, Galas) - 100% English
 const DEFAULT_EVENTS = [
   {
     id: "EVT-2027-01",
@@ -21,87 +22,87 @@ const DEFAULT_EVENTS = [
     type: "Corporate",
     date: "2027-04-18",
     time: "09:00 AM",
-    venue: "Metropolitan Grand Ballroom, SF",
+    venue: "Metropolitan Grand Ballroom, San Francisco",
     guests: 450,
     budget: 65000,
     spent: 58200,
     status: "Confirmed",
     theme: "Cyberpunk Neon & Modern Minimalist",
     assignedVendors: ["VND-01", "VND-04", "VND-05"],
-    description: "Multi-track tech conference with keynotes, VIP dinner, and product demo pods."
+    description: "Flagship global tech summit featuring keynote stages, developer pods, and VIP investor salons."
   },
   {
     id: "EVT-2027-02",
-    title: "Sophia & Lucas Royal Wedding",
+    title: "Sophia & Lucas Royal Vineyard Wedding",
     clientName: "Sophia Montgomery",
     type: "Wedding",
     date: "2027-05-22",
     time: "04:30 PM",
-    venue: "Rosewood Heritage Estate, Napa",
+    venue: "Rosewood Heritage Estate, Napa Valley",
     guests: 220,
     budget: 48000,
     spent: 44500,
     status: "Confirmed",
     theme: "Royal Vintage & Grand Floral",
     assignedVendors: ["VND-02", "VND-03", "VND-06"],
-    description: "Luxury outdoor vineyard ceremony followed by a black-tie ballroom banquet."
+    description: "Luxury sunset estate ceremony followed by a black-tie candlelight banquet."
   },
   {
     id: "EVT-2027-03",
-    title: "Luminescence 30th Birthday Gala",
+    title: "Luminescence 30th Rooftop Gala",
     clientName: "Elena Rostova",
     type: "Birthday",
     date: "2027-06-12",
     time: "07:00 PM",
-    venue: "Skyline Penthouse Terrace",
+    venue: "Skyline Penthouse Terrace, SF",
     guests: 110,
     budget: 18500,
     spent: 12000,
     status: "In Progress",
     theme: "Bohemian Chic & Ambient Starlight",
     assignedVendors: ["VND-01", "VND-05"],
-    description: "Exclusive rooftop birthday gala with craft cocktail bars and ambient acoustic sets."
+    description: "Celebrity rooftop birthday gala featuring artisanal mixology and ambient acoustic musicians."
   },
   {
     id: "EVT-2027-04",
-    title: "VentureFront Annual Investor Dinner",
+    title: "VentureFront Annual Partner Dinner",
     clientName: "VentureFront Partners",
     type: "Corporate",
     date: "2027-07-08",
     time: "06:30 PM",
-    venue: "SF Modern Art Museum Pavilion",
+    venue: "SF Museum of Modern Art Pavilion",
     guests: 85,
     budget: 25000,
     spent: 15400,
     status: "In Progress",
     theme: "Contemporary Luxury & Art Deco",
     assignedVendors: ["VND-01", "VND-03"],
-    description: "Intimate curated dinner for top tech executives, angel syndicates, and founders."
+    description: "Curated executive dinner for top venture capitalists, tech executives, and startup founders."
   },
   {
     id: "EVT-2027-05",
-    title: "Maya & Ethan Coastal Elopement",
+    title: "Maya & Ethan Coastal Oceanfront Wedding",
     clientName: "Maya Lin",
     type: "Wedding",
     date: "2027-08-14",
     time: "05:00 PM",
-    venue: "Carmel Oceanfront Bluffs",
+    venue: "Carmel Oceanfront Bluffs, CA",
     guests: 60,
     budget: 16000,
     spent: 6200,
     status: "Budgeting",
     theme: "Ethereal Sunset & Coastal Pampas",
     assignedVendors: ["VND-02", "VND-06"],
-    description: "Intimate seaside ceremony with driftwoods, custom acoustic duo, and candlelit pergola."
+    description: "Intimate cliffside ceremony with driftwood arches, violin duo, and oceanfront dining."
   },
   {
     id: "EVT-2027-06",
-    title: "Quantum Leap Product Launch",
+    title: "Synthetix AI Foundation Product Launch",
     clientName: "Synthetix Inc",
     type: "Corporate",
     date: "2027-09-10",
     time: "10:00 AM",
-    venue: "City Center Exhibition Center",
+    venue: "Yerba Buena Center for the Arts",
     guests: 350,
     budget: 38000,
     spent: 0,
@@ -112,14 +113,14 @@ const DEFAULT_EVENTS = [
   }
 ];
 
-// 2. Curated Decoration Themes Catalog
+// 2. Curated Decoration Themes Catalog - 100% English
 const DEFAULT_DECOR = [
   {
     id: "DEC-01",
     name: "Royal Vintage Grandeur",
     category: "Luxury Wedding & Gala",
     palette: ["#4A0E17", "#D4AF37", "#F5F5DC", "#2F3E46"],
-    paletteNames: ["Deep Burgundy", "Warm Gold", "Champagne Cream", "Forest Slate"],
+    paletteNames: ["Deep Burgundy", "Imperial Gold", "Champagne Silk", "Forest Slate"],
     priceRange: "$6,500 - $14,000",
     image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
     inclusions: [
@@ -134,7 +135,7 @@ const DEFAULT_DECOR = [
     name: "Cyberpunk Neon & Modern Minimalist",
     category: "Tech Summit & Brand Activations",
     palette: ["#0B0F19", "#06B6D4", "#8B5CF6", "#F43F5E"],
-    paletteNames: ["Obsidian Black", "Cyan Neon", "Electric Purple", "Laser Pink"],
+    paletteNames: ["Deep Obsidian", "Cyan Luminescence", "Electric Purple", "Neon Magenta"],
     priceRange: "$5,000 - $12,500",
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80",
     inclusions: [
@@ -149,7 +150,7 @@ const DEFAULT_DECOR = [
     name: "Bohemian Sunset Chic",
     category: "Birthdays & Outdoor Weddings",
     palette: ["#D97706", "#F97316", "#FEF08A", "#78350F"],
-    paletteNames: ["Terracotta", "Sunset Ochre", "Warm Flax", "Desert Clay"],
+    paletteNames: ["Terracotta Earth", "Sunset Ochre", "Warm Flax", "Raw Umber"],
     priceRange: "$3,800 - $8,500",
     image: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80",
     inclusions: [
@@ -176,7 +177,7 @@ const DEFAULT_DECOR = [
   }
 ];
 
-// 3. Verified Vendors Directory
+// 3. Verified Vendors Directory - 100% English
 const DEFAULT_VENDORS = [
   {
     id: "VND-01",
@@ -246,7 +247,7 @@ const DEFAULT_VENDORS = [
   }
 ];
 
-// 4. Equipment & Inventory Rental Catalog
+// 4. Equipment & Inventory Rental Catalog - 100% English
 const DEFAULT_INVENTORY = [
   {
     id: "INV-01",
@@ -320,7 +321,7 @@ const DEFAULT_INVENTORY = [
   }
 ];
 
-// 5. Client Planning Checklist & Milestones
+// 5. Client Planning Checklist & Milestones - 100% English
 const DEFAULT_CLIENT_TASKS = [
   { id: "TSK-01", title: "Confirm Venue & Sign Rental Contract", deadline: "8 Months Out", completed: true, category: "Venue" },
   { id: "TSK-02", title: "Design Palette & Floral Concept Approval", deadline: "6 Months Out", completed: true, category: "Design" },
@@ -331,7 +332,7 @@ const DEFAULT_CLIENT_TASKS = [
   { id: "TSK-07", title: "Final Invoice Settlement", deadline: "3 Days Out", completed: false, category: "Finance" }
 ];
 
-// LocalStorage Helper Getters / Setters
+// Clean LocalStorage Helper Getters / Setters (Bypassing old cached versions)
 function getData(key, defaultVal) {
   try {
     const raw = localStorage.getItem(key);
@@ -354,7 +355,13 @@ function setData(key, value) {
   }
 }
 
-// Public API
+// Clear any old obsolete keys automatically
+(function migrateOldStorage() {
+  const oldKeys = ['eventflow_events', 'eventflow_vendors', 'eventflow_inventory', 'eventflow_decor', 'eventflow_client_tasks', 'nexus_attendees'];
+  oldKeys.forEach(k => localStorage.removeItem(k));
+})();
+
+// Master Public Data API
 const EventDataStore = {
   getEvents: () => getData(STORAGE_KEYS.EVENTS, DEFAULT_EVENTS),
   saveEvent: (evt) => {
