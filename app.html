@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EventrixControl — EventFlow AI Management Suite</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="bg-[#080c16] text-slate-100 flex h-screen overflow-hidden antialiased">
+
+  <!-- ================= SIDEBAR NAVIGATION ================= -->
+  <aside class="w-64 bg-slate-950/80 border-r border-white/10 flex flex-col justify-between flex-shrink-0 z-30 hidden md:flex">
+    <div>
+      <!-- Brand Logo matching screenshot -->
+      <div class="h-20 px-6 border-b border-white/10 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-purple-600 p-[1px] flex items-center justify-center">
+            <div class="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center">
+              <span class="font-heading font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">E</span>
+            </div>
+          </div>
+          <div>
+            <span class="font-heading font-black text-white text-base tracking-tight block">EventrixControl</span>
+            <span class="text-[9px] uppercase font-bold tracking-widest text-indigo-400 block -mt-1">AI SAAS PLATFORM</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="px-3 py-6 space-y-1 text-xs font-semibold overflow-y-auto max-h-[calc(100vh-160px)]">
+        
+        <div class="px-3 pb-2 text-[10px] uppercase font-extrabold tracking-wider text-slate-500">Core SaaS Suite</div>
+        
+        <button onclick="switchView('dashboard')" class="sidebar-link active w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all" data-view="dashboard">
+          <i data-lucide="layout-dashboard" class="w-4 h-4 text-indigo-400"></i>
+          <span>Dashboard</span>
+        </button>
+
+        <button onclick="switchView('events')" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all" data-view="events">
+          <i data-lucide="calendar" class="w-4 h-4 text-cyan-400"></i>
+          <span>Our Events</span>
+        </button>
+
+        <button onclick="switchView('create-event')" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all" data-view="create-event">
+          <i data-lucide="plus-circle" class="w-4 h-4 text-emerald-400"></i>
+          <span>Create New Event</span>
+        </button>
+
+        <button onclick="switchView('ai-studio')" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all" data-view="ai-studio">
+          <i data-lucide="sparkles" class="w-4 h-4 text-purple-400"></i>
+          <span class="flex-1 text-left">AI Design Studio</span>
+          <span class="px-1.5 py-0.2 rounded-full text-[9px] font-black bg-purple-500/20 text-purple-300">NEW</span>
+        </button>
+
+        <button onclick="switchView('budget')" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all" data-view="budget">
+          <i data-lucide="dollar-sign" class="w-4 h-4 text-amber-400"></i>
+          <span>Budget Planner</span>
+        </button>
+
+        <div class="px-3 pt-5 pb-2 text-[10px] uppercase font-extrabold tracking-wider text-slate-500">Operations & Logistics</div>
+
+        <button onclick="switchView('vendors')" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all" data-view="vendors">
+          <i data-lucide="handshake" class="w-4 h-4 text-indigo-400"></i>
+          <span>Vendor Management</span>
+        </button>
+
+        <button onclick="switchView('inventory')" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all" data-view="inventory">
+          <i data-lucide="package" class="w-4 h-4 text-teal-400"></i>
+          <span>Inventory & Equipment</span>
+        </button>
+
+        <button onclick="switchView('decor')" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all" data-view="decor">
+          <i data-lucide="palette" class="w-4 h-4 text-pink-400"></i>
+          <span>Decoration Gallery</span>
+        </button>
+
+        <div class="px-3 pt-5 pb-2 text-[10px] uppercase font-extrabold tracking-wider text-slate-500">Portals & Reporting</div>
+
+        <button onclick="switchView('portal')" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all" data-view="portal">
+          <i data-lucide="user-check" class="w-4 h-4 text-emerald-400"></i>
+          <span>Customer Dashboard</span>
+        </button>
+
+        <button onclick="switchView('analytics')" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all" data-view="analytics">
+          <i data-lucide="bar-chart-3" class="w-4 h-4 text-cyan-400"></i>
+          <span>Reports & Analytics</span>
+        </button>
+
+        <button onclick="switchView('about')" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all" data-view="about">
+          <i data-lucide="info" class="w-4 h-4 text-slate-400"></i>
+          <span>About Us</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- User / Profile Pill -->
+    <div class="p-4 border-t border-white/10 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center font-bold text-xs text-white">
+          BS
+        </div>
+        <div>
+          <div class="text-xs font-bold text-white">Bruno Santos</div>
+          <div class="text-[10px] text-slate-400">Administrator</div>
+        </div>
+      </div>
+      <a href="index.html" class="p-2 text-slate-400 hover:text-white" title="View Public Website">
+        <i data-lucide="external-link" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN CONTENT AREA ================= -->
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+    
+    <!-- Top Navbar -->
+    <header class="h-16 border-b border-white/10 bg-slate-950/60 backdrop-blur-md flex items-center justify-between px-6 z-20">
+      <div class="flex items-center gap-4">
+        <h2 id="top-nav-title" class="font-heading text-lg font-bold text-white">Dashboard Overview</h2>
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Sistema Online
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 flex items-center gap-1.5 transition-colors">
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-indigo-400"></i>
+          <span>Public Website</span>
+        </a>
+        <button onclick="switchView('create-event')" class="px-4 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-500/25 flex items-center gap-1.5 transition-all">
+          <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+          <span>Novo Evento</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Scrollable Module Container -->
+    <main class="flex-1 overflow-y-auto p-6 md:p-8 space-y-8">
+
+      <!-- ================= 1. DASHBOARD VIEW (Matching Screenshot) ================= -->
+      <section id="view-dashboard" class="module-view space-y-8">
+        
+        <!-- KPI METRICS ROW (Matching Reference: Eventos, Faturamento, Orçamentos, Taxa de Conversão) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          
+          <div class="saas-card p-5">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider">Eventos Ativos</span>
+              <i data-lucide="calendar" class="w-4 h-4 text-indigo-400"></i>
+            </div>
+            <div id="kpi-active-events" class="text-3xl font-extrabold text-white font-heading">24</div>
+            <div class="flex items-center gap-1.5 mt-2">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold trend-pill-up">+12% este mês</span>
+            </div>
+          </div>
+
+          <div class="saas-card p-5">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider">Faturamento</span>
+              <i data-lucide="dollar-sign" class="w-4 h-4 text-emerald-400"></i>
+            </div>
+            <div id="kpi-revenue" class="text-3xl font-extrabold text-white font-heading">R$ 128.450</div>
+            <div class="flex items-center gap-1.5 mt-2">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold trend-pill-up">+18% este mês</span>
+            </div>
+          </div>
+
+          <div class="saas-card p-5">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider">Orçamentos</span>
+              <i data-lucide="file-text" class="w-4 h-4 text-purple-400"></i>
+            </div>
+            <div id="kpi-budgets" class="text-3xl font-extrabold text-white font-heading">56</div>
+            <div class="flex items-center gap-1.5 mt-2">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold trend-pill-neutral">+5% este mês</span>
+            </div>
+          </div>
+
+          <div class="saas-card p-5">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider">Taxa de Conversão</span>
+              <i data-lucide="trending-up" class="w-4 h-4 text-cyan-400"></i>
+            </div>
+            <div id="kpi-conversion" class="text-3xl font-extrabold text-cyan-300 font-heading">32%</div>
+            <div class="flex items-center gap-1.5 mt-2">
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold trend-pill-up">+4% este mês</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CHARTS SECTION (Faturamento Area Chart & Eventos por Status Donut Chart) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- Area Chart -->
+          <div class="saas-card p-6 lg:col-span-2">
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h3 class="font-heading font-bold text-white text-base">Faturamento Mensal</h3>
+                <p class="text-xs text-slate-400">Crescimento de receita líquida nos últimos 8 meses</p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/5 text-slate-300 border border-white/10">2027</span>
+            </div>
+
+            <!-- Custom Smooth SVG Area Chart -->
+            <div class="h-60 w-full relative">
+              <svg viewBox="0 0 500 200" class="w-full h-full overflow-visible">
+                <defs>
+                  <linearGradient id="revenueGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.4" />
+                    <stop offset="100%" stop-color="#6366f1" stop-opacity="0.0" />
+                  </linearGradient>
+                </defs>
+                <!-- Gridlines -->
+                <line x1="0" y1="40" x2="500" y2="40" class="chart-grid-line" />
+                <line x1="0" y1="90" x2="500" y2="90" class="chart-grid-line" />
+                <line x1="0" y1="140" x2="500" y2="140" class="chart-grid-line" />
+                
+                <!-- Area Path -->
+                <path d="M 0 160 Q 70 140 140 90 T 280 80 T 420 30 L 500 45 L 500 200 L 0 200 Z" class="chart-area-gradient" />
+                <!-- Stroke Line -->
+                <path d="M 0 160 Q 70 140 140 90 T 280 80 T 420 30 L 500 45" fill="none" stroke="#06b6d4" stroke-width="3" stroke-linecap="round" />
+                
+                <!-- Data point dots -->
+                <circle cx="140" cy="90" r="4" fill="#ffffff" stroke="#06b6d4" stroke-width="2" />
+                <circle cx="280" cy="80" r="4" fill="#ffffff" stroke="#06b6d4" stroke-width="2" />
+                <circle cx="420" cy="30" r="5" fill="#ffffff" stroke="#8b5cf6" stroke-width="3" />
+              </svg>
+              <!-- X-Axis Labels -->
+              <div class="flex justify-between text-[10px] font-semibold text-slate-500 mt-2 px-1">
+                <span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span><span>Jul</span><span>Ago</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Donut Status Chart (Matching Screenshot) -->
+          <div class="saas-card p-6 flex flex-col justify-between">
+            <div>
+              <h3 class="font-heading font-bold text-white text-base mb-1">Eventos por Status</h3>
+              <p class="text-xs text-slate-400 mb-6">Distribuição operacional</p>
+
+              <!-- SVG Donut Chart -->
+              <div class="relative w-40 h-40 mx-auto mb-6 flex items-center justify-center">
+                <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90">
+                  <circle cx="50" cy="50" r="38" stroke="#1e293b" stroke-width="12" fill="none" />
+                  <!-- Confirmed: 52% -->
+                  <circle cx="50" cy="50" r="38" stroke="#06b6d4" stroke-width="12" fill="none" stroke-dasharray="124 238" stroke-dashoffset="0" />
+                  <!-- In Progress: 25% -->
+                  <circle cx="50" cy="50" r="38" stroke="#6366f1" stroke-width="12" fill="none" stroke-dasharray="60 238" stroke-dashoffset="-124" />
+                  <!-- Budgeting: 15% -->
+                  <circle cx="50" cy="50" r="38" stroke="#f59e0b" stroke-width="12" fill="none" stroke-dasharray="36 238" stroke-dashoffset="-184" />
+                  <!-- Cancelled: 8% -->
+                  <circle cx="50" cy="50" r="38" stroke="#ef4444" stroke-width="12" fill="none" stroke-dasharray="19 238" stroke-dashoffset="-220" />
+                </svg>
+                <div class="absolute text-center">
+                  <span class="text-2xl font-black text-white font-heading">24</span>
+                  <span class="block text-[9px] uppercase font-bold text-slate-400">Total</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Legend with percentages -->
+            <div class="space-y-2 text-xs">
+              <div class="flex items-center justify-between text-slate-300">
+                <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>Confirmados</span>
+                <span class="font-bold text-white">52% (12)</span>
+              </div>
+              <div class="flex items-center justify-between text-slate-300">
+                <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>Em andamento</span>
+                <span class="font-bold text-white">25% (6)</span>
+              </div>
+              <div class="flex items-center justify-between text-slate-300">
+                <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>Orçamentos</span>
+                <span class="font-bold text-white">15% (4)</span>
+              </div>
+              <div class="flex items-center justify-between text-slate-300">
+                <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>Cancelados</span>
+                <span class="font-bold text-white">8% (2)</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- PRÓXIMOS EVENTOS & CALENDAR (Matching Screenshot) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- Próximos Eventos List -->
+          <div class="saas-card p-6 lg:col-span-2">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="font-heading font-bold text-white text-base">Próximos Eventos</h3>
+                <p class="text-xs text-slate-400">Linha de execução dos próximos 30 dias</p>
+              </div>
+              <button onclick="switchView('events')" class="text-xs text-indigo-400 hover:underline font-semibold">Ver Todos</button>
+            </div>
+            <div id="dashboard-events-list" class="space-y-3">
+              <!-- Rendered by js/dashboard.js -->
+            </div>
+          </div>
+
+          <!-- Agenda Calendar Widget -->
+          <div class="saas-card p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-heading font-bold text-white text-base">Agenda</h3>
+              <span class="text-xs font-bold text-slate-400">Junho 2027</span>
+            </div>
+            
+            <!-- Weekday headers -->
+            <div class="cal-grid mb-2 text-center text-[10px] font-bold uppercase text-slate-500">
+              <span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span>
+            </div>
+            <!-- Days Grid -->
+            <div id="mini-calendar-grid" class="cal-grid">
+              <!-- Rendered by js/dashboard.js -->
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ================= 2. OUR EVENTS VIEW ================= -->
+      <section id="view-events" class="module-view hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="font-heading text-2xl font-extrabold text-white">Our Events Portfolio</h2>
+            <p class="text-xs text-slate-400 mt-1">Manage corporate summits, luxury weddings, birthdays, and private galas.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="switchView('create-event')" class="px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white flex items-center gap-1.5 shadow-md">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+              <span>Book New Event</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="events-portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- ================= 3. CREATE NEW EVENT WIZARD ================= -->
+      <section id="view-create-event" class="module-view hidden max-w-3xl mx-auto space-y-6">
+        <div class="text-center mb-8">
+          <span class="text-xs font-bold uppercase tracking-widest text-indigo-400">Event Booking & Creation Wizard</span>
+          <h2 class="font-heading text-3xl font-extrabold text-white mt-1">Plan Your Next Masterpiece</h2>
+          <p class="text-xs text-slate-400 mt-1">Step-by-step event setup with automated vendor and budget provisioning.</p>
+        </div>
+
+        <form id="create-event-form" onsubmit="handleCreateEventSubmit(event)" class="saas-card p-6 sm:p-8 space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">Event Title *</label>
+              <input type="text" id="wiz-title" placeholder="e.g. Celestial Mirage Gala 2027" required class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">Client / Organization *</label>
+              <input type="text" id="wiz-client" placeholder="e.g. Acme Ventures" required class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">Event Category</label>
+              <select id="wiz-type" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                <option value="Wedding">Wedding</option>
+                <option value="Corporate">Corporate Summit</option>
+                <option value="Birthday">Birthday / Anniversary</option>
+                <option value="Brand">Product Launch</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">Target Date</label>
+              <input type="date" id="wiz-date" value="2027-10-15" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">Expected Guests</label>
+              <input type="number" id="wiz-guests" value="150" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">Venue / City</label>
+              <input type="text" id="wiz-venue" placeholder="e.g. San Francisco City Hall" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">Total Target Budget ($)</label>
+              <input type="number" id="wiz-budget" value="45000" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5">Decoration Style & Vibe</label>
+            <select id="wiz-theme" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+              <option value="Royal Vintage Grandeur">Royal Vintage Grandeur</option>
+              <option value="Cyberpunk Neon & Modern Minimalist">Cyberpunk Neon & Modern Minimalist</option>
+              <option value="Bohemian Sunset Chic">Bohemian Sunset Chic</option>
+              <option value="Enchanted Garden Floral">Enchanted Garden Floral</option>
+            </select>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 rounded-xl font-bold text-sm bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white shadow-xl shadow-indigo-500/25 flex items-center justify-center gap-2 transition-all mt-4">
+            <i data-lucide="check-circle" class="w-4 h-4"></i>
+            <span>Register & Initialize Event in SaaS</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- ================= 4. AI DESIGN STUDIO ================= -->
+      <section id="view-ai-studio" class="module-view hidden space-y-8">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-purple-400">Generative Event Architect</span>
+          <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-white mt-1">AI Design Studio & Planner</h2>
+          <p class="text-xs text-slate-400 mt-1">Generate complete event creative narratives, bespoke color palettes, and schedules in seconds.</p>
+        </div>
+
+        <!-- Prompt Controls -->
+        <div class="saas-card p-6 grid grid-cols-1 sm:grid-cols-4 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5">Event Type</label>
+            <select id="ai-event-type" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white">
+              <option value="Luxury Wedding">Luxury Wedding</option>
+              <option value="Tech Summit / Hackathon">Tech Summit / Hackathon</option>
+              <option value="30th Birthday Gala">30th Birthday Gala</option>
+              <option value="Brand Product Launch">Brand Product Launch</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5">Aesthetic Vibe</label>
+            <select id="ai-event-vibe" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white">
+              <option value="Royal Vintage">Royal Vintage</option>
+              <option value="Cyberpunk Neon">Cyberpunk Neon</option>
+              <option value="Bohemian Sunset">Bohemian Sunset</option>
+              <option value="Modern Minimalist">Modern Minimalist</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5">Target Budget ($)</label>
+            <input type="number" id="ai-budget" value="45000" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white" />
+          </div>
+
+          <div class="flex items-end">
+            <button onclick="generateAIEventBlueprint()" class="w-full py-2.5 rounded-xl font-bold text-xs bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-lg shadow-purple-500/25 flex items-center justify-center gap-1.5 transition-all">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+              <span>Generate Blueprint</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="ai-loading-state" class="hidden text-center py-16 saas-card">
+          <div class="w-12 h-12 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin mx-auto mb-4"></div>
+          <h4 class="font-bold text-white text-base">Synthesizing Creative Concepts...</h4>
+          <p class="text-xs text-slate-400 mt-1">Balancing color harmonies, inventory allocations, and timeline mechanics.</p>
+        </div>
+
+        <!-- Results Container -->
+        <div id="ai-results-container" class="saas-card p-6 sm:p-8">
+          <div id="ai-results-content">
+            <div class="text-center py-12 text-slate-400">
+              <i data-lucide="wand-2" class="w-10 h-10 text-purple-400 mx-auto mb-3"></i>
+              <p class="text-sm font-semibold text-slate-300">Click "Generate Blueprint" to let AI architect your event.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 5. BUDGET PLANNER ================= -->
+      <section id="view-budget" class="module-view hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="font-heading text-2xl font-extrabold text-white">Interactive Budget Planner</h2>
+            <p class="text-xs text-slate-400 mt-1">Track allocations, monitor line-item spends, and prevent budget overruns.</p>
+          </div>
+          <div>
+            <select id="budget-event-select" class="bg-slate-900 border border-white/10 rounded-xl px-4 py-2 text-xs font-semibold text-white focus:outline-none focus:border-indigo-500">
+              <!-- Dynamically populated -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Overview Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="saas-card p-5">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Total Budget</span>
+            <div id="budget-total-display" class="text-3xl font-extrabold text-white font-heading mt-1">$0</div>
+          </div>
+          <div class="saas-card p-5">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Committed Spend</span>
+            <div id="budget-spent-display" class="text-3xl font-extrabold text-amber-300 font-heading mt-1">$0</div>
+          </div>
+          <div class="saas-card p-5">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Remaining Balance</span>
+            <div id="budget-remaining-display" class="text-3xl font-extrabold text-emerald-300 font-heading mt-1">$0</div>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="saas-card p-6">
+          <div class="flex items-center justify-between text-xs font-bold mb-2">
+            <span class="text-white">Budget Consumption</span>
+            <span id="budget-percent-label" class="text-indigo-400">0% Used</span>
+          </div>
+          <div class="w-full bg-slate-900 rounded-full h-3 overflow-hidden p-0.5 border border-white/10">
+            <div id="budget-progress-bar" class="h-full rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 transition-all duration-500" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Category Ledger & Add Expense -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="saas-card p-6 lg:col-span-2">
+            <h3 class="font-heading font-bold text-white text-base mb-4">Category Allocation</h3>
+            <div id="budget-category-list" class="space-y-3">
+              <!-- Rendered by js/modules.js -->
+            </div>
+          </div>
+
+          <div class="saas-card p-6">
+            <h3 class="font-heading font-bold text-white text-base mb-4">Quick Add Expense</h3>
+            <form id="add-expense-form" class="space-y-3">
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1">Expense Description</label>
+                <input type="text" id="exp-desc" placeholder="e.g. Floral Arch Downpayment" required class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1">Amount ($)</label>
+                <input type="number" id="exp-amount" placeholder="e.g. 1500" required class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white" />
+              </div>
+              <button type="submit" class="w-full py-2.5 rounded-xl font-bold text-xs bg-indigo-600 hover:bg-indigo-500 text-white shadow-md transition-colors">
+                Record Expense
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 6. VENDOR MANAGEMENT HUB ================= -->
+      <section id="view-vendors" class="module-view hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="font-heading text-2xl font-extrabold text-white">Vendor Management Hub</h2>
+            <p class="text-xs text-slate-400 mt-1">Verified partner directory, pricing tiers, and contract statuses.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="renderVendorsList('all')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white/10 hover:bg-white/15 text-white">All</button>
+            <button onclick="renderVendorsList('Catering')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white/5 hover:bg-white/10 text-slate-300">Catering</button>
+            <button onclick="renderVendorsList('Photography')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white/5 hover:bg-white/10 text-slate-300">Photo</button>
+            <button onclick="renderVendorsList('Audio')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white/5 hover:bg-white/10 text-slate-300">AV & Stage</button>
+          </div>
+        </div>
+
+        <div id="vendors-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Rendered by js/modules.js -->
+        </div>
+      </section>
+
+      <!-- ================= 7. INVENTORY & EQUIPMENT ================= -->
+      <section id="view-inventory" class="module-view hidden space-y-6">
+        <div>
+          <h2 class="font-heading text-2xl font-extrabold text-white">Inventory & Equipment Tracker</h2>
+          <p class="text-xs text-slate-400 mt-1">Rental stock tracking for furniture, 4K LED walls, lighting, and stage decor.</p>
+        </div>
+
+        <div class="saas-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-950/40 border-b border-white/10 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                  <th class="px-6 py-4">Item Name</th>
+                  <th class="px-6 py-4">Category</th>
+                  <th class="px-6 py-4">Total Stock</th>
+                  <th class="px-6 py-4">In Use</th>
+                  <th class="px-6 py-4">Available</th>
+                  <th class="px-6 py-4">Daily Rate</th>
+                  <th class="px-6 py-4">Status</th>
+                </tr>
+              </thead>
+              <tbody id="inventory-table-body" class="divide-y divide-white/5">
+                <!-- Rendered by js/modules.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 8. DECORATION GALLERY ================= -->
+      <section id="view-decor" class="module-view hidden space-y-6">
+        <div>
+          <h2 class="font-heading text-2xl font-extrabold text-white">Decoration & Theme Gallery</h2>
+          <p class="text-xs text-slate-400 mt-1">Signature aesthetic packages designed for weddings, galas, and summits.</p>
+        </div>
+
+        <div id="decor-catalog-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- ================= 9. CUSTOMER PORTAL ================= -->
+      <section id="view-portal" class="module-view hidden max-w-4xl mx-auto space-y-6">
+        <div class="p-6 rounded-3xl bg-gradient-to-r from-indigo-950 via-purple-950 to-slate-900 border border-indigo-500/30 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Client Portal</span>
+            <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-white mt-1">Sophia & Lucas Royal Wedding</h2>
+            <p class="text-xs text-slate-300 mt-1">Rosewood Heritage Estate • May 22, 2027</p>
+          </div>
+          <div class="text-center p-4 rounded-2xl bg-slate-950/80 border border-white/10">
+            <span class="block text-2xl font-black text-indigo-400 font-heading">78</span>
+            <span class="text-[10px] uppercase font-bold text-slate-400">Days to Event</span>
+          </div>
+        </div>
+
+        <div class="saas-card p-6">
+          <h3 class="font-heading font-bold text-white text-base mb-4 flex items-center gap-2">
+            <i data-lucide="check-square" class="w-4 h-4 text-emerald-400"></i>
+            <span>Planning Checklist & Milestones</span>
+          </h3>
+          <div id="portal-tasks-list" class="space-y-3">
+            <!-- Rendered by js/modules.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 10. REPORTS & ANALYTICS ================= -->
+      <section id="view-analytics" class="module-view hidden space-y-6">
+        <div>
+          <h2 class="font-heading text-2xl font-extrabold text-white">Reports & Financial Analytics</h2>
+          <p class="text-xs text-slate-400 mt-1">Profitability breakdown, category margins, and annual performance.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div class="saas-card p-6 text-center">
+            <span class="text-xs font-bold uppercase text-slate-400">Average Profit Margin</span>
+            <div class="text-4xl font-extrabold text-emerald-400 font-heading mt-2">41.8%</div>
+            <p class="text-[11px] text-slate-500 mt-1">+3.2% vs last quarter</p>
+          </div>
+          <div class="saas-card p-6 text-center">
+            <span class="text-xs font-bold uppercase text-slate-400">Lead Conversion Rate</span>
+            <div class="text-4xl font-extrabold text-cyan-400 font-heading mt-2">32.4%</div>
+            <p class="text-[11px] text-slate-500 mt-1">Across 86 customer inquiries</p>
+          </div>
+          <div class="saas-card p-6 text-center">
+            <span class="text-xs font-bold uppercase text-slate-400">Client Satisfaction (NPS)</span>
+            <div class="text-4xl font-extrabold text-purple-400 font-heading mt-2">94 / 100</div>
+            <p class="text-[11px] text-slate-500 mt-1">Verified review average</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 11. ABOUT US ================= -->
+      <section id="view-about" class="module-view hidden max-w-4xl mx-auto space-y-6">
+        <div class="saas-card p-8 space-y-6 text-center">
+          <span class="text-xs font-bold uppercase tracking-widest text-indigo-400">Our Story</span>
+          <h2 class="font-heading text-3xl font-extrabold text-white">Pioneering Intelligent Event Experiences</h2>
+          <p class="text-slate-300 text-sm leading-relaxed max-w-2xl mx-auto">
+            EventFlow AI combines world-class production design with next-generation event business automation. We manage hundreds of luxury weddings, tech summits, and brand galas across the globe with zero friction.
+          </p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="js/data.js"></script>
+  <script src="js/ai-studio.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/modules.js"></script>
+  <script>
+    // SPA View Router
+    function switchView(viewId) {
+      document.querySelectorAll('.module-view').forEach(el => el.classList.add('hidden'));
+      const target = document.getElementById(`view-${viewId}`);
+      if (target) target.classList.remove('hidden');
+
+      document.querySelectorAll('.sidebar-link').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.view === viewId);
+      });
+
+      const titles = {
+        'dashboard': 'EventrixControl — Dashboard Overview',
+        'events': 'Our Events Portfolio',
+        'create-event': 'Create New Event Wizard',
+        'ai-studio': 'AI Design Studio & Blueprint Generator',
+        'budget': 'Interactive Budget Planner',
+        'vendors': 'Vendor Management Hub',
+        'inventory': 'Inventory & Equipment Tracker',
+        'decor': 'Decoration Gallery & Styling',
+        'portal': 'Customer Client Portal',
+        'analytics': 'Reports & Financial Analytics',
+        'about': 'About EventFlow AI'
+      };
+
+      const navTitle = document.getElementById('top-nav-title');
+      if (navTitle) navTitle.innerText = titles[viewId] || 'EventrixControl';
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+      initDashboardModule();
+      initBudgetModule();
+      initVendorModule();
+      initInventoryModule();
+      initClientPortal();
+      renderEventsPortfolio();
+      renderDecorCatalog();
+    });
+
+    function renderEventsPortfolio() {
+      const container = document.getElementById('events-portfolio-grid');
+      if (!container) return;
+      const events = EventDataStore.getEvents();
+
+      container.innerHTML = events.map(evt => `
+        <div class="saas-card p-6 flex flex-col justify-between group hover:border-indigo-500/40">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                ${evt.type}
+              </span>
+              <span class="text-xs font-semibold text-slate-400">${evt.date}</span>
+            </div>
+            <h3 class="font-heading font-bold text-white text-lg group-hover:text-indigo-300 transition-colors mb-2">${evt.title}</h3>
+            <p class="text-xs text-slate-300 mb-4 line-clamp-2">${evt.description || evt.venue}</p>
+          </div>
+          <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs">
+            <span class="text-slate-400">Budget: <strong class="text-white">$${evt.budget.toLocaleString()}</strong></span>
+            <span class="font-bold text-emerald-400">${evt.status}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderDecorCatalog() {
+      const container = document.getElementById('decor-catalog-grid');
+      if (!container) return;
+      const themes = EventDataStore.getDecorThemes();
+
+      container.innerHTML = themes.map(th => `
+        <div class="saas-card overflow-hidden group">
+          <div class="h-48 overflow-hidden relative">
+            <img src="${th.image}" alt="${th.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+            <span class="absolute bottom-3 left-4 px-3 py-1 rounded-full text-xs font-bold bg-slate-950/80 text-white backdrop-blur-md">
+              ${th.priceRange}
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-heading font-bold text-white text-lg mb-1">${th.name}</h3>
+            <span class="text-xs text-indigo-400 font-semibold block mb-4">${th.category}</span>
+            
+            <div class="flex gap-2 mb-4">
+              ${th.palette.map(hex => `
+                <div class="w-6 h-6 rounded-full border border-white/20 shadow-sm" style="background-color: ${hex}" title="${hex}"></div>
+              `).join('')}
+            </div>
+
+            <ul class="space-y-1.5 text-xs text-slate-300">
+              ${th.inclusions.map(inc => `
+                <li class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                  <span>${inc}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>

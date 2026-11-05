@@ -1,6 +1,5 @@
 """
-NEXUS Tech Summit 2027 - Local Development Server
-Launches a simple, zero-dependency Python HTTP server to view the website locally.
+EventFlow AI & EventrixControl - Local Server Launcher
 """
 
 import http.server
@@ -18,13 +17,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 def run():
     with socketserver.TCPServer(("", PORT), Handler) as httpd:
         url = f"http://localhost:{PORT}"
-        print("=" * 60)
-        print(f"  NEXUS Event Website is running at: {url}")
-        print(f"  - Main Event Page:      {url}/index.html")
-        print(f"  - Attendee Pass/Badge:  {url}/pass.html")
-        print(f"  - Organizer Dashboard:  {url}/admin.html")
-        print("=" * 60)
-        print("Press Ctrl+C to stop the server.")
+        print("=" * 65)
+        print(f"  EventFlow AI Platform is live at: {url}")
+        print(f"  - Home Landing Page:           {url}/index.html")
+        print(f"  - EventrixControl SaaS Suite:  {url}/app.html")
+        print("=" * 65)
+        print("Press Ctrl+C to terminate the server.")
         
         try:
             webbrowser.open(url)

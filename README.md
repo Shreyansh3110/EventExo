@@ -1,101 +1,87 @@
-# NEXUS Tech Summit 2027 — Event Website
+# EventFlow AI & EventrixControl SaaS Platform
 
-A modern, responsive, and feature-complete event website built for conferences, summits, hackathons, and festivals. Built with modern HTML5, Tailwind CSS, Lucide icons, and Vanilla JavaScript with zero external build dependencies.
+> **Plan. Manage. Celebrate.**  
+> An enterprise-grade, AI-powered event management and business automation platform built for luxury weddings, corporate summits, birthday galas, and bespoke decoration styling.
 
 ---
 
-## 🚀 Quick Start
+## 🌟 The 12 Integrated Modules
 
-### Option 1: Direct in Browser
-Double-click `index.html` in your file explorer to open it directly in any modern browser (Chrome, Edge, Firefox, Safari).
+1. **Home (`index.html`)**: High-converting flagship landing page matching the EventFlow AI reference, with SaaS previews, services catalog, and direct entry points.
+2. **Dashboard (`EventrixControl` in `app.html`)**:
+   - 4 Primary KPIs: Active Events (24), Total Revenue ($148,250 / R$ 128.450), Active Budgets (56), Lead Conversion Rate (32%).
+   - Interactive SVG Monthly Revenue Area Chart.
+   - Status Distribution Donut Chart (Confirmed, In Progress, Budgeting, Cancelled).
+   - Upcoming Events pipeline and interactive monthly Agenda calendar widget.
+3. **Our Events Portfolio**: Filterable showcases for Weddings, Corporate Summits, and Private Celebrations with status badges and budgets.
+4. **Decoration Gallery**: Signature styling themes (Royal Vintage Grandeur, Cyberpunk Neon, Bohemian Sunset, Enchanted Garden) with interactive color swatches.
+5. **AI Design Studio & Blueprint Generator**: Enter event type, vibe, guests, and budget to generate a custom concept title, aesthetic narrative, 4-tone color palette, run-of-show schedule, and automated budget allocation with 1-click wizard import.
+6. **Create New Event Wizard**: Multi-step booking and project initialization workflow.
+7. **Interactive Budget Planner**: Dynamic expense tracking, category breakdowns (Venue, Catering, Florals, AV, Photo), spend progress bar, and quick expense ledger.
+8. **Vendor Management Hub**: Verified directory of caterers, photographers, florists, and AV teams with rating stars, price levels, and contract statuses.
+9. **Inventory & Equipment Tracker**: Real-time rental stock tracking for Chiavari chairs, banquet tables, 4K curved LED walls, chandeliers, arches, and fog machines.
+10. **Customer Client Portal**: Dedicated client interface with live countdown, milestone checklist (venue contracts, menu tastings, seating charts), and RSVP tracking.
+11. **Reports & Financial Analytics**: Profit margin metrics, lead conversion statistics, and client satisfaction (NPS) tracking.
+12. **About Us**: Company mission, production team credentials, and event expertise.
+
+---
+
+## 🚀 How to Run the Platform
+
+### Option 1: Direct in Browser (No setup required)
+- Open [`index.html`](index.html) for the public landing page.
+- Open [`app.html`](app.html) to directly access the **EventrixControl** SaaS Suite with all 12 modules.
 
 ### Option 2: Python Local Server
-Run the included Python launcher to serve the site locally:
-```bash
+Run the local server script:
+```powershell
 python start_server.py
 ```
-Then visit:
-- **Main Event Landing Page**: [http://localhost:8000](http://localhost:8000)
-- **Digital Attendee Pass & QR Badge**: [http://localhost:8000/pass.html](http://localhost:8000/pass.html)
-- **Organizer Check-in Dashboard**: [http://localhost:8000/admin.html](http://localhost:8000/admin.html)
+Then visit [http://localhost:8000](http://localhost:8000) in your web browser.
 
 ---
 
-## 🌟 Key Features
+## 🐙 How to Push to Your GitHub Repository
 
-### 1. High-Impact Landing Page (`index.html`)
-- **Live Countdown Timer**: Real-time days, hours, minutes, and seconds countdown to the event.
-- **Calendar Integration**: 1-click **Add to Google Calendar** and downloadable **`.ics` file** for Apple/Outlook calendar.
-- **Key Metrics & Statistics**: Showcase attendee count, speaker count, event tracks, and days.
-- **Speaker Showcase**:
-  - Filter by "All Speakers" or "Keynotes".
-  - Interactive profile cards with speaker avatar, company, role, and talk topic.
-  - Interactive modal dialog with detailed bio and social media links (LinkedIn, X).
-- **Interactive Multi-Day Schedule**:
-  - Day switcher tabs (Day 1: Foundations & AI, Day 2: Architecture & Scale, Day 3: Frontier).
-  - Category / track filter pills (Keynote, Infrastructure, Product & UX, Workshops, Security, Social).
-  - **"Save to My Schedule"**: Bookmark sessions with saved counter badge.
-- **Ticket Tiers & Registration**:
-  - Pricing comparison cards (Virtual Pass, Standard Pass, VIP Executive).
-  - Feature lists and remaining pass availability indicators.
-  - Interactive registration checkout modal:
-    - Quantity selector and dynamic total price calculation.
-    - Promo code engine (try `SUMMIT20` for 20% off!).
-    - Form validation (Full Name, Work Email, Company, Job Title).
-    - Confetti celebration explosion upon successful registration.
-    - Instant generation of a unique reference number (e.g. `NEX-884920`).
-- **Venue & Google Maps**: Location details, transit guidelines, partner hotels, and embedded interactive map.
-- **Sponsor Showcase**: Multi-tier sponsor logo grid (Platinum, Gold, Silver, Community).
-- **Interactive FAQ Accordion**: Expandable answers to common questions.
+Follow these simple steps in your terminal to publish this project to GitHub:
 
-### 2. Digital Attendee Pass & QR Badge (`pass.html`)
-- Displays unique Attendee Reference ID, Name, Role, Company, and Pass Tier.
-- **Dynamic QR Code**: Encodes attendee ticket verification data and contactless check-in link.
-- **Print & PDF Ready**: Formatted with dedicated `@media print` styles for clean paper badges.
-- **Shareable Link**: Instant copy-to-clipboard for attendee access.
+### Step 1: Initialize Git and Stage Files
+```powershell
+git init
+git add .
+git commit -m "feat: initial commit - EventFlow AI 12-module event management & EventrixControl SaaS platform"
+git branch -M main
+```
 
-### 3. Organizer & Gate Check-in Dashboard (`admin.html`)
-- **Live Event Analytics**:
-  - Total registered attendees count.
-  - Real-time gate check-in rate and counter.
-  - Gross ticket sales revenue.
-  - Tier breakdown distribution (VIP vs. Standard vs. Virtual).
-- **Gate Check-in Scanner**:
-  - Input or scan any ticket ID (e.g. `NEX-884920`) for immediate check-in status verification.
-- **Attendee Directory Table**:
-  - Search by Name, Email, Company, or Ticket ID.
-  - Filter by pass tier and check-in status.
-  - 1-click check-in toggle button with live timestamp.
-  - Direct link to inspect any attendee's digital badge.
-- **Export to CSV**: Export attendee roster into a `.csv` file for badging kiosks or CRM integration.
+### Step 2: Create a New Repository on GitHub
+1. Go to [github.com/new](https://github.com/new).
+2. Enter repository name: `eventflow-ai` (or `event-management-platform`).
+3. Leave "Initialize this repository with a README" **unchecked** (we already created one).
+4. Click **Create repository**.
 
----
-
-## 🎨 How to Customize Your Event
-
-All event content is centralized in **`js/data.js`**:
-- **Event Name & Dates**: Modify `EVENT_CONFIG.name`, `EVENT_CONFIG.targetDate`, and `EVENT_CONFIG.dateDisplay`.
-- **Venue**: Update address and Google Maps embed URL in `EVENT_CONFIG.venue`.
-- **Speakers**: Add or update names, avatars, bios, and talk titles in `EVENT_CONFIG.speakers`.
-- **Schedule**: Add, edit, or reorder sessions in `EVENT_CONFIG.schedule`.
-- **Ticket Tiers**: Adjust prices, benefits, and tier names in `EVENT_CONFIG.ticketTiers`.
-- **Sponsors & FAQs**: Add partners in `EVENT_CONFIG.sponsors` and FAQ items in `EVENT_CONFIG.faqs`.
+### Step 3: Link and Push
+Run the following commands (replace `<YOUR_GITHUB_USERNAME>` with your GitHub account name):
+```powershell
+git remote add origin https://github.com/<YOUR_GITHUB_USERNAME>/eventflow-ai.git
+git push -u origin main
+```
 
 ---
 
 ## 📁 File Structure
 
 ```
-├── index.html          # Main event landing page
-├── pass.html           # Digital attendee badge & QR pass
-├── admin.html          # Organizer management & gate scanner dashboard
-├── start_server.py     # Local Python server launcher
-├── README.md           # Documentation & customization guide
+├── index.html              # Flagship public landing page (Plan. Manage. Celebrate.)
+├── app.html                # Unified EventrixControl SaaS platform (all 12 views)
+├── start_server.py         # Zero-dependency Python HTTP server runner
+├── .gitignore              # Git ignore rules
+├── README.md               # Documentation & GitHub setup guide
 ├── css/
-│   └── styles.css      # Custom styling, glow gradients, glassmorphism, print CSS
+│   ├── styles.css          # Core design system & glow effects
+│   └── dashboard.css       # EventrixControl SaaS styling & SVG chart themes
 └── js/
-    ├── data.js         # Centralized event data & mock database
-    ├── app.js          # Countdown, schedule filters, speaker modals, calendar generator
-    ├── tickets.js      # Ticket calculation, promo codes, checkout modal, local storage
-    └── admin.js        # Analytics metrics, attendee roster table, scanner, CSV export
+    ├── data.js             # Central data engine (events, decor, vendors, inventory)
+    ├── ai-studio.js        # AI event blueprint and color palette generator
+    ├── dashboard.js        # EventrixControl KPI analytics, area & donut charts, calendar
+    └── modules.js          # Budget planner, vendor hub, inventory, and event wizard
 ```
