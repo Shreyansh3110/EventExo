@@ -5,8 +5,8 @@
 function generateAIEventBlueprint() {
   const eventType = document.getElementById('ai-event-type').value;
   const vibe = document.getElementById('ai-event-vibe').value;
-  const guests = parseInt(document.getElementById('ai-guests').value) || 120;
-  const budget = parseInt(document.getElementById('ai-budget').value) || 30000;
+  const guests = parseInt(document.getElementById('ai-guests')?.value) || 120;
+  const budget = parseInt(document.getElementById('ai-budget')?.value) || 450000;
   const notes = document.getElementById('ai-notes')?.value || '';
 
   const outputContainer = document.getElementById('ai-results-container');
@@ -109,7 +109,7 @@ function renderAIGeneratedPlan(type, vibe, guests, budget, notes) {
       <div class="flex flex-wrap items-center gap-3 text-xs font-semibold">
         <span class="px-3 py-1 rounded-full bg-white/10 text-slate-200 border border-white/10">Type: ${type}</span>
         <span class="px-3 py-1 rounded-full bg-white/10 text-slate-200 border border-white/10">Guests: ${guests} Attendees</span>
-        <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Total: $${budget.toLocaleString()} (~$${perGuest}/guest)</span>
+        <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Total: ₹${budget.toLocaleString('en-IN')} (~₹${perGuest.toLocaleString('en-IN')}/guest)</span>
       </div>
     </div>
 
@@ -134,37 +134,37 @@ function renderAIGeneratedPlan(type, vibe, guests, budget, notes) {
     <div class="mb-8">
       <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
         <i data-lucide="pie-chart" class="w-4 h-4 text-cyan-400"></i>
-        <span>Optimized Budget Breakdown ($${budget.toLocaleString()})</span>
+        <span>Optimized Budget Breakdown (₹${budget.toLocaleString('en-IN')})</span>
       </h4>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div class="p-4 rounded-xl bg-slate-900/60 border border-white/10">
           <div class="text-[11px] text-slate-400 font-semibold uppercase">Venue & Facility (35%)</div>
-          <div class="text-lg font-bold text-white mt-1">$${venueBudget.toLocaleString()}</div>
+          <div class="text-lg font-bold text-white mt-1">₹${venueBudget.toLocaleString('en-IN')}</div>
           <div class="text-[11px] text-slate-400 mt-0.5">Ballroom, terrace, security</div>
         </div>
         <div class="p-4 rounded-xl bg-slate-900/60 border border-white/10">
           <div class="text-[11px] text-slate-400 font-semibold uppercase">Catering & Bar (30%)</div>
-          <div class="text-lg font-bold text-white mt-1">$${cateringBudget.toLocaleString()}</div>
+          <div class="text-lg font-bold text-white mt-1">₹${cateringBudget.toLocaleString('en-IN')}</div>
           <div class="text-[11px] text-slate-400 mt-0.5">3-course dinner, open bar</div>
         </div>
         <div class="p-4 rounded-xl bg-slate-900/60 border border-white/10">
           <div class="text-[11px] text-slate-400 font-semibold uppercase">Decor & Florals (15%)</div>
-          <div class="text-lg font-bold text-white mt-1">$${decorBudget.toLocaleString()}</div>
+          <div class="text-lg font-bold text-white mt-1">₹${decorBudget.toLocaleString('en-IN')}</div>
           <div class="text-[11px] text-slate-400 mt-0.5">Centerpieces, lighting, arches</div>
         </div>
         <div class="p-4 rounded-xl bg-slate-900/60 border border-white/10">
           <div class="text-[11px] text-slate-400 font-semibold uppercase">Photo & Cinema (10%)</div>
-          <div class="text-lg font-bold text-white mt-1">$${photoBudget.toLocaleString()}</div>
+          <div class="text-lg font-bold text-white mt-1">₹${photoBudget.toLocaleString('en-IN')}</div>
           <div class="text-[11px] text-slate-400 mt-0.5">8hr coverage + highlight reel</div>
         </div>
         <div class="p-4 rounded-xl bg-slate-900/60 border border-white/10">
           <div class="text-[11px] text-slate-400 font-semibold uppercase">AV & Music (10%)</div>
-          <div class="text-lg font-bold text-white mt-1">$${avBudget.toLocaleString()}</div>
+          <div class="text-lg font-bold text-white mt-1">₹${avBudget.toLocaleString('en-IN')}</div>
           <div class="text-[11px] text-slate-400 mt-0.5">DJ / Live horn, staging, mic</div>
         </div>
         <div class="p-4 rounded-xl bg-indigo-950/40 border border-indigo-500/30 flex flex-col justify-center items-center text-center">
           <div class="text-xs text-indigo-300 font-bold">Projected Cost / Guest</div>
-          <div class="text-xl font-extrabold text-white mt-0.5">$${perGuest}</div>
+          <div class="text-xl font-extrabold text-white mt-0.5">₹${perGuest.toLocaleString('en-IN')}</div>
         </div>
       </div>
     </div>

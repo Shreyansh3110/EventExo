@@ -1,19 +1,18 @@
 /**
- * EventFlow Studio & EventrixControl - Central Data Engine (v2)
- * Pure English Master Store with reactive LocalStorage persistence.
+ * EventFlow Studio & EventrixControl - Central Data Engine (v3 - INR Edition)
+ * Indian Rupee (INR / ₹) Master Store with reactive LocalStorage persistence.
  */
 
 const STORAGE_KEYS = {
-  VERSION: 'eventflow_v2_installed',
-  EVENTS: 'eventflow_events_v2',
-  VENDORS: 'eventflow_vendors_v2',
-  INVENTORY: 'eventflow_inventory_v2',
-  DECOR: 'eventflow_decor_v2',
-  CLIENT_TASKS: 'eventflow_client_tasks_v2',
-  LANGUAGE: 'eventflow_selected_lang'
+  VERSION: 'eventflow_v3_inr',
+  EVENTS: 'eventflow_events_v3',
+  VENDORS: 'eventflow_vendors_v3',
+  INVENTORY: 'eventflow_inventory_v3',
+  DECOR: 'eventflow_decor_v3',
+  CLIENT_TASKS: 'eventflow_client_tasks_v3'
 };
 
-// 1. Initial Master Events (Weddings, Corporate, Birthdays, Galas) - 100% English
+// 1. Initial Master Events (Weddings, Corporate, Birthdays, Galas) - In Indian Rupees (₹)
 const DEFAULT_EVENTS = [
   {
     id: "EVT-2027-01",
@@ -22,10 +21,10 @@ const DEFAULT_EVENTS = [
     type: "Corporate",
     date: "2027-04-18",
     time: "09:00 AM",
-    venue: "Metropolitan Grand Ballroom, San Francisco",
+    venue: "Metropolitan Grand Ballroom, Mumbai",
     guests: 450,
-    budget: 65000,
-    spent: 58200,
+    budget: 650000,
+    spent: 582000,
     status: "Confirmed",
     theme: "Cyberpunk Neon & Modern Minimalist",
     assignedVendors: ["VND-01", "VND-04", "VND-05"],
@@ -33,19 +32,19 @@ const DEFAULT_EVENTS = [
   },
   {
     id: "EVT-2027-02",
-    title: "Sophia & Lucas Royal Vineyard Wedding",
+    title: "Sophia & Lucas Royal Palace Wedding",
     clientName: "Sophia Montgomery",
     type: "Wedding",
     date: "2027-05-22",
     time: "04:30 PM",
-    venue: "Rosewood Heritage Estate, Napa Valley",
-    guests: 220,
-    budget: 48000,
-    spent: 44500,
+    venue: "Taj Heritage Palace & Lawns, Udaipur",
+    guests: 250,
+    budget: 1450000,
+    spent: 1280000,
     status: "Confirmed",
     theme: "Royal Vintage & Grand Floral",
     assignedVendors: ["VND-02", "VND-03", "VND-06"],
-    description: "Luxury sunset estate ceremony followed by a black-tie candlelight banquet."
+    description: "Luxury royal palace wedding ceremony followed by a grand chandelier banquet."
   },
   {
     id: "EVT-2027-03",
@@ -54,14 +53,14 @@ const DEFAULT_EVENTS = [
     type: "Birthday",
     date: "2027-06-12",
     time: "07:00 PM",
-    venue: "Skyline Penthouse Terrace, SF",
+    venue: "Skyline Penthouse Terrace, Bengaluru",
     guests: 110,
-    budget: 18500,
-    spent: 12000,
+    budget: 250000,
+    spent: 185000,
     status: "In Progress",
     theme: "Bohemian Chic & Ambient Starlight",
     assignedVendors: ["VND-01", "VND-05"],
-    description: "Celebrity rooftop birthday gala featuring artisanal mixology and ambient acoustic musicians."
+    description: "Exclusive rooftop birthday gala featuring artisanal mixology and ambient acoustic musicians."
   },
   {
     id: "EVT-2027-04",
@@ -70,10 +69,10 @@ const DEFAULT_EVENTS = [
     type: "Corporate",
     date: "2027-07-08",
     time: "06:30 PM",
-    venue: "SF Museum of Modern Art Pavilion",
+    venue: "The Oberoi Grand Pavilion, New Delhi",
     guests: 85,
-    budget: 25000,
-    spent: 15400,
+    budget: 350000,
+    spent: 280000,
     status: "In Progress",
     theme: "Contemporary Luxury & Art Deco",
     assignedVendors: ["VND-01", "VND-03"],
@@ -81,19 +80,19 @@ const DEFAULT_EVENTS = [
   },
   {
     id: "EVT-2027-05",
-    title: "Maya & Ethan Coastal Oceanfront Wedding",
+    title: "Maya & Ethan Seaside Coastal Wedding",
     clientName: "Maya Lin",
     type: "Wedding",
     date: "2027-08-14",
     time: "05:00 PM",
-    venue: "Carmel Oceanfront Bluffs, CA",
-    guests: 60,
-    budget: 16000,
-    spent: 6200,
+    venue: "Goa Beachfront Palms Resort",
+    guests: 90,
+    budget: 450000,
+    spent: 160000,
     status: "Budgeting",
     theme: "Ethereal Sunset & Coastal Pampas",
     assignedVendors: ["VND-02", "VND-06"],
-    description: "Intimate cliffside ceremony with driftwood arches, violin duo, and oceanfront dining."
+    description: "Intimate seaside sunset ceremony with floral canopy arches, live violin duo, and beachfront dining."
   },
   {
     id: "EVT-2027-06",
@@ -102,9 +101,9 @@ const DEFAULT_EVENTS = [
     type: "Corporate",
     date: "2027-09-10",
     time: "10:00 AM",
-    venue: "Yerba Buena Center for the Arts",
+    venue: "ITC Convention Centre, Hyderabad",
     guests: 350,
-    budget: 38000,
+    budget: 850000,
     spent: 0,
     status: "Budgeting",
     theme: "Futuristic Glass & Holographic",
@@ -113,7 +112,7 @@ const DEFAULT_EVENTS = [
   }
 ];
 
-// 2. Curated Decoration Themes Catalog - 100% English
+// 2. Curated Decoration Themes Catalog - In Indian Rupees (₹)
 const DEFAULT_DECOR = [
   {
     id: "DEC-01",
@@ -121,7 +120,7 @@ const DEFAULT_DECOR = [
     category: "Luxury Wedding & Gala",
     palette: ["#4A0E17", "#D4AF37", "#F5F5DC", "#2F3E46"],
     paletteNames: ["Deep Burgundy", "Imperial Gold", "Champagne Silk", "Forest Slate"],
-    priceRange: "$6,500 - $14,000",
+    priceRange: "₹65,000 - ₹1,40,000",
     image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
     inclusions: [
       "Crystal Chandelier Cascades",
@@ -136,7 +135,7 @@ const DEFAULT_DECOR = [
     category: "Tech Summit & Brand Activations",
     palette: ["#0B0F19", "#06B6D4", "#8B5CF6", "#F43F5E"],
     paletteNames: ["Deep Obsidian", "Cyan Luminescence", "Electric Purple", "Neon Magenta"],
-    priceRange: "$5,000 - $12,500",
+    priceRange: "₹50,000 - ₹1,25,000",
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80",
     inclusions: [
       "Programmable RGB LED Accent Tubes",
@@ -151,7 +150,7 @@ const DEFAULT_DECOR = [
     category: "Birthdays & Outdoor Weddings",
     palette: ["#D97706", "#F97316", "#FEF08A", "#78350F"],
     paletteNames: ["Terracotta Earth", "Sunset Ochre", "Warm Flax", "Raw Umber"],
-    priceRange: "$3,800 - $8,500",
+    priceRange: "₹38,000 - ₹85,000",
     image: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80",
     inclusions: [
       "Natural Pampas Grass Floral Arches",
@@ -166,7 +165,7 @@ const DEFAULT_DECOR = [
     category: "Weddings & Anniversaries",
     palette: ["#15803D", "#F472B6", "#E0E7FF", "#FAF5FF"],
     paletteNames: ["Emerald Ivy", "Blush Petal", "Mist Lavender", "Porcelain White"],
-    priceRange: "$7,000 - $16,000",
+    priceRange: "₹70,000 - ₹1,60,000",
     image: "https://images.unsplash.com/photo-1519225424980-496057d07817?auto=format&fit=crop&w=800&q=80",
     inclusions: [
       "Suspended Greenery & Wisteria Ceiling Canopy",
@@ -177,77 +176,77 @@ const DEFAULT_DECOR = [
   }
 ];
 
-// 3. Verified Vendors Directory - 100% English
+// 3. Verified Vendors Directory - In Indian Rupees (₹)
 const DEFAULT_VENDORS = [
   {
     id: "VND-01",
     name: "Epicurean Elite Catering",
     category: "Catering & Bar",
     rating: 4.9,
-    priceRange: "$$$$",
+    priceRange: "₹₹₹₹",
     contact: "chef.antoine@epicurean.com",
-    phone: "+1 (415) 890-4122",
+    phone: "+91 98201 44122",
     status: "Contract Signed",
-    description: "Michelin-experienced culinary team specializing in farm-to-table tasting menus and artisanal cocktails."
+    description: "Michelin-experienced culinary team specializing in multi-course gourmet tasting menus and live culinary counters."
   },
   {
     id: "VND-02",
     name: "Lumiere Fine Art Photography",
     category: "Photography & Cinema",
     rating: 5.0,
-    priceRange: "$$$",
+    priceRange: "₹₹₹",
     contact: "hello@lumierecinema.com",
-    phone: "+1 (415) 762-9011",
+    phone: "+91 98334 76290",
     status: "Confirmed",
-    description: "Documentary-style cinematic wedding and corporate gala photography with drone coverage."
+    description: "Documentary-style cinematic wedding and corporate gala photography with 4K drone cinematography."
   },
   {
     id: "VND-03",
     name: "Botanica Artisans",
     category: "Florist & Decor",
     rating: 4.8,
-    priceRange: "$$$",
+    priceRange: "₹₹₹",
     contact: "orders@botanicafloral.com",
-    phone: "+1 (415) 341-8977",
+    phone: "+91 98112 34189",
     status: "Confirmed",
-    description: "Master floral sculptors creating breathtaking suspended installations and botanical arches."
+    description: "Master floral sculptors creating breathtaking suspended floral ceilings, stage mandaps, and botanical arches."
   },
   {
     id: "VND-04",
     name: "Apex Sound & Stage AV",
     category: "Audio & Lighting",
     rating: 4.9,
-    priceRange: "$$$$",
+    priceRange: "₹₹₹₹",
     contact: "events@apexsoundstage.com",
-    phone: "+1 (415) 551-7890",
+    phone: "+91 98450 55178",
     status: "Contract Signed",
-    description: "Full-service concert-grade line arrays, theatrical moving heads, and 4K LED video walls."
+    description: "Concert-grade line arrays, intelligent moving heads, laser shows, and 4K curved LED walls."
   },
   {
     id: "VND-05",
     name: "DJ Nova & The Brass Collective",
     category: "Entertainment",
     rating: 4.7,
-    priceRange: "$$",
+    priceRange: "₹₹",
     contact: "booking@djnovalive.com",
-    phone: "+1 (415) 912-3344",
+    phone: "+91 98210 91233",
     status: "In Progress",
-    description: "High-energy hybrid live band + DJ blending modern remixes with live horn sections."
+    description: "High-energy live percussionists, Dhol artists, and live horn section blending Bollywood, EDM, and Top 40."
   },
   {
     id: "VND-06",
-    name: "Napa Valley Vintage Rentals",
+    name: "Heritage Vintage Furniture Rentals",
     category: "Furniture & Decor",
     rating: 4.8,
-    priceRange: "$$",
-    contact: "rentals@napavintage.com",
-    phone: "+1 (707) 431-2299",
+    priceRange: "₹₹",
+    contact: "rentals@heritagefurniture.com",
+    phone: "+91 98765 43122",
     status: "Pending Deposit",
-    description: "Curated collection of Louis XVI chairs, rustic farm tables, and vintage lounge sets."
+    description: "Curated collection of carved royal chairs, gold Chiavari seating, rustic banquet tables, and luxury lounge sets."
   }
 ];
 
-// 4. Equipment & Inventory Rental Catalog - 100% English
+// 4. Equipment & Inventory Rental Catalog - In Indian Rupees (₹)
 const DEFAULT_INVENTORY = [
   {
     id: "INV-01",
@@ -256,7 +255,7 @@ const DEFAULT_INVENTORY = [
     totalStock: 500,
     inUse: 320,
     available: 180,
-    pricePerDay: 8.50,
+    pricePerDay: 150.00,
     status: "In Stock"
   },
   {
@@ -266,7 +265,7 @@ const DEFAULT_INVENTORY = [
     totalStock: 60,
     inUse: 45,
     available: 15,
-    pricePerDay: 45.00,
+    pricePerDay: 850.00,
     status: "In Stock"
   },
   {
@@ -276,7 +275,7 @@ const DEFAULT_INVENTORY = [
     totalStock: 4,
     inUse: 3,
     available: 1,
-    pricePerDay: 2400.00,
+    pricePerDay: 35000.00,
     status: "Low Stock"
   },
   {
@@ -286,7 +285,7 @@ const DEFAULT_INVENTORY = [
     totalStock: 24,
     inUse: 18,
     available: 6,
-    pricePerDay: 180.00,
+    pricePerDay: 3500.00,
     status: "In Stock"
   },
   {
@@ -296,7 +295,7 @@ const DEFAULT_INVENTORY = [
     totalStock: 12,
     inUse: 10,
     available: 2,
-    pricePerDay: 220.00,
+    pricePerDay: 4500.00,
     status: "Low Stock"
   },
   {
@@ -306,7 +305,7 @@ const DEFAULT_INVENTORY = [
     totalStock: 40,
     inUse: 35,
     available: 5,
-    pricePerDay: 150.00,
+    pricePerDay: 2500.00,
     status: "Low Stock"
   },
   {
@@ -316,12 +315,12 @@ const DEFAULT_INVENTORY = [
     totalStock: 6,
     inUse: 2,
     available: 4,
-    pricePerDay: 350.00,
+    pricePerDay: 5000.00,
     status: "In Stock"
   }
 ];
 
-// 5. Client Planning Checklist & Milestones - 100% English
+// 5. Client Planning Checklist & Milestones
 const DEFAULT_CLIENT_TASKS = [
   { id: "TSK-01", title: "Confirm Venue & Sign Rental Contract", deadline: "8 Months Out", completed: true, category: "Venue" },
   { id: "TSK-02", title: "Design Palette & Floral Concept Approval", deadline: "6 Months Out", completed: true, category: "Design" },
@@ -332,7 +331,7 @@ const DEFAULT_CLIENT_TASKS = [
   { id: "TSK-07", title: "Final Invoice Settlement", deadline: "3 Days Out", completed: false, category: "Finance" }
 ];
 
-// Clean LocalStorage Helper Getters / Setters (Bypassing old cached versions)
+// Clean LocalStorage Helper Getters / Setters
 function getData(key, defaultVal) {
   try {
     const raw = localStorage.getItem(key);
@@ -357,7 +356,7 @@ function setData(key, value) {
 
 // Clear any old obsolete keys automatically
 (function migrateOldStorage() {
-  const oldKeys = ['eventflow_events', 'eventflow_vendors', 'eventflow_inventory', 'eventflow_decor', 'eventflow_client_tasks', 'nexus_attendees'];
+  const oldKeys = ['eventflow_events', 'eventflow_events_v2', 'eventflow_vendors', 'eventflow_vendors_v2', 'eventflow_inventory', 'eventflow_inventory_v2', 'eventflow_decor', 'eventflow_decor_v2', 'eventflow_client_tasks', 'eventflow_client_tasks_v2', 'nexus_attendees'];
   oldKeys.forEach(k => localStorage.removeItem(k));
 })();
 

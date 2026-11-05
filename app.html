@@ -63,7 +63,7 @@
         </button>
 
         <button onclick="switchView('budget')" class="sidebar-link w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all" data-view="budget">
-          <i data-lucide="dollar-sign" class="w-4 h-4 text-amber-400"></i>
+          <i data-lucide="indian-rupee" class="w-4 h-4 text-amber-400"></i>
           <span>Budget Planner</span>
         </button>
 
@@ -182,9 +182,9 @@
           <div class="saas-card p-5">
             <div class="flex items-center justify-between text-slate-400 mb-2">
               <span class="text-xs font-bold uppercase tracking-wider">Gross Revenue</span>
-              <i data-lucide="dollar-sign" class="w-4 h-4 text-emerald-400"></i>
+              <i data-lucide="indian-rupee" class="w-4 h-4 text-emerald-400"></i>
             </div>
-            <div id="kpi-revenue" class="text-3xl font-extrabold text-white font-heading">$128,450</div>
+            <div id="kpi-revenue" class="text-3xl font-extrabold text-white font-heading">₹12,84,500</div>
             <div class="flex items-center gap-1.5 mt-2">
               <span class="px-2 py-0.5 rounded-full text-[10px] font-bold trend-pill-up">+18% this month</span>
             </div>
@@ -412,8 +412,8 @@
               <input type="text" id="wiz-venue" placeholder="e.g. San Francisco City Hall" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" />
             </div>
             <div>
-              <label class="block text-xs font-bold text-slate-300 mb-1.5">Total Target Budget ($)</label>
-              <input type="number" id="wiz-budget" value="45000" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" />
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">Total Target Budget (₹)</label>
+              <input type="number" id="wiz-budget" value="450000" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" />
             </div>
           </div>
 
@@ -465,8 +465,8 @@
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-slate-300 mb-1.5">Target Budget ($)</label>
-            <input type="number" id="ai-budget" value="45000" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white" />
+            <label class="block text-xs font-bold text-slate-300 mb-1.5">Target Budget (₹)</label>
+            <input type="number" id="ai-budget" value="450000" class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white" />
           </div>
 
           <div class="flex items-end">
@@ -513,15 +513,15 @@
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div class="saas-card p-5">
             <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Total Budget</span>
-            <div id="budget-total-display" class="text-3xl font-extrabold text-white font-heading mt-1">$0</div>
+            <div id="budget-total-display" class="text-3xl font-extrabold text-white font-heading mt-1">₹0</div>
           </div>
           <div class="saas-card p-5">
             <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Committed Spend</span>
-            <div id="budget-spent-display" class="text-3xl font-extrabold text-amber-300 font-heading mt-1">$0</div>
+            <div id="budget-spent-display" class="text-3xl font-extrabold text-amber-300 font-heading mt-1">₹0</div>
           </div>
           <div class="saas-card p-5">
             <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Remaining Balance</span>
-            <div id="budget-remaining-display" class="text-3xl font-extrabold text-emerald-300 font-heading mt-1">$0</div>
+            <div id="budget-remaining-display" class="text-3xl font-extrabold text-emerald-300 font-heading mt-1">₹0</div>
           </div>
         </div>
 
@@ -553,8 +553,8 @@
                 <input type="text" id="exp-desc" placeholder="e.g. Floral Arch Downpayment" required class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white" />
               </div>
               <div>
-                <label class="block text-xs font-bold text-slate-300 mb-1">Amount ($)</label>
-                <input type="number" id="exp-amount" placeholder="e.g. 1500" required class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white" />
+                <label class="block text-xs font-bold text-slate-300 mb-1">Amount (₹)</label>
+                <input type="number" id="exp-amount" placeholder="e.g. 15000" required class="w-full bg-slate-950/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white" />
               </div>
               <button type="submit" class="w-full py-2.5 rounded-xl font-bold text-xs bg-indigo-600 hover:bg-indigo-500 text-white shadow-md transition-colors">
                 Record Expense
@@ -761,7 +761,7 @@
             <p class="text-xs text-slate-300 mb-4 line-clamp-2">${evt.description || evt.venue}</p>
           </div>
           <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs">
-            <span class="text-slate-400">Budget: <strong class="text-white">$${evt.budget.toLocaleString()}</strong></span>
+            <span class="text-slate-400">Budget: <strong class="text-white">₹${evt.budget.toLocaleString('en-IN')}</strong></span>
             <span class="font-bold text-emerald-400">${evt.status}</span>
           </div>
         </div>

@@ -9,7 +9,7 @@ function initBudgetModule() {
   const select = document.getElementById('budget-event-select');
   if (select) {
     select.innerHTML = events.map(e => `
-      <option value="${e.id}">${e.title} ($${e.budget.toLocaleString()})</option>
+      <option value="${e.id}">${e.title} (₹${e.budget.toLocaleString('en-IN')})</option>
     `).join('');
 
     select.addEventListener('change', (e) => {
@@ -32,14 +32,14 @@ function renderBudgetForEvent(eventId) {
   const evt = events.find(e => e.id === eventId) || events[0];
   if (!evt) return;
 
-  const totalBudget = evt.budget || 50000;
+  const totalBudget = evt.budget || 500000;
   const spent = evt.spent || 0;
   const remaining = totalBudget - spent;
   const percentUsed = Math.min(Math.round((spent / totalBudget) * 100), 100);
 
-  document.getElementById('budget-total-display').innerText = `$${totalBudget.toLocaleString()}`;
-  document.getElementById('budget-spent-display').innerText = `$${spent.toLocaleString()}`;
-  document.getElementById('budget-remaining-display').innerText = `$${remaining.toLocaleString()}`;
+  document.getElementById('budget-total-display').innerText = `₹${totalBudget.toLocaleString('en-IN')}`;
+  document.getElementById('budget-spent-display').innerText = `₹${spent.toLocaleString('en-IN')}`;
+  document.getElementById('budget-remaining-display').innerText = `₹${remaining.toLocaleString('en-IN')}`;
   
   const progressBar = document.getElementById('budget-progress-bar');
   const percentLabel = document.getElementById('budget-percent-label');
@@ -63,7 +63,7 @@ function renderBudgetForEvent(eventId) {
         <div class="p-4 rounded-xl bg-slate-900/60 border border-white/5 space-y-2">
           <div class="flex items-center justify-between text-xs">
             <span class="font-bold text-white">${cat.name}</span>
-            <span class="font-mono text-slate-300">$${cat.spent.toLocaleString()} / $${cat.allocated.toLocaleString()}</span>
+            <span class="font-mono text-slate-300">₹${cat.spent.toLocaleString('en-IN')} / ₹${cat.allocated.toLocaleString('en-IN')}</span>
           </div>
           <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
             <div class="bg-indigo-500 h-full rounded-full" style="width: ${catPercent}%"></div>
@@ -89,9 +89,9 @@ function handleAddExpense(e) {
       renderBudgetForEvent(evt.id);
       renderDashboardKPIs();
       if (typeof showToast === 'function') {
-        showToast("Expense Recorded", `Added $${amount.toLocaleString()} for "${desc}"`, "dollar-sign");
+        showToast("Expense Recorded", `Added ₹${amount.toLocaleString('en-IN')} for "${desc}"`, "indian-rupee");
       } else {
-        alert(`Added $${amount.toLocaleString()} for "${desc}"`);
+        alert(`Added ₹${amount.toLocaleString('en-IN')} for "${desc}"`);
       }
       e.target.reset();
     }
@@ -173,7 +173,7 @@ function initInventoryModule() {
       <td class="px-6 py-4 font-bold text-white">${item.totalStock}</td>
       <td class="px-6 py-4 text-amber-300 font-semibold">${item.inUse}</td>
       <td class="px-6 py-4 font-bold text-emerald-300">${item.available}</td>
-      <td class="px-6 py-4 font-mono font-bold text-slate-200">$${item.pricePerDay.toFixed(2)}/day</td>
+      <td class="px-6 py-4 font-mono font-bold text-slate-200">₹${item.pricePerDay.toLocaleString('en-IN')}/day</td>
       <td class="px-6 py-4">
         <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
           item.status === 'In Stock' ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30' :
@@ -228,7 +228,7 @@ function handleCreateEventSubmit(e) {
   const date = document.getElementById('wiz-date').value || '2027-10-15';
   const venue = document.getElementById('wiz-venue').value.trim() || 'Grand Horizon Venue';
   const guests = parseInt(document.getElementById('wiz-guests').value) || 100;
-  const budget = parseInt(document.getElementById('wiz-budget').value) || 25000;
+  const budget = parseInt(document.getElementById('wiz-budget').value) || 450000;
   const theme = document.getElementById('wiz-theme')?.value || 'Modern Minimalist';
 
   const newEvent = {

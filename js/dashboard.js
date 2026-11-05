@@ -24,7 +24,7 @@ function renderDashboardKPIs() {
   const elConversion = document.getElementById('kpi-conversion');
 
   if (elEventCount) elEventCount.innerText = events.length;
-  if (elRevenue) elRevenue.innerText = `$${(totalRevenue > 0 ? totalRevenue : 148250).toLocaleString()}`;
+  if (elRevenue) elRevenue.innerText = `₹${(totalRevenue > 0 ? totalRevenue : 1284500).toLocaleString('en-IN')}`;
   if (elBudgets) elBudgets.innerText = budgetingCount + 52;
   if (elConversion) elConversion.innerText = '32%';
 }
@@ -112,8 +112,8 @@ function viewEventDetails(id) {
   if (!evt) return;
 
   if (typeof showToast === 'function') {
-    showToast(`${evt.type}: ${evt.title}`, `Client: ${evt.clientName} • Budget: $${evt.budget.toLocaleString()} • Status: ${evt.status}`, "calendar");
+    showToast(`${evt.type}: ${evt.title}`, `Client: ${evt.clientName} • Budget: ₹${evt.budget.toLocaleString('en-IN')} • Status: ${evt.status}`, "calendar");
   } else {
-    alert(`Event: ${evt.title}\nClient: ${evt.clientName}\nType: ${evt.type}\nBudget: $${evt.budget.toLocaleString()}\nStatus: ${evt.status}`);
+    alert(`Event: ${evt.title}\nClient: ${evt.clientName}\nType: ${evt.type}\nBudget: ₹${evt.budget.toLocaleString('en-IN')}\nStatus: ${evt.status}`);
   }
 }
