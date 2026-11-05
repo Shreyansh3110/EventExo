@@ -1,6 +1,6 @@
 /**
- * EventrixControl SaaS - Dashboard & Visual Analytics Controller
- * Powers the dark SaaS interface matching reference screenshot
+ * Eventexo SaaS - Dashboard & Visual Analytics Controller
+ * Powers live KPIs, multi-currency charts, and event pipeline
  */
 
 function initDashboardModule() {
@@ -24,9 +24,9 @@ function renderDashboardKPIs() {
   const elConversion = document.getElementById('kpi-conversion');
 
   if (elEventCount) elEventCount.innerText = events.length;
-  if (elRevenue) elRevenue.innerText = `₹${(totalRevenue > 0 ? totalRevenue : 1284500).toLocaleString('en-IN')}`;
+  if (elRevenue) elRevenue.innerText = EventDataStore.formatCurrency(totalRevenue > 0 ? totalRevenue : 3340000);
   if (elBudgets) elBudgets.innerText = budgetingCount + 52;
-  if (elConversion) elConversion.innerText = '32%';
+  if (elConversion) elConversion.innerText = '34.8%';
 }
 
 // 2. Render Upcoming Events in the Dashboard Table
@@ -78,16 +78,14 @@ function renderMiniCalendar() {
   const container = document.getElementById('mini-calendar-grid');
   if (!container) return;
 
-  const daysInMonth = 30; // June/November representation
-  const startOffset = 2;  // starts on Tuesday
+  const daysInMonth = 30;
+  const startOffset = 2;
 
   let html = '';
-  // Empty offset days
   for (let i = 0; i < startOffset; i++) {
     html += `<div class="cal-day opacity-20"></div>`;
   }
 
-  // Active days with mock event markers
   const eventDays = [4, 12, 18, 22, 27];
   const today = 18;
 
@@ -111,9 +109,10 @@ function viewEventDetails(id) {
   const evt = events.find(e => e.id === id);
   if (!evt) return;
 
+  const formattedBudget = EventDataStore.formatCurrency(evt.budget);
   if (typeof showToast === 'function') {
-    showToast(`${evt.type}: ${evt.title}`, `Client: ${evt.clientName} • Budget: ₹${evt.budget.toLocaleString('en-IN')} • Status: ${evt.status}`, "calendar");
+    showToast(`${evt.type}: ${evt.title}`, `Client: ${evt.clientName} • Budget: ${formattedBudget} • Status: ${evt.status}`, "calendar");
   } else {
-    alert(`Event: ${evt.title}\nClient: ${evt.clientName}\nType: ${evt.type}\nBudget: ₹${evt.budget.toLocaleString('en-IN')}\nStatus: ${evt.status}`);
+    alert(`Event: ${evt.title}\nClient: ${evt.clientName}\nType: ${evt.type}\nBudget: ${formattedBudget}\nStatus: ${evt.status}`);
   }
 }

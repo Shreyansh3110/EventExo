@@ -1,36 +1,56 @@
-# EventFlow AI & EventrixControl SaaS Platform
+# Eventexo — AI-Powered Event Management Platform
 
 > **Plan. Manage. Celebrate.**  
-> An enterprise-grade, AI-powered event management and business automation platform built for luxury weddings, corporate summits, birthday galas, and bespoke decoration styling.
+> An enterprise-grade, multi-currency AI event management and business operations platform built for luxury weddings, corporate conclaves, birthday galas, and bespoke decoration styling.
+> Deployed on Vercel at [**eventexo.vercel.app**](https://eventexo.vercel.app).
 
 ---
 
-## 🌟 The 12 Integrated Modules
+## 🌟 The Complete Integrated Module Suite
 
-1. **Home (`index.html`)**: High-converting flagship landing page matching the EventFlow AI reference, with SaaS previews, services catalog, and direct entry points.
-2. **Dashboard (`EventrixControl` in `app.html`)**:
-   - 4 Primary KPIs: Active Events (24), Total Revenue ($148,250 / R$ 128.450), Active Budgets (56), Lead Conversion Rate (32%).
+1. **Home (`index.html`)**: High-converting flagship landing page matching the Eventexo brand, featuring SaaS preview mockups, service catalogs, social proof metrics, and direct entry points.
+2. **Dashboard Overview (`app.html`)**:
+   - 4 Primary KPIs: Active Events (6), Gross Revenue (₹33,40,000 / $40,240), Active Budgets (56), Lead Conversion Rate (34.8%).
    - Interactive SVG Monthly Revenue Area Chart.
-   - Status Distribution Donut Chart (Confirmed, In Progress, Budgeting, Cancelled).
+   - Status Distribution Donut Chart (Confirmed, In Progress, Budgeting).
    - Upcoming Events pipeline and interactive monthly Agenda calendar widget.
-3. **Our Events Portfolio**: Filterable showcases for Weddings, Corporate Summits, and Private Celebrations with status badges and budgets.
-4. **Decoration Gallery**: Signature styling themes (Royal Vintage Grandeur, Cyberpunk Neon, Bohemian Sunset, Enchanted Garden) with interactive color swatches.
-5. **AI Design Studio & Blueprint Generator**: Enter event type, vibe, guests, and budget to generate a custom concept title, aesthetic narrative, 4-tone color palette, run-of-show schedule, and automated budget allocation with 1-click wizard import.
-6. **Create New Event Wizard**: Multi-step booking and project initialization workflow.
-7. **Interactive Budget Planner**: Dynamic expense tracking, category breakdowns (Venue, Catering, Florals, AV, Photo), spend progress bar, and quick expense ledger.
-8. **Vendor Management Hub**: Verified directory of caterers, photographers, florists, and AV teams with rating stars, price levels, and contract statuses.
-9. **Inventory & Equipment Tracker**: Real-time rental stock tracking for Chiavari chairs, banquet tables, 4K curved LED walls, chandeliers, arches, and fog machines.
-10. **Customer Client Portal**: Dedicated client interface with live countdown, milestone checklist (venue contracts, menu tastings, seating charts), and RSVP tracking.
-11. **Reports & Financial Analytics**: Profit margin metrics, lead conversion statistics, and client satisfaction (NPS) tracking.
-12. **About Us**: Company mission, production team credentials, and event expertise.
+3. **Guest List & RSVP Manager (`#view-guests`)**:
+   - Live invitation stats: Total Invited, Confirmed RSVPs, Awaiting, Declined.
+   - Dietary verification: Real-time counts for **Pure Veg**, **Non-Veg**, and **Jain** dining.
+   - Table seating assignments and plus-one (+1) tracking.
+   - Quick Add Guest form with instant LocalStorage sync.
+4. **AI Design Studio & Blueprint Generator (`#view-ai-studio`)**:
+   - Select event type, budget, guest count, and vibe (Royal Rajasthani Heritage, Bollywood Glam & Sangeet, Cyberpunk Neon, Goa Sunset Coastal Chic).
+   - Instant 4-tone color swatches, run-of-show timeline, and auto-computed budget allocations.
+   - **1-Click PDF/Print Export** to generate client pitch decks.
+   - **Optional Google Gemini 1.5 Flash API** integration for custom prompt engineering.
+5. **Multi-Currency Budget Planner (`#view-budget`)**:
+   - Instant 1-click toggle between **Indian Rupees (₹)** and **US Dollars ($)** in top navbar.
+   - Category breakdowns (Palace Lawns & Venue, Gourmet Catering, Florals & Mandap, 4K Cinema, Stage AV).
+   - Real-time spend progress visualizer and quick expense ledger.
+   - 1-Click PDF/Print summary export.
+6. **Our Events Portfolio (`#view-events`)**: Filterable showcases for destination weddings, AI summits, and celebrations with status badges and budgets.
+7. **Create New Event Wizard (`#view-create-event`)**: Multi-step booking and project initialization workflow with confetti launch.
+8. **Vendor Management Hub (`#view-vendors`)**: Curated directory of caterers, photographers, florists, and AV teams with rating stars, price levels (₹₹ - ₹₹₹₹), and direct contact actions.
+9. **Inventory & Equipment Tracker (`#view-inventory`)**: Real-time rental stock tracking for royal Chiavari chairs, banquet tables, 4K curved LED walls, chandeliers, arches, and fog machines.
+10. **Decoration Gallery (`#view-decor`)**: Signature styling themes (Royal Rajasthani Grandeur, Cyberpunk Neon, Bohemian Sunset, Enchanted Botanical) with interactive color swatches.
+11. **Customer Client Portal (`#view-portal`)**: Dedicated client interface with live countdown, milestone checklist (venue contracts, menu tastings, seating charts), and RSVP tracking.
+12. **Reports & Financial Analytics (`#view-analytics`)**: Profit margin metrics, lead conversion statistics, and verified client satisfaction (NPS) tracking.
 
 ---
 
-## 🚀 How to Run the Platform
+## 💱 Multi-Currency Engine (₹ INR ⇄ $ USD)
+
+- **Default Currency:** Indian Rupees (**INR / ₹**), using standard Indian numbering formatting (`en-IN`).
+- **Global Currency:** Click the **`₹ INR`** pill in the top header to seamlessly switch all figures to **`$ USD`** with live currency conversion (1 USD = 83 INR).
+
+---
+
+## 🚀 How to Run Locally
 
 ### Option 1: Direct in Browser (No setup required)
 - Open [`index.html`](index.html) for the public landing page.
-- Open [`app.html`](app.html) to directly access the **EventrixControl** SaaS Suite with all 12 modules.
+- Open [`app.html`](app.html) to directly access the **Eventexo** SaaS Management Suite.
 
 ### Option 2: Python Local Server
 Run the local server script:
@@ -41,47 +61,29 @@ Then visit [http://localhost:8000](http://localhost:8000) in your web browser.
 
 ---
 
-## 🐙 How to Push to Your GitHub Repository
+## 🐙 Files to Upload to Your GitHub Repository (Manual Upload)
 
-Follow these simple steps in your terminal to publish this project to GitHub:
+When updating your GitHub repository (**`Shreyansh3110/Eventexo`**) on [github.com](https://github.com), upload the following files and folders:
 
-### Step 1: Initialize Git and Stage Files
-```powershell
-git init
-git add .
-git commit -m "feat: initial commit - EventFlow AI 12-module event management & EventrixControl SaaS platform"
-git branch -M main
 ```
-
-### Step 2: Create a New Repository on GitHub
-1. Go to [github.com/new](https://github.com/new).
-2. Enter repository name: `eventflow-ai` (or `event-management-platform`).
-3. Leave "Initialize this repository with a README" **unchecked** (we already created one).
-4. Click **Create repository**.
-
-### Step 3: Link and Push
-Run the following commands (replace `<YOUR_GITHUB_USERNAME>` with your GitHub account name):
-```powershell
-git remote add origin https://github.com/<YOUR_GITHUB_USERNAME>/eventflow-ai.git
-git push -u origin main
+├── index.html              # Main public landing page (Eventexo)
+├── app.html                # Unified Eventexo SaaS platform (all views)
+├── vercel.json             # Vercel deployment configuration
+├── start_server.py         # Local Python preview server
+├── README.md               # Documentation & repository overview
+├── .gitignore              # Git ignore configuration
+├── css/
+│   ├── styles.css          # Core animations, glows & typography
+│   └── dashboard.css       # Eventexo SaaS dark theme & print engine
+└── js/
+    ├── data.js             # Central store (v4) with guests, events & currency engine
+    ├── ai-studio.js        # AI design studio, print export & Gemini API
+    ├── dashboard.js        # KPIs & visual analytics
+    └── modules.js          # Guest RSVP manager, budget planner & vendors
 ```
 
 ---
 
-## 📁 File Structure
+## ☁️ Automatic Vercel Deployment
 
-```
-├── index.html              # Flagship public landing page (Plan. Manage. Celebrate.)
-├── app.html                # Unified EventrixControl SaaS platform (all 12 views)
-├── start_server.py         # Zero-dependency Python HTTP server runner
-├── .gitignore              # Git ignore rules
-├── README.md               # Documentation & GitHub setup guide
-├── css/
-│   ├── styles.css          # Core design system & glow effects
-│   └── dashboard.css       # EventrixControl SaaS styling & SVG chart themes
-└── js/
-    ├── data.js             # Central data engine (events, decor, vendors, inventory)
-    ├── ai-studio.js        # AI event blueprint and color palette generator
-    ├── dashboard.js        # EventrixControl KPI analytics, area & donut charts, calendar
-    └── modules.js          # Budget planner, vendor hub, inventory, and event wizard
-```
+Since your Vercel project (**`eventexo.vercel.app`**) is linked to your GitHub repository (**`Shreyansh3110/Eventexo`**), uploading these files to GitHub will automatically trigger a new production build within seconds!
