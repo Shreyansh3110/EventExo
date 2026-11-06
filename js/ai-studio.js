@@ -1,12 +1,12 @@
 /**
- * Eventexo — Luxury AI Design Atelier & Generative Event Architect Engine
+ * Eventexo — Minimalist Obsidian & Chrome AI Design Atelier & Generative Architect Engine
  * Powers multi-vibe aesthetic generation, dynamic budget allocations,
  * 1-click PDF/Print export, and optional live Gemini API generation.
  */
 
 function generateAIEventBlueprint() {
   const eventType = document.getElementById('ai-event-type')?.value || 'Luxury Destination Wedding';
-  const vibe = document.getElementById('ai-event-vibe')?.value || 'Royal Rajasthani Heritage';
+  const vibe = document.getElementById('ai-event-vibe')?.value || 'Modern Minimalist';
   const guests = parseInt(document.getElementById('ai-guests')?.value) || 200;
   const budget = parseInt(document.getElementById('ai-budget')?.value) || 1200000;
   const notes = document.getElementById('ai-notes')?.value || '';
@@ -22,7 +22,7 @@ function generateAIEventBlueprint() {
   outputContainer.classList.add('hidden');
   loadingState.classList.remove('hidden');
   if (loadingText) {
-    loadingText.innerText = apiKey ? "Synthesizing custom concept via Gemini 1.5 Flash..." : "Harmonizing royal aesthetics, floral architecture & budget velocity...";
+    loadingText.innerText = apiKey ? "Synthesizing custom concept via Gemini 1.5 Flash..." : "Harmonizing spatial aesthetics, stage architecture & budget velocity...";
   }
 
   // If user provided a Gemini API Key, attempt live API generation
@@ -44,7 +44,7 @@ function generateAIEventBlueprint() {
         renderAIGeneratedPlan(eventType, vibe, guests, budget, notes);
         if (window.lucide) lucide.createIcons();
         if (typeof showToast === 'function') {
-          showToast("Royal Architect Fallback", "Loaded bespoke Eventexo blueprint.", "sparkles");
+          showToast("Architect Fallback", "Loaded bespoke Eventexo blueprint.", "sparkles");
         }
       });
   } else {
@@ -54,7 +54,7 @@ function generateAIEventBlueprint() {
       outputContainer.classList.remove('hidden');
       renderAIGeneratedPlan(eventType, vibe, guests, budget, notes);
       if (window.lucide) lucide.createIcons();
-    }, 750);
+    }, 600);
   }
 }
 
@@ -70,8 +70,8 @@ Create an executive event strategy for:
 
 Respond strictly with a JSON object with this exact schema:
 {
-  "title": "A poetic, grand luxury concept title",
-  "narrative": "A 2-3 sentence immersive creative description of the atmosphere, scents, and production design.",
+  "title": "A precise, elegant concept title",
+  "narrative": "A 2-3 sentence immersive creative description of the atmosphere, materials, lighting, and production design.",
   "schedule": [
     {"time": "04:30 PM", "title": "Guest Arrival & Welcome", "desc": "Atmospheric acoustic instruments and passed artisanal mocktails."},
     {"time": "06:00 PM", "title": "Main Ceremony / Keynote", "desc": "Grand entrance and feature program."},
@@ -101,69 +101,69 @@ function renderAIGeneratedPlan(type, vibe, guests, budget, notes, geminiData = n
 
   // Aesthetic presets
   const vibeConfigs = {
-    "Royal Rajasthani Heritage": {
-      title: "Imperial Mewar: Velvet & Palace Gold Grandeur",
+    "Modern Minimalist": {
+      title: "Monochrome Precision & Architectural Grace",
       palette: [
-        { name: "Burgundy Velvet", hex: "#4A0E17" },
-        { name: "Imperial Gold", hex: "#D4AF37" },
-        { name: "Champagne Silk", hex: "#F5F5DC" },
-        { name: "Forest Slate", hex: "#2F3E46" }
+        { name: "Arctic White", hex: "#FFFFFF" },
+        { name: "Steel Silver", hex: "#E4E4E7" },
+        { name: "Zinc Slate", hex: "#71717A" },
+        { name: "Obsidian Pitch", hex: "#09090B" }
       ],
-      decorStyle: "Carved Jharokha stage arches, antique brass candelabras, heavy crimson velvet drapery, and Marigold & Red Rose floral sculptures.",
-      recommendedInventory: ["Vintage Crystal Chandelier Cascades", "Gold Chiavari Chairs with Ivory Cushions"],
-      vibeNarrative: "A timeless royal celebration characterized by palace candlelight, regal textures, royal boat processionals, and classical Indian sitar melodies."
+      decorStyle: "Clean geometric monoliths, pin-spot beam lighting, floating acrylic stages, and frosted glass centerpieces.",
+      recommendedInventory: ["Curved 4K Ultra-HD LED Video Wall", "Wireless RGB Up-Lighting Fixtures"],
+      vibeNarrative: "Precision-engineered minimalism where negative space, tailored lighting, and high-contrast monochrome textures create effortless sophistication."
+    },
+    "Royal Rajasthani Heritage": {
+      title: "Mewar Imperial: Midnight & Regal Silver",
+      palette: [
+        { name: "Deep Charcoal", hex: "#18181B" },
+        { name: "Pure Platinum", hex: "#E4E4E7" },
+        { name: "Champagne Silver", hex: "#D4D4D8" },
+        { name: "Royal Slate", hex: "#27272A" }
+      ],
+      decorStyle: "Carved stone arches, silver candelabras, heavy slate drapery, and white orchid floral sculptures.",
+      recommendedInventory: ["Vintage Crystal Chandelier Cascades", "Curved 4K Ultra-HD LED Video Wall"],
+      vibeNarrative: "A timeless heritage celebration characterized by palace moonlight, regal textures, royal processionals, and classical Indian sitar melodies."
     },
     "Bollywood Glam & Sangeet": {
-      title: "Bollywood Luminescence: Starlight Sangeet",
+      title: "Luminescence: Starlight Sangeet",
       palette: [
-        { name: "Peacock Blue", hex: "#004958" },
-        { name: "Sunset Marigold", hex: "#FF9933" },
-        { name: "Rani Pink", hex: "#E0115F" },
-        { name: "Shimmer Gold", hex: "#F1C40F" }
+        { name: "Electric Cyan", hex: "#06B6D4" },
+        { name: "Silver Star", hex: "#F4F4F5" },
+        { name: "Velvet Plum", hex: "#581C87" },
+        { name: "Carbon Black", hex: "#09090B" }
       ],
       decorStyle: "Mirror mosaic dance floors, suspended floral wisteria ceilings, dynamic moving laser heads, and interactive cocktail mixology counters.",
       recommendedInventory: ["Curved 4K Ultra-HD LED Video Wall", "Wireless RGB Up-Lighting Fixtures"],
-      vibeNarrative: "High-octane glamour and celebratory energy featuring choreographed performances, Punjabi Dhol artists, and cinematic stage lighting."
+      vibeNarrative: "High-octane glamour and celebratory energy featuring choreographed performances, live percussionists, and cinematic stage lighting."
     },
     "Cyberpunk Neon": {
       title: "Synthetix Horizon: Cybernetic Luxe",
       palette: [
-        { name: "Deep Obsidian", hex: "#0B0F19" },
+        { name: "Deep Obsidian", hex: "#000000" },
         { name: "Cyan Luminescence", hex: "#06B6D4" },
         { name: "Electric Ultraviolet", hex: "#8B5CF6" },
-        { name: "Neon Magenta", hex: "#F43F5E" }
+        { name: "Platinum White", hex: "#FFFFFF" }
       ],
       decorStyle: "RGB LED pixel tubes, matte black staging, holographic projection backdrops, and interactive ambient glow bars.",
       recommendedInventory: ["Curved 4K Ultra-HD LED Video Wall", "Wireless RGB Up-Lighting Fixtures"],
       vibeNarrative: "An electrifying, forward-looking sensory experience designed to captivate tech innovators, founders, and trendsetters."
     },
     "Goa Sunset Coastal Chic": {
-      title: "Golden Hour Solstice: Coastal Bohemian Chic",
+      title: "Solstice Horizon: Coastal Monochrome Chic",
       palette: [
-        { name: "Terracotta Earth", hex: "#D97706" },
-        { name: "Desert Ochre", hex: "#F97316" },
-        { name: "Warm Flax", hex: "#FEF08A" },
-        { name: "Raw Umber", hex: "#78350F" }
+        { name: "Bleached Sand", hex: "#F4F4F5" },
+        { name: "Driftwood", hex: "#A1A1AA" },
+        { name: "Sea Salt", hex: "#E4E4E7" },
+        { name: "Midnight Tide", hex: "#09090B" }
       ],
-      decorStyle: "Circular pampas grass arches, rattan lanterns, low reclaimed wood banquet feasting tables, and textured linen runners.",
-      recommendedInventory: ["Circular Gold Floral Archway & Base", "Solid Oak Rustic Farm Banquet Tables"],
+      decorStyle: "Circular bleached floral arches, matte black lanterns, low natural banquet feasting tables, and textured linen runners.",
+      recommendedInventory: ["Circular White Archway & Base", "Solid Oak Farm Banquet Tables"],
       vibeNarrative: "Free-spirited coastal celebration filled with earthy natural textures, ocean breezes, acoustic melodies, and sunset warmth."
-    },
-    "Modern Minimalist": {
-      title: "Monochrome Precision & Architectural Grace",
-      palette: [
-        { name: "Pure Arctic White", hex: "#F8FAFC" },
-        { name: "Steel Graphite", hex: "#334155" },
-        { name: "Brushed Champagne", hex: "#CBD5E1" },
-        { name: "Charcoal Shadow", hex: "#0F172A" }
-      ],
-      decorStyle: "Clean geometric pedestals, single-stem calla lily arrangements, recessed pin-spot lighting, and sleek acrylic elements.",
-      recommendedInventory: ["Gold Chiavari Chairs with Ivory Cushions", "Curved 4K Ultra-HD LED Video Wall"],
-      vibeNarrative: "Understated luxury where architectural negative space, precision lighting, and tailored elements create effortless sophistication."
     }
   };
 
-  const selectedVibe = vibeConfigs[vibe] || vibeConfigs["Royal Rajasthani Heritage"];
+  const selectedVibe = vibeConfigs[vibe] || vibeConfigs["Modern Minimalist"];
   const conceptTitle = geminiData?.title || selectedVibe.title;
   const conceptNarrative = geminiData?.narrative || selectedVibe.vibeNarrative;
 
@@ -176,41 +176,41 @@ function renderAIGeneratedPlan(type, vibe, guests, budget, notes, geminiData = n
   const perGuest = Math.round(budget / guests);
 
   const scheduleItems = geminiData?.schedule || [
-    { time: "04:30 PM", title: "Royal Guest Arrival & Welcome Refreshments", desc: "Ambient acoustic shehnai & sitar duo, artisanal passed canapes." },
+    { time: "04:30 PM", title: "Guest Arrival & Welcome Refreshments", desc: "Ambient acoustic duo, artisanal passed canapes." },
     { time: "05:30 PM", title: "Main Ceremony / Keynote Session", desc: "Ceremonial procession, cinematic grand entrance, featured speeches." },
-    { time: "07:30 PM", title: "Royal Gourmet Feast Banquet", desc: "Curated multi-course live counters (Pure Veg, Non-Veg, Jain specialties)." },
-    { time: "09:15 PM", title: "Sangeet Dance Floor & Dessert Lounge", desc: "Live percussionists, DJ celebration set, late-night artisanal desserts." }
+    { time: "07:30 PM", title: "Gourmet Feast Banquet", desc: "Curated multi-course live counters (Pure Veg, Non-Veg, Jain specialties)." },
+    { time: "09:15 PM", title: "Dance Floor & Dessert Lounge", desc: "Live percussionists, DJ celebration set, late-night artisanal desserts." }
   ];
 
   container.innerHTML = `
     <!-- Print Header (Visible only when printed) -->
     <div class="print-banner hidden">
-      <h1 style="font-size: 26pt; font-weight: 800; margin: 0; color: #05070e;">EVENTEXO</h1>
-      <p style="font-size: 11pt; color: #996515; margin-top: 4px; font-weight: 700;">Executive Event Blueprint & Strategic Production Plan • ${type}</p>
+      <h1 style="font-size: 24pt; font-weight: 800; margin: 0; color: #000000;">EVENTEXO</h1>
+      <p style="font-size: 11pt; color: #52525b; margin-top: 4px; font-weight: 600;">Executive Event Blueprint & Strategic Production Plan • ${type}</p>
     </div>
 
     <!-- Concept Header Banner -->
-    <div class="p-8 rounded-3xl bg-gradient-to-r from-[#0b0f1a] via-[#1a1505] to-[#080c16] border border-[#d4af37]/35 mb-8 relative">
+    <div class="p-8 rounded-2xl bg-white/[0.03] border border-white/10 mb-8 relative">
       <div class="flex items-center justify-between gap-4 mb-3">
-        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#d4af37]">
-          <i data-lucide="sparkles" class="w-4 h-4 text-[#d4af37]"></i>
+        <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-400">
+          <i data-lucide="sparkles" class="w-4 h-4 text-white"></i>
           <span>${geminiData ? 'Gemini 1.5 Live AI Generated Strategy' : 'Eventexo Neural Architecture'}</span>
         </div>
-        <button onclick="printAIBlueprint()" class="no-print btn-gold-outline px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5">
-          <i data-lucide="printer" class="w-3.5 h-3.5 text-[#d4af37]"></i>
+        <button onclick="printAIBlueprint()" class="no-print btn-chrome-outline px-3.5 py-1.5 text-xs font-semibold flex items-center gap-1.5">
+          <i data-lucide="printer" class="w-3.5 h-3.5 text-zinc-300"></i>
           <span>Export Blueprint (PDF / Print)</span>
         </button>
       </div>
-      <h3 class="font-luxury text-2xl sm:text-3xl font-extrabold text-white mb-3">
+      <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 tracking-tight">
         ${conceptTitle}
       </h3>
-      <p class="text-sm text-slate-300 leading-relaxed mb-6 font-sans">
+      <p class="text-sm text-zinc-400 leading-relaxed mb-6">
         ${conceptNarrative}
       </p>
-      <div class="flex flex-wrap items-center gap-3 text-xs font-semibold">
-        <span class="px-3.5 py-1 rounded-full bg-white/5 text-slate-200 border border-white/10">Type: ${type}</span>
-        <span class="px-3.5 py-1 rounded-full bg-white/5 text-slate-200 border border-white/10">Guests: ${guests} Attendees</span>
-        <span class="badge-gold px-3.5 py-1 rounded-full font-bold">
+      <div class="flex flex-wrap items-center gap-3 text-xs font-medium">
+        <span class="px-3.5 py-1 rounded-full bg-white/5 text-zinc-300 border border-white/10">Type: ${type}</span>
+        <span class="px-3.5 py-1 rounded-full bg-white/5 text-zinc-300 border border-white/10">Guests: ${guests} Attendees</span>
+        <span class="px-3.5 py-1 rounded-full bg-white/10 text-white border border-white/20 font-bold">
           Total Allocation: ${EventDataStore.formatCurrency(budget)} (~${EventDataStore.formatCurrency(perGuest)}/guest)
         </span>
       </div>
@@ -218,16 +218,16 @@ function renderAIGeneratedPlan(type, vibe, guests, budget, notes, geminiData = n
 
     <!-- 1. Color Palette Generator -->
     <div class="mb-8">
-      <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-[#d4af37] mb-3 flex items-center gap-1.5">
-        <i data-lucide="palette" class="w-4 h-4 text-[#d4af37]"></i>
+      <h4 class="text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-3 flex items-center gap-1.5">
+        <i data-lucide="palette" class="w-4 h-4 text-zinc-300"></i>
         <span>Curated Color Palette & Material Styling</span>
       </h4>
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
         ${selectedVibe.palette.map(color => `
-          <div class="p-3.5 rounded-xl bg-[#080c16] border border-[#d4af37]/20 flex flex-col items-center text-center group cursor-pointer hover:border-[#d4af37]/60 transition-all" onclick="copyColorCode('${color.hex}')">
+          <div class="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08] flex flex-col items-center text-center group cursor-pointer hover:border-white/30 transition-all" onclick="copyColorCode('${color.hex}')">
             <div class="w-full h-14 rounded-lg mb-2 shadow-inner border border-white/10 group-hover:scale-105 transition-transform" style="background-color: ${color.hex}"></div>
-            <span class="text-xs font-bold text-white">${color.name}</span>
-            <span class="text-[11px] font-mono text-slate-400 uppercase mt-0.5">${color.hex}</span>
+            <span class="text-xs font-semibold text-white">${color.name}</span>
+            <span class="text-[11px] font-mono text-zinc-400 uppercase mt-0.5">${color.hex}</span>
           </div>
         `).join('')}
       </div>
@@ -235,54 +235,54 @@ function renderAIGeneratedPlan(type, vibe, guests, budget, notes, geminiData = n
 
     <!-- 2. Budget Allocation Breakdown -->
     <div class="mb-8">
-      <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-[#d4af37] mb-3 flex items-center gap-1.5">
-        <i data-lucide="pie-chart" class="w-4 h-4 text-[#d4af37]"></i>
+      <h4 class="text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-3 flex items-center gap-1.5">
+        <i data-lucide="pie-chart" class="w-4 h-4 text-zinc-300"></i>
         <span>Optimized Budget Breakdown (${EventDataStore.formatCurrency(budget)})</span>
       </h4>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <div class="p-4 rounded-xl bg-[#080c16] border border-[#d4af37]/20">
-          <div class="text-[11px] text-slate-400 font-semibold uppercase">Venue & Facility (35%)</div>
-          <div class="text-lg font-bold text-[#fde68a] mt-1 font-heading">${EventDataStore.formatCurrency(venueBudget)}</div>
-          <div class="text-[11px] text-slate-400 mt-0.5">Palace lawns, ballroom, permits</div>
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.08]">
+          <div class="text-[11px] text-zinc-400 font-medium uppercase">Venue & Facility (35%)</div>
+          <div class="text-lg font-bold text-white mt-1 font-mono">${EventDataStore.formatCurrency(venueBudget)}</div>
+          <div class="text-[11px] text-zinc-500 mt-0.5">Palace lawns, ballroom, permits</div>
         </div>
-        <div class="p-4 rounded-xl bg-[#080c16] border border-[#d4af37]/20">
-          <div class="text-[11px] text-slate-400 font-semibold uppercase">Catering & Bar (30%)</div>
-          <div class="text-lg font-bold text-[#fde68a] mt-1 font-heading">${EventDataStore.formatCurrency(cateringBudget)}</div>
-          <div class="text-[11px] text-slate-400 mt-0.5">Live gourmet stalls, cocktail bar</div>
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.08]">
+          <div class="text-[11px] text-zinc-400 font-medium uppercase">Catering & Bar (30%)</div>
+          <div class="text-lg font-bold text-white mt-1 font-mono">${EventDataStore.formatCurrency(cateringBudget)}</div>
+          <div class="text-[11px] text-zinc-500 mt-0.5">Live gourmet stalls, cocktail bar</div>
         </div>
-        <div class="p-4 rounded-xl bg-[#080c16] border border-[#d4af37]/20">
-          <div class="text-[11px] text-slate-400 font-semibold uppercase">Decor & Florals (15%)</div>
-          <div class="text-lg font-bold text-[#fde68a] mt-1 font-heading">${EventDataStore.formatCurrency(decorBudget)}</div>
-          <div class="text-[11px] text-slate-400 mt-0.5">Mandap, centerpieces, lighting</div>
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.08]">
+          <div class="text-[11px] text-zinc-400 font-medium uppercase">Decor & Staging (15%)</div>
+          <div class="text-lg font-bold text-white mt-1 font-mono">${EventDataStore.formatCurrency(decorBudget)}</div>
+          <div class="text-[11px] text-zinc-500 mt-0.5">Stage layout, lighting, floral installs</div>
         </div>
-        <div class="p-4 rounded-xl bg-[#080c16] border border-[#d4af37]/20">
-          <div class="text-[11px] text-slate-400 font-semibold uppercase">Photo & Cinema (10%)</div>
-          <div class="text-lg font-bold text-[#fde68a] mt-1 font-heading">${EventDataStore.formatCurrency(photoBudget)}</div>
-          <div class="text-[11px] text-slate-400 mt-0.5">Full coverage + 4K drone reel</div>
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.08]">
+          <div class="text-[11px] text-zinc-400 font-medium uppercase">Photo & Cinema (10%)</div>
+          <div class="text-lg font-bold text-white mt-1 font-mono">${EventDataStore.formatCurrency(photoBudget)}</div>
+          <div class="text-[11px] text-zinc-500 mt-0.5">Full coverage + 4K drone reel</div>
         </div>
-        <div class="p-4 rounded-xl bg-[#080c16] border border-[#d4af37]/20">
-          <div class="text-[11px] text-slate-400 font-semibold uppercase">AV & Music (10%)</div>
-          <div class="text-lg font-bold text-[#fde68a] mt-1 font-heading">${EventDataStore.formatCurrency(avBudget)}</div>
-          <div class="text-[11px] text-slate-400 mt-0.5">DJ, live sound, stage rig, Dhol</div>
+        <div class="p-4 rounded-xl bg-white/[0.02] border border-white/[0.08]">
+          <div class="text-[11px] text-zinc-400 font-medium uppercase">AV & Music (10%)</div>
+          <div class="text-lg font-bold text-white mt-1 font-mono">${EventDataStore.formatCurrency(avBudget)}</div>
+          <div class="text-[11px] text-zinc-500 mt-0.5">DJ, live sound, stage rig, acoustics</div>
         </div>
-        <div class="p-4 rounded-xl bg-[#0b0f1a] border border-[#d4af37]/30 flex flex-col justify-center items-center text-center">
-          <div class="text-xs text-[#d4af37] font-bold">Projected Cost / Guest</div>
-          <div class="text-xl font-extrabold text-white mt-0.5 font-heading">${EventDataStore.formatCurrency(perGuest)}</div>
+        <div class="p-4 rounded-xl bg-white/[0.03] border border-white/[0.15] flex flex-col justify-center items-center text-center">
+          <div class="text-xs text-zinc-300 font-semibold">Projected Cost / Guest</div>
+          <div class="text-xl font-bold text-white mt-0.5 font-mono">${EventDataStore.formatCurrency(perGuest)}</div>
         </div>
       </div>
     </div>
 
     <!-- 3. Run-of-Show Schedule -->
     <div class="mb-8">
-      <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-[#d4af37] mb-3 flex items-center gap-1.5">
-        <i data-lucide="clock" class="w-4 h-4 text-[#d4af37]"></i>
+      <h4 class="text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-3 flex items-center gap-1.5">
+        <i data-lucide="clock" class="w-4 h-4 text-zinc-300"></i>
         <span>AI Generated Run-of-Show Schedule</span>
       </h4>
       <div class="space-y-2.5">
         ${scheduleItems.map(item => `
-          <div class="flex items-center gap-4 p-3.5 rounded-xl bg-[#080c16] border border-[#d4af37]/15">
-            <span class="font-mono text-xs font-bold text-[#fde68a] w-24 flex-shrink-0">${item.time}</span>
-            <div class="text-xs text-slate-200">
+          <div class="flex items-center gap-4 p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+            <span class="font-mono text-xs font-bold text-white w-24 flex-shrink-0">${item.time}</span>
+            <div class="text-xs text-zinc-300">
               <span class="font-bold text-white">${item.title}</span> — ${item.desc}
             </div>
           </div>
@@ -291,17 +291,17 @@ function renderAIGeneratedPlan(type, vibe, guests, budget, notes, geminiData = n
     </div>
 
     <!-- Quick Action: Apply to Event Wizard -->
-    <div class="no-print p-6 rounded-2xl bg-gradient-to-r from-[#0b0f1a] via-[#1a1505] to-[#080c16] border border-[#d4af37]/35 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="no-print p-6 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        <h4 class="font-luxury font-bold text-white text-base">Satisfied with this creative blueprint?</h4>
-        <p class="text-xs text-[#d4af37] mt-0.5">Transfer this strategy directly into the Event Creation Wizard or export to PDF.</p>
+        <h4 class="font-bold text-white text-base">Satisfied with this creative blueprint?</h4>
+        <p class="text-xs text-zinc-400 mt-0.5">Transfer this strategy directly into the Event Creation Wizard or export to PDF.</p>
       </div>
       <div class="flex items-center gap-3">
-        <button onclick="printAIBlueprint()" class="btn-gold-outline px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5">
-          <i data-lucide="printer" class="w-4 h-4 text-[#d4af37]"></i>
+        <button onclick="printAIBlueprint()" class="btn-chrome-outline px-4 py-2.5 text-xs font-semibold flex items-center gap-1.5">
+          <i data-lucide="printer" class="w-4 h-4 text-zinc-300"></i>
           <span>Print / PDF</span>
         </button>
-        <button onclick="applyBlueprintToWizard('${type}', '${conceptTitle.replace(/'/g, "\\'")}', ${budget}, ${guests})" class="btn-gold px-6 py-2.5 rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center gap-2 shadow-lg">
+        <button onclick="applyBlueprintToWizard('${type}', '${conceptTitle.replace(/'/g, "\\'")}', ${budget}, ${guests})" class="btn-chrome px-6 py-2.5 text-xs font-bold flex items-center gap-2 shadow-lg">
           <span>Apply to Wizard</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </button>

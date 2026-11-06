@@ -106,8 +106,8 @@ function renderGuestList(filter = 'all', search = '') {
         </td>
         <td class="px-6 py-4">
           ${g.plusOne 
-            ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#d4af37]/15 text-[#fde68a] border border-[#d4af37]/30">+1 Guest</span>' 
-            : '<span class="text-slate-500 text-[11px]">Single</span>'}
+            ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/10 text-white border border-white/20">+1 Guest</span>' 
+            : '<span class="text-zinc-500 text-[11px]">Single</span>'}
         </td>
         <td class="px-6 py-4 text-right">
           <button onclick="handleDeleteGuest('${g.id}')" class="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors" title="Remove Guest">
@@ -125,11 +125,11 @@ function filterGuestsByRSVP(filter) {
   document.querySelectorAll('.guest-filter-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.filter === filter);
     if (btn.dataset.filter === filter) {
-      btn.classList.add('bg-[#d4af37]', 'text-[#05070e]', 'font-bold');
-      btn.classList.remove('bg-white/5', 'text-slate-400');
+      btn.classList.add('bg-white', 'text-black', 'font-bold');
+      btn.classList.remove('bg-white/5', 'text-zinc-400');
     } else {
-      btn.classList.remove('bg-[#d4af37]', 'text-[#05070e]', 'font-bold');
-      btn.classList.add('bg-white/5', 'text-slate-400');
+      btn.classList.remove('bg-white', 'text-black', 'font-bold');
+      btn.classList.add('bg-white/5', 'text-zinc-400');
     }
   });
   const search = document.getElementById('guest-search-input')?.value || '';
@@ -258,8 +258,8 @@ function renderBudgetForEvent(eventId) {
             <span class="font-bold text-white">${cat.name}</span>
             <span class="font-mono text-slate-300">${EventDataStore.formatCurrency(cat.spent)} / ${EventDataStore.formatCurrency(cat.allocated)}</span>
           </div>
-          <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-            <div class="bg-gradient-to-r from-[#d4af37] to-[#10b981] h-full rounded-full" style="width: ${catPercent}%"></div>
+          <div class="w-full bg-zinc-900 rounded-full h-1.5 overflow-hidden">
+            <div class="bg-gradient-to-r from-zinc-300 to-emerald-400 h-full rounded-full" style="width: ${catPercent}%"></div>
           </div>
         </div>
       `;
@@ -310,40 +310,40 @@ function renderVendorsList(category) {
   }
 
   container.innerHTML = list.map(v => `
-    <div class="saas-card p-6 flex flex-col justify-between group hover:border-[#d4af37]/40">
+    <div class="saas-card p-6 flex flex-col justify-between group hover:border-white/30">
       <div>
         <div class="flex items-start justify-between gap-2 mb-3">
           <div>
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#d4af37]/10 text-[#fde68a] border border-[#d4af37]/30">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-white/5 text-zinc-300 border border-white/10">
               ${v.category}
             </span>
-            <h3 class="font-bold text-white text-base mt-2 group-hover:text-[#fde68a] transition-colors">${v.name}</h3>
+            <h3 class="font-bold text-white text-base mt-2 group-hover:text-zinc-200 transition-colors">${v.name}</h3>
           </div>
           <span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${
             v.status === 'Contract Signed' ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30' :
-            v.status === 'Confirmed' ? 'bg-[#d4af37]/15 text-[#fde68a] border border-[#d4af37]/30' :
+            v.status === 'Confirmed' ? 'bg-white/10 text-white border border-white/20' :
             'bg-amber-500/15 text-amber-300 border border-amber-500/30'
           }">
             ${v.status}
           </span>
         </div>
 
-        <p class="text-xs text-slate-400 leading-relaxed mb-4">${v.description}</p>
+        <p class="text-xs text-zinc-400 leading-relaxed mb-4">${v.description}</p>
         
-        <div class="flex items-center gap-4 text-xs text-slate-300 border-t border-white/5 pt-3 mb-4">
-          <div class="flex items-center gap-1 text-amber-400 font-bold">
-            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+        <div class="flex items-center gap-4 text-xs text-zinc-300 border-t border-white/[0.08] pt-3 mb-4">
+          <div class="flex items-center gap-1 text-zinc-200 font-bold">
+            <i data-lucide="star" class="w-3.5 h-3.5 fill-white text-white"></i>
             <span>${v.rating}</span>
           </div>
-          <span class="text-slate-500">•</span>
-          <span class="font-mono font-bold text-slate-200">${v.priceRange}</span>
+          <span class="text-zinc-600">•</span>
+          <span class="font-mono font-bold text-zinc-200">${v.priceRange}</span>
         </div>
       </div>
 
-      <div class="pt-3 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
+      <div class="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs text-zinc-400">
         <span class="truncate">${v.phone}</span>
-        <a href="mailto:${v.contact}" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-[#d4af37]/20 hover:text-[#fde68a] text-white font-semibold flex items-center gap-1 transition-colors">
-          <i data-lucide="mail" class="w-3.5 h-3.5 text-[#d4af37]"></i>
+        <a href="mailto:${v.contact}" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white font-semibold flex items-center gap-1 transition-colors">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-zinc-300"></i>
           <span>Email</span>
         </a>
       </div>
@@ -391,24 +391,24 @@ function initClientPortal() {
   const tasks = EventDataStore.getClientTasks();
 
   tasksContainer.innerHTML = tasks.map(t => `
-    <div class="flex items-center justify-between p-3.5 rounded-xl bg-[#080c16]/80 border border-white/5 hover:border-[#d4af37]/40 transition-colors">
+    <div class="flex items-center justify-between p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08] hover:border-white/20 transition-colors">
       <div class="flex items-center gap-3">
         <input 
           type="checkbox" 
           ${t.completed ? 'checked' : ''} 
           onchange="EventDataStore.toggleClientTask('${t.id}'); initClientPortal();"
-          class="w-4 h-4 rounded text-[#d4af37] focus:ring-0 cursor-pointer accent-[#d4af37]"
+          class="w-4 h-4 rounded text-white focus:ring-0 cursor-pointer accent-white"
         />
         <div>
-          <span class="text-xs sm:text-sm font-semibold ${t.completed ? 'line-through text-slate-500' : 'text-white'}">
+          <span class="text-xs sm:text-sm font-semibold ${t.completed ? 'line-through text-zinc-500' : 'text-white'}">
             ${t.title}
           </span>
-          <div class="text-[10px] font-semibold uppercase tracking-wider text-[#d4af37] mt-0.5">
+          <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 mt-0.5">
             ${t.category} • Due ${t.deadline}
           </div>
         </div>
       </div>
-      <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full ${t.completed ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30' : 'bg-white/5 text-slate-400 border border-white/10'}">
+      <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full ${t.completed ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30' : 'bg-white/5 text-zinc-400 border border-white/10'}">
         ${t.completed ? 'Complete' : 'Pending'}
       </span>
     </div>

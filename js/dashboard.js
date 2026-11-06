@@ -37,32 +37,32 @@ function renderUpcomingEventsList() {
   const events = EventDataStore.getEvents().slice(0, 5);
 
   container.innerHTML = events.map(evt => {
-    let statusClass = "bg-emerald-500/15 text-emerald-300 border-emerald-500/30";
-    if (evt.status === 'In Progress') statusClass = "bg-indigo-500/15 text-indigo-300 border-indigo-500/30";
-    if (evt.status === 'Budgeting') statusClass = "bg-amber-500/15 text-amber-300 border-amber-500/30";
-    if (evt.status === 'Cancelled') statusClass = "bg-rose-500/15 text-rose-300 border-rose-500/30";
+    let statusClass = "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+    if (evt.status === 'In Progress') statusClass = "bg-white/10 text-white border border-white/20";
+    if (evt.status === 'Budgeting') statusClass = "bg-amber-500/10 text-amber-400 border border-amber-500/20";
+    if (evt.status === 'Cancelled') statusClass = "bg-rose-500/10 text-rose-400 border border-rose-500/20";
 
     return `
-      <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/50 border border-white/5 hover:border-indigo-500/30 transition-colors group">
+      <div class="flex items-center justify-between p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.08] hover:border-white/20 transition-colors group">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-900 to-purple-900 flex items-center justify-center font-bold text-white text-xs border border-white/10 flex-shrink-0">
+          <div class="w-10 h-10 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center font-bold text-white text-xs flex-shrink-0">
             ${evt.type === 'Wedding' ? '💍' : evt.type === 'Corporate' ? '💼' : '🎉'}
           </div>
           <div>
-            <h4 class="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors line-clamp-1">${evt.title}</h4>
-            <p class="text-xs text-slate-400 mt-0.5 flex items-center gap-2">
+            <h4 class="text-sm font-semibold text-white group-hover:text-zinc-200 transition-colors line-clamp-1">${evt.title}</h4>
+            <p class="text-xs text-zinc-400 mt-0.5 flex items-center gap-2">
               <span>${evt.venue}</span>
               <span>•</span>
-              <span class="text-slate-300">${evt.date}</span>
+              <span class="text-zinc-300">${evt.date}</span>
             </p>
           </div>
         </div>
 
         <div class="flex items-center gap-3">
-          <span class="px-2.5 py-1 rounded-full text-[11px] font-semibold border ${statusClass} whitespace-nowrap">
+          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold border ${statusClass} whitespace-nowrap">
             ${evt.status}
           </span>
-          <button onclick="viewEventDetails('${evt.id}')" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors" title="Manage Event">
+          <button onclick="viewEventDetails('${evt.id}')" class="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-white/10 transition-colors" title="Manage Event">
             <i data-lucide="chevron-right" class="w-4 h-4"></i>
           </button>
         </div>
