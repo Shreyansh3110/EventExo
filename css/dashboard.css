@@ -1,26 +1,24 @@
 /* 
- * Eventexo — Luxury Heritage & Gold Dashboard Styles
- * Dark Obsidian Navy & Champagne Gold Theme
+ * Eventexo — Minimalist Obsidian & Chrome Dashboard Styles
+ * Aesthetic: Apple Pro / Raycast / Linear Sleek Dark Mode
  */
 
 :root {
-  --bg-midnight: #05070e;
-  --panel-bg: rgba(12, 16, 28, 0.72);
-  --panel-border: rgba(212, 175, 55, 0.14);
-  --panel-border-hover: rgba(212, 175, 55, 0.38);
-  --gold-primary: #d4af37;
-  --gold-light: #fde68a;
+  --bg-obsidian: #000000;
+  --panel-bg: rgba(18, 18, 23, 0.75);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --panel-border-hover: rgba(255, 255, 255, 0.24);
 }
 
 body {
-  background-color: var(--bg-midnight);
+  background-color: var(--bg-obsidian);
 }
 
 /* Tab Transition */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -29,58 +27,54 @@ body {
 }
 
 .module-view {
-  animation: fadeInUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeInUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Glassmorphic Luxury Cards */
+/* Glassmorphic Obsidian Cards */
 .saas-card {
-  background: rgba(12, 16, 28, 0.72);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(212, 175, 55, 0.14);
+  background: rgba(18, 18, 23, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.25rem;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
 .saas-card:hover {
-  border-color: rgba(212, 175, 55, 0.35);
-  box-shadow: 0 12px 36px -10px rgba(212, 175, 55, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(255, 255, 255, 0.03);
 }
 
-/* Gold Gradient Borders */
-.gold-card-featured {
-  background: linear-gradient(180deg, rgba(212, 175, 55, 0.08) 0%, rgba(12, 16, 28, 0.8) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.35);
+/* Chrome Highlight Card */
+.chrome-card-featured {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(18, 18, 23, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* KPI Trend Badges */
 .trend-pill-up {
   background: rgba(16, 185, 129, 0.12);
   color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.28);
+  border: 1px solid rgba(16, 185, 129, 0.25);
 }
 
-.trend-pill-gold {
-  background: rgba(212, 175, 55, 0.12);
-  color: #fde68a;
-  border: 1px solid rgba(212, 175, 55, 0.28);
+.trend-pill-chrome {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .trend-pill-neutral {
-  background: rgba(99, 102, 241, 0.12);
-  color: #818cf8;
-  border: 1px solid rgba(99, 102, 241, 0.28);
+  background: rgba(148, 163, 184, 0.1);
+  color: #cbd5e1;
+  border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
-/* Chart Canvas & SVG helpers */
+/* Chart Canvas & SVG Helpers */
 .chart-grid-line {
-  stroke: rgba(212, 175, 55, 0.08);
+  stroke: rgba(255, 255, 255, 0.06);
   stroke-dasharray: 4 4;
-}
-
-.chart-area-gold {
-  fill: url(#revenueGoldGradient);
 }
 
 /* Calendar Widget Grid */
@@ -98,111 +92,112 @@ body {
   justify-content: center;
   border-radius: 0.6rem;
   font-size: 0.75rem;
-  font-weight: 600;
-  color: #94a3b8;
+  font-weight: 500;
+  color: #a1a1aa;
   transition: all 0.2s;
   position: relative;
 }
 
 .cal-day:hover {
-  background: rgba(212, 175, 55, 0.1);
-  color: #fde68a;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
 }
 
 .cal-day.active {
-  background: linear-gradient(135deg, #d4af37, #996515);
-  color: #05070e;
-  font-weight: 800;
-  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.4);
+  background: #ffffff;
+  color: #000000;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.3);
 }
 
 .cal-event-dot {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: #fde68a;
+  background-color: #ffffff;
   position: absolute;
   bottom: 3px;
 }
 
-/* Nav Item Luxury State */
+/* Nav Item Obsidian State */
 .sidebar-link {
-  color: #94a3b8;
-  border-left: 3px solid transparent;
+  color: #a1a1aa;
+  border-left: 2px solid transparent;
   transition: all 0.2s ease;
   position: relative;
+  font-weight: 500;
 }
 
 .sidebar-link.active {
-  background: linear-gradient(90deg, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0.03) 100%);
-  color: #fde68a;
-  border-left-color: #d4af37;
-  font-weight: 700;
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+  border-left-color: #ffffff;
+  font-weight: 600;
 }
 
 .sidebar-link:hover:not(.active) {
-  background: rgba(212, 175, 55, 0.06);
+  background: rgba(255, 255, 255, 0.04);
   color: #ffffff;
 }
 
 /* RSVP Status Badges */
 .rsvp-confirmed {
-  background: rgba(16, 185, 129, 0.15);
+  background: rgba(16, 185, 129, 0.12);
   color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(16, 185, 129, 0.25);
 }
 
 .rsvp-awaiting {
-  background: rgba(245, 158, 11, 0.15);
+  background: rgba(245, 158, 11, 0.12);
   color: #fbbf24;
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  border: 1px solid rgba(245, 158, 11, 0.25);
 }
 
 .rsvp-declined {
-  background: rgba(244, 63, 94, 0.15);
+  background: rgba(244, 63, 94, 0.12);
   color: #f87171;
-  border: 1px solid rgba(244, 63, 94, 0.3);
+  border: 1px solid rgba(244, 63, 94, 0.25);
 }
 
 /* Dietary Badges */
 .diet-badge-veg {
-  background: rgba(16, 185, 129, 0.12);
+  background: rgba(16, 185, 129, 0.1);
   color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.28);
+  border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .diet-badge-nonveg {
-  background: rgba(244, 63, 94, 0.12);
+  background: rgba(244, 63, 94, 0.1);
   color: #fb7185;
-  border: 1px solid rgba(244, 63, 94, 0.28);
+  border: 1px solid rgba(244, 63, 94, 0.2);
 }
 
 .diet-badge-jain {
-  background: rgba(234, 179, 8, 0.12);
+  background: rgba(234, 179, 8, 0.1);
   color: #facc15;
-  border: 1px solid rgba(234, 179, 8, 0.28);
+  border: 1px solid rgba(234, 179, 8, 0.2);
 }
 
-/* Luxury Currency Toggle Pill */
+/* Chrome Currency Toggle Pill */
 .currency-pill-btn {
-  background: rgba(212, 175, 55, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 9999px;
-  padding: 0.35rem 0.8rem;
+  padding: 0.35rem 0.85rem;
   font-size: 0.75rem;
-  font-weight: 700;
-  color: #fde68a;
+  font-weight: 600;
+  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 0.45rem;
   cursor: pointer;
-  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
 }
 
 .currency-pill-btn:hover {
-  background: rgba(212, 175, 55, 0.2);
-  border-color: rgba(212, 175, 55, 0.6);
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-1px);
 }
 
@@ -210,8 +205,8 @@ body {
 @media print {
   body {
     background: #ffffff !important;
-    color: #05070e !important;
-    font-family: 'Playfair Display', Georgia, serif;
+    color: #09090b !important;
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
   }
 
   aside, 
@@ -231,30 +226,30 @@ body {
 
   .saas-card {
     background: #ffffff !important;
-    border: 1px solid #d4af37 !important;
+    border: 1px solid #e4e4e7 !important;
     box-shadow: none !important;
-    color: #05070e !important;
+    color: #09090b !important;
     break-inside: avoid;
     page-break-inside: avoid;
     margin-bottom: 1.5rem !important;
   }
 
   .saas-card * {
-    color: #05070e !important;
+    color: #09090b !important;
   }
 
   .text-white {
-    color: #05070e !important;
+    color: #09090b !important;
   }
 
-  .text-slate-300, .text-slate-400 {
-    color: #334155 !important;
+  .text-slate-300, .text-slate-400, .text-zinc-400 {
+    color: #52525b !important;
   }
 
   .print-banner {
     display: block !important;
     padding-bottom: 1rem;
     margin-bottom: 1.5rem;
-    border-bottom: 2px solid #d4af37;
+    border-bottom: 2px solid #18181b;
   }
 }
