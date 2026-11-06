@@ -1,160 +1,161 @@
-/* 
- * Eventexo — Minimalist Obsidian & Chrome Design System
- * Aesthetic: Apple Pro / Raycast / Linear Sleek Dark Mode
- * Typography: Plus Jakarta Sans + Inter
- */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
-
-:root {
-  --bg-obsidian: #000000;
-  --bg-surface-1: #09090b;
-  --bg-surface-2: #111116;
-  --bg-card: rgba(18, 18, 23, 0.75);
-  
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-medium: rgba(255, 255, 255, 0.16);
-  --border-hover: rgba(255, 255, 255, 0.32);
-
-  --chrome-light: #ffffff;
-  --chrome-mid: #d4d4d8;
-  --chrome-dark: #71717a;
-  --chrome-gradient: linear-gradient(180deg, #ffffff 0%, #d4d4d8 55%, #71717a 100%);
-  --chrome-glow: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 45%, transparent 70%);
-}
-
-body {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--bg-obsidian);
-  color: #f4f4f5;
-  overflow-x: hidden;
-  letter-spacing: -0.01em;
-}
-
-/* Chrome Gradient Typography */
-.text-chrome {
-  background: linear-gradient(180deg, #ffffff 0%, #e4e4e7 45%, #a1a1aa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-chrome-pure {
-  background: linear-gradient(180deg, #ffffff 15%, #d4d4d8 70%, #71717a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-chrome-ice {
-  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #94a3b8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Chrome Action Buttons */
-.btn-chrome {
-  background: #ffffff;
-  color: #000000;
-  font-weight: 700;
-  border-radius: 9999px;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), 0 4px 20px -2px rgba(255, 255, 255, 0.25);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-chrome:hover {
-  background: #f4f4f5;
-  transform: translateY(-2px);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4), 0 8px 30px -4px rgba(255, 255, 255, 0.35);
-}
-
-.btn-chrome-outline {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  border-radius: 9999px;
-  backdrop-filter: blur(12px);
-  transition: all 0.25s ease;
-}
-
-.btn-chrome-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #ffffff;
-  transform: translateY(-1px);
-}
-
-/* Frosted Glass Panels */
-.glass-obsidian {
-  background: var(--bg-card);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--border-subtle);
-  border-radius: 1.25rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.glass-obsidian:hover {
-  border-color: var(--border-medium);
-  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(255, 255, 255, 0.04);
-}
-
-/* Chrome Badges */
-.chrome-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.3rem 0.85rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #d4d4d8;
-}
-
-.chrome-badge-active {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.4);
-  color: #ffffff;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.12);
-}
-
-/* Ambient Backlight Orbs */
-.chrome-glow-orb {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(100px);
-  pointer-events: none;
-  opacity: 0.18;
-}
-
-/* Minimalist Dot Grid Background */
-.bg-grid-obsidian {
-  background-size: 32px 32px;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-}
-
-/* Subtle Shimmer Animation */
-@keyframes chromeShimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.animate-shimmer {
-  position: relative;
-  overflow: hidden;
-}
-
-.animate-shimmer::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
-  animation: chromeShimmer 3.5s infinite;
-}
+—/—*— —
+— —*— —E—v—e—n—t—e—x—o— ——— —M—i—n—i—m—a—l—i—s—t— —O—b—s—i—d—i—a—n— —&— —C—h—r—o—m—e— —D—e—s—i—g—n— —S—y—s—t—e—m—
+— —*— —A—e—s—t—h—e—t—i—c—:— —A—p—p—l—e— —P—r—o— —/— —R—a—y—c—a—s—t— —/— —L—i—n—e—a—r— —S—l—e—e—k— —D—a—r—k— —M—o—d—e—
+— —*— —T—y—p—o—g—r—a—p—h—y—:— —P—l—u—s— —J—a—k—a—r—t—a— —S—a—n—s— —+— —I—n—t—e—r—
+— —*—/—
+—
+—@—i—m—p—o—r—t— —u—r—l—(—'—h—t—t—p—s—:—/—/—f—o—n—t—s—.—g—o—o—g—l—e—a—p—i—s—.—c—o—m—/—c—s—s—2—?—f—a—m—i—l—y—=—I—n—t—e—r—:—w—g—h—t—@—3—0—0—;—4—0—0—;—5—0—0—;—6—0—0—;—7—0—0—&—f—a—m—i—l—y—=—P—l—u—s—+—J—a—k—a—r—t—a—+—S—a—n—s—:—w—g—h—t—@—3—0—0—;—4—0—0—;—5—0—0—;—6—0—0—;—7—0—0—;—8—0—0—;—9—0—0—&—d—i—s—p—l—a—y—=—s—w—a—p—'—)—;—
+—
+—:—r—o—o—t— —{—
+— — —-—-—b—g—-—o—b—s—i—d—i—a—n—:— —#—0—0—0—0—0—0—;—
+— — —-—-—b—g—-—s—u—r—f—a—c—e—-—1—:— —#—0—9—0—9—0—b—;—
+— — —-—-—b—g—-—s—u—r—f—a—c—e—-—2—:— —#—1—1—1—1—1—6—;—
+— — —-—-—b—g—-—c—a—r—d—:— —r—g—b—a—(—1—8—,— —1—8—,— —2—3—,— —0—.—7—5—)—;—
+— — —
+— — —-—-—b—o—r—d—e—r—-—s—u—b—t—l—e—:— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—0—8—)—;—
+— — —-—-—b—o—r—d—e—r—-—m—e—d—i—u—m—:— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—1—6—)—;—
+— — —-—-—b—o—r—d—e—r—-—h—o—v—e—r—:— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—3—2—)—;—
+—
+— — —-—-—c—h—r—o—m—e—-—l—i—g—h—t—:— —#—f—f—f—f—f—f—;—
+— — —-—-—c—h—r—o—m—e—-—m—i—d—:— —#—d—4—d—4—d—8—;—
+— — —-—-—c—h—r—o—m—e—-—d—a—r—k—:— —#—7—1—7—1—7—a—;—
+— — —-—-—c—h—r—o—m—e—-—g—r—a—d—i—e—n—t—:— —l—i—n—e—a—r—-—g—r—a—d—i—e—n—t—(—1—8—0—d—e—g—,— —#—f—f—f—f—f—f— —0—%—,— —#—d—4—d—4—d—8— —5—5—%—,— —#—7—1—7—1—7—a— —1—0—0—%—)—;—
+— — —-—-—c—h—r—o—m—e—-—g—l—o—w—:— —r—a—d—i—a—l—-—g—r—a—d—i—e—n—t—(—c—i—r—c—l—e—,— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—0—8—)— —0—%—,— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—0—2—)— —4—5—%—,— —t—r—a—n—s—p—a—r—e—n—t— —7—0—%—)—;—
+—}—
+—
+—b—o—d—y— —{—
+— — —f—o—n—t—-—f—a—m—i—l—y—:— —'—P—l—u—s— —J—a—k—a—r—t—a— —S—a—n—s—'—,— —-—a—p—p—l—e—-—s—y—s—t—e—m—,— —B—l—i—n—k—M—a—c—S—y—s—t—e—m—F—o—n—t—,— —s—a—n—s—-—s—e—r—i—f—;—
+— — —b—a—c—k—g—r—o—u—n—d—-—c—o—l—o—r—:— —v—a—r—(—-—-—b—g—-—o—b—s—i—d—i—a—n—)—;—
+— — —c—o—l—o—r—:— —#—f—4—f—4—f—5—;—
+— — —o—v—e—r—f—l—o—w—-—x—:— —h—i—d—d—e—n—;—
+— — —l—e—t—t—e—r—-—s—p—a—c—i—n—g—:— —-—0—.—0—1—e—m—;—
+—}—
+—
+—/—*— —C—h—r—o—m—e— —G—r—a—d—i—e—n—t— —T—y—p—o—g—r—a—p—h—y— —*—/—
+—.—t—e—x—t—-—c—h—r—o—m—e— —{—
+— — —b—a—c—k—g—r—o—u—n—d—:— —l—i—n—e—a—r—-—g—r—a—d—i—e—n—t—(—1—8—0—d—e—g—,— —#—f—f—f—f—f—f— —0—%—,— —#—e—4—e—4—e—7— —4—5—%—,— —#—a—1—a—1—a—a— —1—0—0—%—)—;—
+— — —-—w—e—b—k—i—t—-—b—a—c—k—g—r—o—u—n—d—-—c—l—i—p—:— —t—e—x—t—;—
+— — —-—w—e—b—k—i—t—-—t—e—x—t—-—f—i—l—l—-—c—o—l—o—r—:— —t—r—a—n—s—p—a—r—e—n—t—;—
+—}—
+—
+—.—t—e—x—t—-—c—h—r—o—m—e—-—p—u—r—e— —{—
+— — —b—a—c—k—g—r—o—u—n—d—:— —l—i—n—e—a—r—-—g—r—a—d—i—e—n—t—(—1—8—0—d—e—g—,— —#—f—f—f—f—f—f— —1—5—%—,— —#—d—4—d—4—d—8— —7—0—%—,— —#—7—1—7—1—7—a— —1—0—0—%—)—;—
+— — —-—w—e—b—k—i—t—-—b—a—c—k—g—r—o—u—n—d—-—c—l—i—p—:— —t—e—x—t—;—
+— — —-—w—e—b—k—i—t—-—t—e—x—t—-—f—i—l—l—-—c—o—l—o—r—:— —t—r—a—n—s—p—a—r—e—n—t—;—
+—}—
+—
+—.—t—e—x—t—-—c—h—r—o—m—e—-—i—c—e— —{—
+— — —b—a—c—k—g—r—o—u—n—d—:— —l—i—n—e—a—r—-—g—r—a—d—i—e—n—t—(—1—3—5—d—e—g—,— —#—f—f—f—f—f—f— —0—%—,— —#—f—1—f—5—f—9— —5—0—%—,— —#—9—4—a—3—b—8— —1—0—0—%—)—;—
+— — —-—w—e—b—k—i—t—-—b—a—c—k—g—r—o—u—n—d—-—c—l—i—p—:— —t—e—x—t—;—
+— — —-—w—e—b—k—i—t—-—t—e—x—t—-—f—i—l—l—-—c—o—l—o—r—:— —t—r—a—n—s—p—a—r—e—n—t—;—
+—}—
+—
+—/—*— —C—h—r—o—m—e— —A—c—t—i—o—n— —B—u—t—t—o—n—s— —*—/—
+—.—b—t—n—-—c—h—r—o—m—e— —{—
+— — —b—a—c—k—g—r—o—u—n—d—:— —#—f—f—f—f—f—f—;—
+— — —c—o—l—o—r—:— —#—0—0—0—0—0—0—;—
+— — —f—o—n—t—-—w—e—i—g—h—t—:— —7—0—0—;—
+— — —b—o—r—d—e—r—-—r—a—d—i—u—s—:— —9—9—9—9—p—x—;—
+— — —b—o—x—-—s—h—a—d—o—w—:— —0— —0— —0— —1—p—x— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—2—)—,— —0— —4—p—x— —2—0—p—x— —-—2—p—x— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—2—5—)—;—
+— — —t—r—a—n—s—i—t—i—o—n—:— —a—l—l— —0—.—2—5—s— —c—u—b—i—c—-—b—e—z—i—e—r—(—0—.—1—6—,— —1—,— —0—.—3—,— —1—)—;—
+— — —p—o—s—i—t—i—o—n—:— —r—e—l—a—t—i—v—e—;—
+— — —o—v—e—r—f—l—o—w—:— —h—i—d—d—e—n—;—
+—}—
+—
+—.—b—t—n—-—c—h—r—o—m—e—:—h—o—v—e—r— —{—
+— — —b—a—c—k—g—r—o—u—n—d—:— —#—f—4—f—4—f—5—;—
+— — —t—r—a—n—s—f—o—r—m—:— —t—r—a—n—s—l—a—t—e—Y—(—-—2—p—x—)—;—
+— — —b—o—x—-—s—h—a—d—o—w—:— —0— —0— —0— —1—p—x— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—4—)—,— —0— —8—p—x— —3—0—p—x— —-—4—p—x— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—3—5—)—;—
+—}—
+—
+—.—b—t—n—-—c—h—r—o—m—e—-—o—u—t—l—i—n—e— —{—
+— — —b—a—c—k—g—r—o—u—n—d—:— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—0—4—)—;—
+— — —b—o—r—d—e—r—:— —1—p—x— —s—o—l—i—d— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—1—2—)—;—
+— — —c—o—l—o—r—:— —#—f—f—f—f—f—f—;—
+— — —b—o—r—d—e—r—-—r—a—d—i—u—s—:— —9—9—9—9—p—x—;—
+— — —b—a—c—k—d—r—o—p—-—f—i—l—t—e—r—:— —b—l—u—r—(—1—2—p—x—)—;—
+— — —t—r—a—n—s—i—t—i—o—n—:— —a—l—l— —0—.—2—5—s— —e—a—s—e—;—
+—}—
+—
+—.—b—t—n—-—c—h—r—o—m—e—-—o—u—t—l—i—n—e—:—h—o—v—e—r— —{—
+— — —b—a—c—k—g—r—o—u—n—d—:— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—1—)—;—
+— — —b—o—r—d—e—r—-—c—o—l—o—r—:— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—3—)—;—
+— — —c—o—l—o—r—:— —#—f—f—f—f—f—f—;—
+— — —t—r—a—n—s—f—o—r—m—:— —t—r—a—n—s—l—a—t—e—Y—(—-—1—p—x—)—;—
+—}—
+—
+—/—*— —F—r—o—s—t—e—d— —G—l—a—s—s— —P—a—n—e—l—s— —*—/—
+—.—g—l—a—s—s—-—o—b—s—i—d—i—a—n— —{—
+— — —b—a—c—k—g—r—o—u—n—d—:— —v—a—r—(—-—-—b—g—-—c—a—r—d—)—;—
+— — —b—a—c—k—d—r—o—p—-—f—i—l—t—e—r—:— —b—l—u—r—(—2—4—p—x—)—;—
+— — —-—w—e—b—k—i—t—-—b—a—c—k—d—r—o—p—-—f—i—l—t—e—r—:— —b—l—u—r—(—2—4—p—x—)—;—
+— — —b—o—r—d—e—r—:— —1—p—x— —s—o—l—i—d— —v—a—r—(—-—-—b—o—r—d—e—r—-—s—u—b—t—l—e—)—;—
+— — —b—o—r—d—e—r—-—r—a—d—i—u—s—:— —1—.—2—5—r—e—m—;—
+— — —t—r—a—n—s—i—t—i—o—n—:— —b—o—r—d—e—r—-—c—o—l—o—r— —0—.—3—s— —e—a—s—e—,— —b—o—x—-—s—h—a—d—o—w— —0—.—3—s— —e—a—s—e—;—
+—}—
+—
+—.—g—l—a—s—s—-—o—b—s—i—d—i—a—n—:—h—o—v—e—r— —{—
+— — —b—o—r—d—e—r—-—c—o—l—o—r—:— —v—a—r—(—-—-—b—o—r—d—e—r—-—m—e—d—i—u—m—)—;—
+— — —b—o—x—-—s—h—a—d—o—w—:— —0— —1—2—p—x— —4—0—p—x— —-—1—0—p—x— —r—g—b—a—(—0—,— —0—,— —0—,— —0—.—8—)—,— —0— —0— —2—0—p—x— —-—5—p—x— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—0—4—)—;—
+—}—
+—
+—/—*— —C—h—r—o—m—e— —B—a—d—g—e—s— —*—/—
+—.—c—h—r—o—m—e—-—b—a—d—g—e— —{—
+— — —d—i—s—p—l—a—y—:— —i—n—l—i—n—e—-—f—l—e—x—;—
+— — —a—l—i—g—n—-—i—t—e—m—s—:— —c—e—n—t—e—r—;—
+— — —g—a—p—:— —0—.—3—7—5—r—e—m—;—
+— — —p—a—d—d—i—n—g—:— —0—.—3—r—e—m— —0—.—8—5—r—e—m—;—
+— — —f—o—n—t—-—s—i—z—e—:— —0—.—7—2—r—e—m—;—
+— — —f—o—n—t—-—w—e—i—g—h—t—:— —6—0—0—;—
+— — —l—e—t—t—e—r—-—s—p—a—c—i—n—g—:— —0—.—0—4—e—m—;—
+— — —t—e—x—t—-—t—r—a—n—s—f—o—r—m—:— —u—p—p—e—r—c—a—s—e—;—
+— — —b—o—r—d—e—r—-—r—a—d—i—u—s—:— —9—9—9—9—p—x—;—
+— — —b—a—c—k—g—r—o—u—n—d—:— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—0—5—)—;—
+— — —b—o—r—d—e—r—:— —1—p—x— —s—o—l—i—d— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—1—2—)—;—
+— — —c—o—l—o—r—:— —#—d—4—d—4—d—8—;—
+—}—
+—
+—.—c—h—r—o—m—e—-—b—a—d—g—e—-—a—c—t—i—v—e— —{—
+— — —b—a—c—k—g—r—o—u—n—d—:— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—1—5—)—;—
+— — —b—o—r—d—e—r—-—c—o—l—o—r—:— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—4—)—;—
+— — —c—o—l—o—r—:— —#—f—f—f—f—f—f—;—
+— — —b—o—x—-—s—h—a—d—o—w—:— —0— —0— —1—5—p—x— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—1—2—)—;—
+—}—
+—
+—/—*— —A—m—b—i—e—n—t— —B—a—c—k—l—i—g—h—t— —O—r—b—s— —*—/—
+—.—c—h—r—o—m—e—-—g—l—o—w—-—o—r—b— —{—
+— — —p—o—s—i—t—i—o—n—:— —a—b—s—o—l—u—t—e—;—
+— — —b—o—r—d—e—r—-—r—a—d—i—u—s—:— —9—9—9—9—p—x—;—
+— — —f—i—l—t—e—r—:— —b—l—u—r—(—1—0—0—p—x—)—;—
+— — —p—o—i—n—t—e—r—-—e—v—e—n—t—s—:— —n—o—n—e—;—
+— — —o—p—a—c—i—t—y—:— —0—.—1—8—;—
+—}—
+—
+—/—*— —M—i—n—i—m—a—l—i—s—t— —D—o—t— —G—r—i—d— —B—a—c—k—g—r—o—u—n—d— —*—/—
+—.—b—g—-—g—r—i—d—-—o—b—s—i—d—i—a—n— —{—
+— — —b—a—c—k—g—r—o—u—n—d—-—s—i—z—e—:— —3—2—p—x— —3—2—p—x—;—
+— — —b—a—c—k—g—r—o—u—n—d—-—i—m—a—g—e—:— —r—a—d—i—a—l—-—g—r—a—d—i—e—n—t—(—r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—0—8—)— —1—p—x—,— —t—r—a—n—s—p—a—r—e—n—t— —1—p—x—)—;—
+—}—
+—
+—/—*— —S—u—b—t—l—e— —S—h—i—m—m—e—r— —A—n—i—m—a—t—i—o—n— —*—/—
+—@—k—e—y—f—r—a—m—e—s— —c—h—r—o—m—e—S—h—i—m—m—e—r— —{—
+— — —0—%— —{— —t—r—a—n—s—f—o—r—m—:— —t—r—a—n—s—l—a—t—e—X—(—-—1—0—0—%—)—;— —}—
+— — —1—0—0—%— —{— —t—r—a—n—s—f—o—r—m—:— —t—r—a—n—s—l—a—t—e—X—(—1—0—0—%—)—;— —}—
+—}—
+—
+—.—a—n—i—m—a—t—e—-—s—h—i—m—m—e—r— —{—
+— — —p—o—s—i—t—i—o—n—:— —r—e—l—a—t—i—v—e—;—
+— — —o—v—e—r—f—l—o—w—:— —h—i—d—d—e—n—;—
+—}—
+—
+—.—a—n—i—m—a—t—e—-—s—h—i—m—m—e—r—:—:—a—f—t—e—r— —{—
+— — —c—o—n—t—e—n—t—:— —'—'—;—
+— — —p—o—s—i—t—i—o—n—:— —a—b—s—o—l—u—t—e—;—
+— — —t—o—p—:— —0—;—
+— — —l—e—f—t—:— —0—;—
+— — —w—i—d—t—h—:— —1—0—0—%—;—
+— — —h—e—i—g—h—t—:— —1—0—0—%—;—
+— — —b—a—c—k—g—r—o—u—n—d—:— —l—i—n—e—a—r—-—g—r—a—d—i—e—n—t—(—9—0—d—e—g—,— —t—r—a—n—s—p—a—r—e—n—t—,— —r—g—b—a—(—2—5—5—,— —2—5—5—,— —2—5—5—,— —0—.—0—6—)—,— —t—r—a—n—s—p—a—r—e—n—t—)—;—
+— — —a—n—i—m—a—t—i—o—n—:— —c—h—r—o—m—e—S—h—i—m—m—e—r— —3—.—5—s— —i—n—f—i—n—i—t—e—;—
+—}—
+—
