@@ -29,6 +29,15 @@
   <!-- Custom Stylesheets -->
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/dashboard.css">
+
+  <!-- Authentication Security Guard -->
+  <script src="js/auth.js"></script>
+  <script>
+    // Strict Auth Protection: Protect all private event and client data
+    if (typeof AuthStore !== 'undefined' && !AuthStore.isAuthenticated()) {
+      window.location.replace('login.html');
+    }
+  </script>
 </head>
 <body class="bg-black text-zinc-100 flex h-screen overflow-hidden antialiased">
 

@@ -19,8 +19,21 @@ const AuthStore = {
 
   isAuthenticated() {
     return !!this.getUser();
+  },
+
+  requireAuth() {
+    if (!this.isAuthenticated()) {
+      // Remember where the user was trying to go
+      window.location.href = 'login.html';
+      return false;
+    }
+    return true;
   }
 };
+
+function quickDemoLogin() {
+  completeGoogleSignIn('Shreyansh Mehta', 'shreyansh@eventexo.com', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80');
+}
 
 let currentOTP = null;
 let otpCountdownTimer = null;

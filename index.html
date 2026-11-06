@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Primary Meta Tags -->
-  <title>Eventexo — Precision Event Operating System | Minimalist Obsidian & Chrome</title>
+  <title>Eventexo — Precision Event Operating System | World-Class Productions</title>
   <meta name="title" content="Eventexo — Precision Event Operating System">
   <meta name="description" content="The enterprise-grade operating system for world-class weddings, tech summits, and VIP galas. Intelligent budgeting, AI blueprints, and guest RSVP orchestration.">
   <meta name="keywords" content="Eventexo, event management software, AI event planner, wedding planner app, conference organizer, budget governance">
@@ -36,10 +36,10 @@
 <body class="bg-black text-zinc-100 antialiased selection:bg-white selection:text-black">
 
   <!-- Subtle Chrome Ambient Backlight -->
-  <div class="chrome-glow-orb top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-white"></div>
-  <div class="chrome-glow-orb top-[40%] right-[-10%] w-[600px] h-[600px] bg-zinc-400"></div>
+  <div class="chrome-glow-orb top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-white opacity-10"></div>
+  <div class="chrome-glow-orb top-[40%] right-[-10%] w-[600px] h-[600px] bg-zinc-500 opacity-10"></div>
 
-  <!-- ================= 1. MINIMALIST CHROME NAVIGATION ================= -->
+  <!-- ================= 1. PUBLIC SHOWCASE NAVIGATION ================= -->
   <nav class="sticky top-0 z-40 w-full border-b border-white/[0.08] bg-black/80 backdrop-blur-2xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
@@ -55,30 +55,22 @@
           </div>
         </a>
 
-        <!-- Desktop Navigation Links -->
+        <!-- Desktop Navigation Links (Anchor sections on the public site) -->
         <div class="hidden lg:flex items-center gap-8 text-xs font-medium tracking-wide text-zinc-400">
           <a href="#experiences" class="hover:text-white transition-colors">Solutions</a>
           <a href="#pillars" class="hover:text-white transition-colors">Architecture</a>
-          <a href="app.html" onclick="localStorage.setItem('goto_view', 'ai-studio')" class="hover:text-white transition-colors flex items-center gap-1.5">
-            <span>AI Atelier</span>
-            <span class="px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-white/10 text-white border border-white/20">AI</span>
-          </a>
-          <a href="app.html" onclick="localStorage.setItem('goto_view', 'guests')" class="hover:text-white transition-colors flex items-center gap-1.5">
-            <span>Guest RSVP</span>
+          <a href="#terminal-preview" class="hover:text-white transition-colors flex items-center gap-1.5">
+            <span>Live Sandbox</span>
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
           </a>
-          <a href="app.html" onclick="localStorage.setItem('goto_view', 'budget')" class="hover:text-white transition-colors">Budget Governance</a>
-          <a href="app.html" onclick="localStorage.setItem('goto_view', 'portal')" class="hover:text-white transition-colors">Client Portal</a>
+          <a href="#capabilities" class="hover:text-white transition-colors">Features</a>
+          <a href="login.html" class="hover:text-white transition-colors">Enterprise Security</a>
         </div>
 
-        <!-- Action CTAs -->
-        <div class="hidden sm:flex items-center gap-3">
+        <!-- Dynamic Auth Actions Container (Switches based on sign-in status) -->
+        <div id="nav-auth-actions" class="hidden sm:flex items-center gap-3">
           <a href="login.html" class="text-xs font-semibold text-zinc-300 hover:text-white px-3 py-2 transition-colors">
             Sign In
-          </a>
-          <a href="app.html" class="btn-chrome-outline px-4 py-2 text-xs font-semibold flex items-center gap-2">
-            <i data-lucide="layout-dashboard" class="w-3.5 h-3.5 text-zinc-300"></i>
-            <span>Dashboard</span>
           </a>
           <a href="register.html" class="btn-chrome px-4 py-2 text-xs font-bold flex items-center gap-2">
             <span>Get Started</span>
@@ -87,7 +79,7 @@
         </div>
 
         <!-- Mobile Menu Toggle -->
-        <button onclick="window.location.href='app.html'" class="lg:hidden p-2 text-zinc-400 hover:text-white">
+        <button onclick="window.location.href='login.html'" class="lg:hidden p-2 text-zinc-400 hover:text-white">
           <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
       </div>
@@ -119,13 +111,13 @@
 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
-          <a href="app.html" class="btn-chrome w-full sm:w-auto px-8 py-3.5 text-sm flex items-center justify-center gap-2">
-            <span>Launch Executive Suite</span>
-            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          <a href="register.html" class="btn-chrome w-full sm:w-auto px-8 py-3.5 text-sm flex items-center justify-center gap-2">
+            <span>Get Started Free</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </a>
-          <a href="app.html" onclick="localStorage.setItem('goto_view', 'ai-studio')" class="btn-chrome-outline w-full sm:w-auto px-7 py-3.5 text-sm flex items-center justify-center gap-2">
-            <i data-lucide="sparkles" class="w-4 h-4 text-zinc-300"></i>
-            <span>Explore AI Atelier</span>
+          <a href="login.html" class="btn-chrome-outline w-full sm:w-auto px-7 py-3.5 text-sm flex items-center justify-center gap-2">
+            <i data-lucide="log-in" class="w-4 h-4 text-zinc-300"></i>
+            <span>Sign In to Console</span>
           </a>
         </div>
 
@@ -135,12 +127,12 @@
           <span class="text-zinc-700">•</span>
           <span class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-zinc-300"></i> Dietary & RSVP Verification</span>
           <span class="text-zinc-700">•</span>
-          <span class="flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4 text-zinc-300"></i> Fiscal Budget Audit Trail</span>
+          <span class="flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4 text-zinc-300"></i> End-to-End Enterprise Auth</span>
         </div>
       </div>
 
-      <!-- ================= 3. EXECUTIVE TERMINAL PREVIEW ================= -->
-      <div class="max-w-5xl mx-auto glass-obsidian p-5 sm:p-7 shadow-2xl relative">
+      <!-- ================= 3. EXECUTIVE TERMINAL PREVIEW (SANDBOX DEMO) ================= -->
+      <div id="terminal-preview" class="max-w-5xl mx-auto glass-obsidian p-5 sm:p-7 shadow-2xl relative">
         
         <!-- Window Bar -->
         <div class="flex items-center justify-between pb-5 mb-6 border-b border-white/[0.08]">
@@ -151,11 +143,12 @@
               <span class="w-3 h-3 rounded-full bg-zinc-700"></span>
             </div>
             <div class="h-4 w-[1px] bg-white/10 mx-1"></div>
-            <span class="text-xs font-semibold text-zinc-300 tracking-wide font-mono">eventexo-core / production-runtime</span>
+            <span class="text-xs font-semibold text-zinc-300 tracking-wide font-mono">eventexo-core / sandbox-preview</span>
+            <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-white/10 text-white border border-white/20">DEMO VIEW</span>
           </div>
-          <a href="app.html" class="text-xs text-zinc-400 hover:text-white font-medium flex items-center gap-1.5 transition-colors">
-            <span>Open Live Console</span>
-            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <a href="login.html" class="text-xs text-zinc-300 hover:text-white font-semibold flex items-center gap-1.5 transition-colors">
+            <span>Sign In to Access Your Live Console</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
 
@@ -228,8 +221,8 @@
                 <span class="font-bold text-white">14%</span>
               </div>
             </div>
-            <a href="app.html" class="mt-4 block text-center py-2.5 rounded-lg bg-white/10 hover:bg-white/15 text-white text-xs font-semibold border border-white/15 transition-all">
-              Launch Live Console →
+            <a href="login.html" class="mt-4 block text-center py-2.5 rounded-lg bg-white/10 hover:bg-white/15 text-white text-xs font-semibold border border-white/15 transition-all">
+              Sign In to Launch Live Console →
             </a>
           </div>
         </div>
@@ -364,8 +357,8 @@
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-white"></i> Optional Google Gemini 1.5 Flash connectivity</li>
             </ul>
           </div>
-          <a href="app.html" onclick="localStorage.setItem('goto_view', 'ai-studio')" class="text-xs font-semibold text-white hover:underline flex items-center gap-1.5">
-            <span>Explore AI Studio</span>
+          <a href="login.html" class="text-xs font-semibold text-white hover:underline flex items-center gap-1.5">
+            <span>Sign In to Launch AI Studio</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
@@ -385,8 +378,8 @@
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-white"></i> Instant guest roster additions and status updates</li>
             </ul>
           </div>
-          <a href="app.html" onclick="localStorage.setItem('goto_view', 'guests')" class="text-xs font-semibold text-white hover:underline flex items-center gap-1.5">
-            <span>Explore Guest Management</span>
+          <a href="login.html" class="text-xs font-semibold text-white hover:underline flex items-center gap-1.5">
+            <span>Sign In to Manage Guests</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
@@ -406,8 +399,8 @@
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-white"></i> Clean print-ready financial statements</li>
             </ul>
           </div>
-          <a href="app.html" onclick="localStorage.setItem('goto_view', 'budget')" class="text-xs font-semibold text-white hover:underline flex items-center gap-1.5">
-            <span>Explore Budget Planner</span>
+          <a href="login.html" class="text-xs font-semibold text-white hover:underline flex items-center gap-1.5">
+            <span>Sign In to Budget Planner</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
@@ -429,15 +422,35 @@
       </div>
       <div>&copy; 2027 Eventexo Technologies Inc. Precision event management.</div>
       <div class="flex items-center gap-6">
-        <a href="app.html" class="text-white hover:underline font-semibold">Open SaaS Suite</a>
-        <a href="app.html" onclick="localStorage.setItem('goto_view', 'about')" class="hover:text-white transition-colors">Our Story</a>
-        <a href="app.html" onclick="localStorage.setItem('goto_view', 'portal')" class="hover:text-white transition-colors">Customer Portal</a>
+        <a href="login.html" class="text-white hover:underline font-semibold">Sign In</a>
+        <a href="register.html" class="hover:text-white transition-colors">Create Account</a>
+        <a href="#experiences" class="hover:text-white transition-colors">Solutions</a>
+        <a href="#pillars" class="hover:text-white transition-colors">Architecture</a>
       </div>
     </div>
   </footer>
 
+  <!-- Scripts -->
+  <script src="js/auth.js"></script>
   <script>
     if (window.lucide) lucide.createIcons();
+
+    // Check if user is already signed in; if so, update navigation bar dynamically!
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof AuthStore !== 'undefined' && AuthStore.isAuthenticated()) {
+        const user = AuthStore.getUser();
+        const navContainer = document.getElementById('nav-auth-actions');
+        if (navContainer) {
+          navContainer.innerHTML = `
+            <a href="app.html" class="btn-chrome px-4 py-2 text-xs font-bold flex items-center gap-2 shadow-lg">
+              <i data-lucide="layout-dashboard" class="w-3.5 h-3.5"></i>
+              <span>Dashboard (${user.name.split(' ')[0]})</span>
+            </a>
+          `;
+          if (window.lucide) lucide.createIcons();
+        }
+      }
+    });
   </script>
 </body>
 </html>
