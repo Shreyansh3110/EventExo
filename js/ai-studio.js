@@ -1,5 +1,5 @@
 /**
- * Eventexo - AI Design Studio & Generative Event Architect Engine
+ * Eventexo — Luxury AI Design Atelier & Generative Event Architect Engine
  * Powers multi-vibe aesthetic generation, dynamic budget allocations,
  * 1-click PDF/Print export, and optional live Gemini API generation.
  */
@@ -22,7 +22,7 @@ function generateAIEventBlueprint() {
   outputContainer.classList.add('hidden');
   loadingState.classList.remove('hidden');
   if (loadingText) {
-    loadingText.innerText = apiKey ? "Synthesizing custom concept via Gemini 1.5 Flash..." : "Eventexo Neural Architect is designing your blueprint...";
+    loadingText.innerText = apiKey ? "Synthesizing custom concept via Gemini 1.5 Flash..." : "Harmonizing royal aesthetics, floral architecture & budget velocity...";
   }
 
   // If user provided a Gemini API Key, attempt live API generation
@@ -44,7 +44,7 @@ function generateAIEventBlueprint() {
         renderAIGeneratedPlan(eventType, vibe, guests, budget, notes);
         if (window.lucide) lucide.createIcons();
         if (typeof showToast === 'function') {
-          showToast("Built-in Architect Fallback", "Loaded bespoke Eventexo blueprint.", "sparkles");
+          showToast("Royal Architect Fallback", "Loaded bespoke Eventexo blueprint.", "sparkles");
         }
       });
   } else {
@@ -54,7 +54,7 @@ function generateAIEventBlueprint() {
       outputContainer.classList.remove('hidden');
       renderAIGeneratedPlan(eventType, vibe, guests, budget, notes);
       if (window.lucide) lucide.createIcons();
-    }, 800);
+    }, 750);
   }
 }
 
@@ -176,7 +176,7 @@ function renderAIGeneratedPlan(type, vibe, guests, budget, notes, geminiData = n
   const perGuest = Math.round(budget / guests);
 
   const scheduleItems = geminiData?.schedule || [
-    { time: "04:30 PM", title: "Guest Arrival & Welcome Refreshments", desc: "Ambient acoustic shehnai & sitar duo, artisanal passed canapes." },
+    { time: "04:30 PM", title: "Royal Guest Arrival & Welcome Refreshments", desc: "Ambient acoustic shehnai & sitar duo, artisanal passed canapes." },
     { time: "05:30 PM", title: "Main Ceremony / Keynote Session", desc: "Ceremonial procession, cinematic grand entrance, featured speeches." },
     { time: "07:30 PM", title: "Royal Gourmet Feast Banquet", desc: "Curated multi-course live counters (Pure Veg, Non-Veg, Jain specialties)." },
     { time: "09:15 PM", title: "Sangeet Dance Floor & Dessert Lounge", desc: "Live percussionists, DJ celebration set, late-night artisanal desserts." }
@@ -185,46 +185,46 @@ function renderAIGeneratedPlan(type, vibe, guests, budget, notes, geminiData = n
   container.innerHTML = `
     <!-- Print Header (Visible only when printed) -->
     <div class="print-banner hidden">
-      <h1 style="font-size: 24pt; font-weight: 800; margin: 0;">Eventexo</h1>
-      <p style="font-size: 11pt; color: #475569; margin-top: 4px;">Executive Event Blueprint & Production Plan • Generated for ${type}</p>
+      <h1 style="font-size: 26pt; font-weight: 800; margin: 0; color: #05070e;">EVENTEXO</h1>
+      <p style="font-size: 11pt; color: #996515; margin-top: 4px; font-weight: 700;">Executive Event Blueprint & Strategic Production Plan • ${type}</p>
     </div>
 
     <!-- Concept Header Banner -->
-    <div class="p-6 rounded-2xl bg-gradient-to-r from-indigo-950/80 via-purple-950/60 to-slate-900 border border-indigo-500/30 mb-8">
-      <div class="flex items-center justify-between gap-4 mb-2">
-        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-indigo-400">
-          <i data-lucide="sparkles" class="w-4 h-4 text-indigo-400"></i>
-          <span>${geminiData ? 'Gemini 1.5 Live AI Generated Concept' : 'Eventexo Neural Event Strategy'}</span>
+    <div class="p-8 rounded-3xl bg-gradient-to-r from-[#0b0f1a] via-[#1a1505] to-[#080c16] border border-[#d4af37]/35 mb-8 relative">
+      <div class="flex items-center justify-between gap-4 mb-3">
+        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#d4af37]">
+          <i data-lucide="sparkles" class="w-4 h-4 text-[#d4af37]"></i>
+          <span>${geminiData ? 'Gemini 1.5 Live AI Generated Strategy' : 'Eventexo Neural Architecture'}</span>
         </div>
-        <button onclick="printAIBlueprint()" class="no-print px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold text-white flex items-center gap-1.5 transition-all">
-          <i data-lucide="printer" class="w-3.5 h-3.5 text-cyan-400"></i>
+        <button onclick="printAIBlueprint()" class="no-print btn-gold-outline px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5">
+          <i data-lucide="printer" class="w-3.5 h-3.5 text-[#d4af37]"></i>
           <span>Export Blueprint (PDF / Print)</span>
         </button>
       </div>
-      <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-white mb-2">
+      <h3 class="font-luxury text-2xl sm:text-3xl font-extrabold text-white mb-3">
         ${conceptTitle}
       </h3>
-      <p class="text-sm text-slate-300 leading-relaxed mb-4">
+      <p class="text-sm text-slate-300 leading-relaxed mb-6 font-sans">
         ${conceptNarrative}
       </p>
       <div class="flex flex-wrap items-center gap-3 text-xs font-semibold">
-        <span class="px-3 py-1 rounded-full bg-white/10 text-slate-200 border border-white/10">Type: ${type}</span>
-        <span class="px-3 py-1 rounded-full bg-white/10 text-slate-200 border border-white/10">Guests: ${guests} Attendees</span>
-        <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-          Total: ${EventDataStore.formatCurrency(budget)} (~${EventDataStore.formatCurrency(perGuest)}/guest)
+        <span class="px-3.5 py-1 rounded-full bg-white/5 text-slate-200 border border-white/10">Type: ${type}</span>
+        <span class="px-3.5 py-1 rounded-full bg-white/5 text-slate-200 border border-white/10">Guests: ${guests} Attendees</span>
+        <span class="badge-gold px-3.5 py-1 rounded-full font-bold">
+          Total Allocation: ${EventDataStore.formatCurrency(budget)} (~${EventDataStore.formatCurrency(perGuest)}/guest)
         </span>
       </div>
     </div>
 
     <!-- 1. Color Palette Generator -->
     <div class="mb-8">
-      <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-        <i data-lucide="palette" class="w-4 h-4 text-purple-400"></i>
+      <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-[#d4af37] mb-3 flex items-center gap-1.5">
+        <i data-lucide="palette" class="w-4 h-4 text-[#d4af37]"></i>
         <span>Curated Color Palette & Material Styling</span>
       </h4>
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
         ${selectedVibe.palette.map(color => `
-          <div class="p-3 rounded-xl bg-slate-900/80 border border-white/10 flex flex-col items-center text-center group cursor-pointer hover:border-indigo-500/50 transition-colors" onclick="copyColorCode('${color.hex}')">
+          <div class="p-3.5 rounded-xl bg-[#080c16] border border-[#d4af37]/20 flex flex-col items-center text-center group cursor-pointer hover:border-[#d4af37]/60 transition-all" onclick="copyColorCode('${color.hex}')">
             <div class="w-full h-14 rounded-lg mb-2 shadow-inner border border-white/10 group-hover:scale-105 transition-transform" style="background-color: ${color.hex}"></div>
             <span class="text-xs font-bold text-white">${color.name}</span>
             <span class="text-[11px] font-mono text-slate-400 uppercase mt-0.5">${color.hex}</span>
@@ -235,53 +235,53 @@ function renderAIGeneratedPlan(type, vibe, guests, budget, notes, geminiData = n
 
     <!-- 2. Budget Allocation Breakdown -->
     <div class="mb-8">
-      <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-        <i data-lucide="pie-chart" class="w-4 h-4 text-cyan-400"></i>
+      <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-[#d4af37] mb-3 flex items-center gap-1.5">
+        <i data-lucide="pie-chart" class="w-4 h-4 text-[#d4af37]"></i>
         <span>Optimized Budget Breakdown (${EventDataStore.formatCurrency(budget)})</span>
       </h4>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <div class="p-4 rounded-xl bg-slate-900/60 border border-white/10">
+        <div class="p-4 rounded-xl bg-[#080c16] border border-[#d4af37]/20">
           <div class="text-[11px] text-slate-400 font-semibold uppercase">Venue & Facility (35%)</div>
-          <div class="text-lg font-bold text-white mt-1">${EventDataStore.formatCurrency(venueBudget)}</div>
+          <div class="text-lg font-bold text-[#fde68a] mt-1 font-heading">${EventDataStore.formatCurrency(venueBudget)}</div>
           <div class="text-[11px] text-slate-400 mt-0.5">Palace lawns, ballroom, permits</div>
         </div>
-        <div class="p-4 rounded-xl bg-slate-900/60 border border-white/10">
+        <div class="p-4 rounded-xl bg-[#080c16] border border-[#d4af37]/20">
           <div class="text-[11px] text-slate-400 font-semibold uppercase">Catering & Bar (30%)</div>
-          <div class="text-lg font-bold text-white mt-1">${EventDataStore.formatCurrency(cateringBudget)}</div>
+          <div class="text-lg font-bold text-[#fde68a] mt-1 font-heading">${EventDataStore.formatCurrency(cateringBudget)}</div>
           <div class="text-[11px] text-slate-400 mt-0.5">Live gourmet stalls, cocktail bar</div>
         </div>
-        <div class="p-4 rounded-xl bg-slate-900/60 border border-white/10">
+        <div class="p-4 rounded-xl bg-[#080c16] border border-[#d4af37]/20">
           <div class="text-[11px] text-slate-400 font-semibold uppercase">Decor & Florals (15%)</div>
-          <div class="text-lg font-bold text-white mt-1">${EventDataStore.formatCurrency(decorBudget)}</div>
+          <div class="text-lg font-bold text-[#fde68a] mt-1 font-heading">${EventDataStore.formatCurrency(decorBudget)}</div>
           <div class="text-[11px] text-slate-400 mt-0.5">Mandap, centerpieces, lighting</div>
         </div>
-        <div class="p-4 rounded-xl bg-slate-900/60 border border-white/10">
+        <div class="p-4 rounded-xl bg-[#080c16] border border-[#d4af37]/20">
           <div class="text-[11px] text-slate-400 font-semibold uppercase">Photo & Cinema (10%)</div>
-          <div class="text-lg font-bold text-white mt-1">${EventDataStore.formatCurrency(photoBudget)}</div>
+          <div class="text-lg font-bold text-[#fde68a] mt-1 font-heading">${EventDataStore.formatCurrency(photoBudget)}</div>
           <div class="text-[11px] text-slate-400 mt-0.5">Full coverage + 4K drone reel</div>
         </div>
-        <div class="p-4 rounded-xl bg-slate-900/60 border border-white/10">
+        <div class="p-4 rounded-xl bg-[#080c16] border border-[#d4af37]/20">
           <div class="text-[11px] text-slate-400 font-semibold uppercase">AV & Music (10%)</div>
-          <div class="text-lg font-bold text-white mt-1">${EventDataStore.formatCurrency(avBudget)}</div>
+          <div class="text-lg font-bold text-[#fde68a] mt-1 font-heading">${EventDataStore.formatCurrency(avBudget)}</div>
           <div class="text-[11px] text-slate-400 mt-0.5">DJ, live sound, stage rig, Dhol</div>
         </div>
-        <div class="p-4 rounded-xl bg-indigo-950/40 border border-indigo-500/30 flex flex-col justify-center items-center text-center">
-          <div class="text-xs text-indigo-300 font-bold">Projected Cost / Guest</div>
-          <div class="text-xl font-extrabold text-white mt-0.5">${EventDataStore.formatCurrency(perGuest)}</div>
+        <div class="p-4 rounded-xl bg-[#0b0f1a] border border-[#d4af37]/30 flex flex-col justify-center items-center text-center">
+          <div class="text-xs text-[#d4af37] font-bold">Projected Cost / Guest</div>
+          <div class="text-xl font-extrabold text-white mt-0.5 font-heading">${EventDataStore.formatCurrency(perGuest)}</div>
         </div>
       </div>
     </div>
 
     <!-- 3. Run-of-Show Schedule -->
     <div class="mb-8">
-      <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-        <i data-lucide="clock" class="w-4 h-4 text-emerald-400"></i>
+      <h4 class="text-xs font-bold uppercase tracking-[0.2em] text-[#d4af37] mb-3 flex items-center gap-1.5">
+        <i data-lucide="clock" class="w-4 h-4 text-[#d4af37]"></i>
         <span>AI Generated Run-of-Show Schedule</span>
       </h4>
       <div class="space-y-2.5">
         ${scheduleItems.map(item => `
-          <div class="flex items-center gap-4 p-3 rounded-xl bg-slate-900/40 border border-white/5">
-            <span class="font-mono text-xs font-bold text-indigo-400 w-24 flex-shrink-0">${item.time}</span>
+          <div class="flex items-center gap-4 p-3.5 rounded-xl bg-[#080c16] border border-[#d4af37]/15">
+            <span class="font-mono text-xs font-bold text-[#fde68a] w-24 flex-shrink-0">${item.time}</span>
             <div class="text-xs text-slate-200">
               <span class="font-bold text-white">${item.title}</span> — ${item.desc}
             </div>
@@ -291,17 +291,17 @@ function renderAIGeneratedPlan(type, vibe, guests, budget, notes, geminiData = n
     </div>
 
     <!-- Quick Action: Apply to Event Wizard -->
-    <div class="no-print p-5 rounded-2xl bg-indigo-950/60 border border-indigo-500/40 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="no-print p-6 rounded-2xl bg-gradient-to-r from-[#0b0f1a] via-[#1a1505] to-[#080c16] border border-[#d4af37]/35 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        <h4 class="font-bold text-white text-sm">Love this event strategy?</h4>
-        <p class="text-xs text-indigo-300 mt-0.5">Transfer this blueprint directly into the Event Creation Wizard or export to PDF.</p>
+        <h4 class="font-luxury font-bold text-white text-base">Satisfied with this creative blueprint?</h4>
+        <p class="text-xs text-[#d4af37] mt-0.5">Transfer this strategy directly into the Event Creation Wizard or export to PDF.</p>
       </div>
       <div class="flex items-center gap-3">
-        <button onclick="printAIBlueprint()" class="px-4 py-2.5 rounded-xl text-xs font-bold bg-white/10 hover:bg-white/20 text-white flex items-center gap-1.5 transition-all">
-          <i data-lucide="printer" class="w-4 h-4 text-cyan-400"></i>
+        <button onclick="printAIBlueprint()" class="btn-gold-outline px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5">
+          <i data-lucide="printer" class="w-4 h-4 text-[#d4af37]"></i>
           <span>Print / PDF</span>
         </button>
-        <button onclick="applyBlueprintToWizard('${type}', '${conceptTitle.replace(/'/g, "\\'")}', ${budget}, ${guests})" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-500/30 flex items-center gap-2 transition-all">
+        <button onclick="applyBlueprintToWizard('${type}', '${conceptTitle.replace(/'/g, "\\'")}', ${budget}, ${guests})" class="btn-gold px-6 py-2.5 rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center gap-2 shadow-lg">
           <span>Apply to Wizard</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </button>

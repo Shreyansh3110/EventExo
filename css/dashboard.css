@@ -1,26 +1,26 @@
 /* 
- * Eventexo SaaS Theme, Dashboard Layout & Print Engine
- * 100% English Design System
+ * Eventexo — Luxury Heritage & Gold Dashboard Styles
+ * Dark Obsidian Navy & Champagne Gold Theme
  */
 
 :root {
-  --bg-dark: #080c16;
-  --panel-bg: rgba(15, 23, 42, 0.7);
-  --panel-border: rgba(255, 255, 255, 0.08);
-  --accent-cyan: #06b6d4;
-  --accent-indigo: #6366f1;
-  --accent-purple: #8b5cf6;
+  --bg-midnight: #05070e;
+  --panel-bg: rgba(12, 16, 28, 0.72);
+  --panel-border: rgba(212, 175, 55, 0.14);
+  --panel-border-hover: rgba(212, 175, 55, 0.38);
+  --gold-primary: #d4af37;
+  --gold-light: #fde68a;
 }
 
 body {
-  background-color: var(--bg-dark);
+  background-color: var(--bg-midnight);
 }
 
-/* Smooth Tab Fade Transition */
+/* Tab Transition */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -32,42 +32,55 @@ body {
   animation: fadeInUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Glassmorphic SaaS Cards */
+/* Glassmorphic Luxury Cards */
 .saas-card {
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(12, 16, 28, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.14);
   border-radius: 1.25rem;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
 .saas-card:hover {
-  border-color: rgba(99, 102, 241, 0.35);
-  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.15);
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 12px 36px -10px rgba(212, 175, 55, 0.12);
+}
+
+/* Gold Gradient Borders */
+.gold-card-featured {
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.08) 0%, rgba(12, 16, 28, 0.8) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
 }
 
 /* KPI Trend Badges */
 .trend-pill-up {
-  background: rgba(16, 185, 129, 0.15);
+  background: rgba(16, 185, 129, 0.12);
   color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+}
+
+.trend-pill-gold {
+  background: rgba(212, 175, 55, 0.12);
+  color: #fde68a;
+  border: 1px solid rgba(212, 175, 55, 0.28);
 }
 
 .trend-pill-neutral {
-  background: rgba(99, 102, 241, 0.15);
+  background: rgba(99, 102, 241, 0.12);
   color: #818cf8;
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  border: 1px solid rgba(99, 102, 241, 0.28);
 }
 
 /* Chart Canvas & SVG helpers */
 .chart-grid-line {
-  stroke: rgba(255, 255, 255, 0.06);
+  stroke: rgba(212, 175, 55, 0.08);
   stroke-dasharray: 4 4;
 }
 
-.chart-area-gradient {
-  fill: url(#revenueGradient);
+.chart-area-gold {
+  fill: url(#revenueGoldGradient);
 }
 
 /* Calendar Widget Grid */
@@ -92,41 +105,44 @@ body {
 }
 
 .cal-day:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  background: rgba(212, 175, 55, 0.1);
+  color: #fde68a;
 }
 
 .cal-day.active {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+  background: linear-gradient(135deg, #d4af37, #996515);
+  color: #05070e;
+  font-weight: 800;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.4);
 }
 
 .cal-event-dot {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: #06b6d4;
+  background-color: #fde68a;
   position: absolute;
   bottom: 3px;
 }
 
-/* Nav Item Active State */
+/* Nav Item Luxury State */
 .sidebar-link {
   color: #94a3b8;
   border-left: 3px solid transparent;
   transition: all 0.2s ease;
+  position: relative;
 }
 
 .sidebar-link.active {
-  background: linear-gradient(90deg, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0.05) 100%);
-  color: #ffffff;
-  border-left-color: #6366f1;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0.03) 100%);
+  color: #fde68a;
+  border-left-color: #d4af37;
+  font-weight: 700;
 }
 
 .sidebar-link:hover:not(.active) {
-  background: rgba(255, 255, 255, 0.04);
-  color: #e2e8f0;
+  background: rgba(212, 175, 55, 0.06);
+  color: #ffffff;
 }
 
 /* RSVP Status Badges */
@@ -152,51 +168,52 @@ body {
 .diet-badge-veg {
   background: rgba(16, 185, 129, 0.12);
   color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  border: 1px solid rgba(16, 185, 129, 0.28);
 }
 
 .diet-badge-nonveg {
   background: rgba(244, 63, 94, 0.12);
   color: #fb7185;
-  border: 1px solid rgba(244, 63, 94, 0.25);
+  border: 1px solid rgba(244, 63, 94, 0.28);
 }
 
 .diet-badge-jain {
   background: rgba(234, 179, 8, 0.12);
   color: #facc15;
-  border: 1px solid rgba(234, 179, 8, 0.25);
+  border: 1px solid rgba(234, 179, 8, 0.28);
 }
 
-/* Currency Toggle Pill */
+/* Luxury Currency Toggle Pill */
 .currency-pill-btn {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 9999px;
-  padding: 0.25rem 0.65rem;
+  padding: 0.35rem 0.8rem;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #e2e8f0;
+  color: #fde68a;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .currency-pill-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(99, 102, 241, 0.5);
+  background: rgba(212, 175, 55, 0.2);
+  border-color: rgba(212, 175, 55, 0.6);
   color: #ffffff;
+  transform: translateY(-1px);
 }
 
 /* ================= PRINT / PDF EXPORT STYLES ================= */
 @media print {
   body {
     background: #ffffff !important;
-    color: #0f172a !important;
+    color: #05070e !important;
+    font-family: 'Playfair Display', Georgia, serif;
   }
 
-  /* Hide navigation, sidebar, toast, modals, and buttons */
   aside, 
   header, 
   #toast-container,
@@ -214,30 +231,30 @@ body {
 
   .saas-card {
     background: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
+    border: 1px solid #d4af37 !important;
     box-shadow: none !important;
-    color: #0f172a !important;
+    color: #05070e !important;
     break-inside: avoid;
     page-break-inside: avoid;
     margin-bottom: 1.5rem !important;
   }
 
   .saas-card * {
-    color: #0f172a !important;
+    color: #05070e !important;
   }
 
   .text-white {
-    color: #0f172a !important;
+    color: #05070e !important;
   }
 
   .text-slate-300, .text-slate-400 {
-    color: #475569 !important;
+    color: #334155 !important;
   }
 
   .print-banner {
     display: block !important;
     padding-bottom: 1rem;
     margin-bottom: 1.5rem;
-    border-bottom: 2px solid #0f172a;
+    border-bottom: 2px solid #d4af37;
   }
 }

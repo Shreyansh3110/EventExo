@@ -106,7 +106,7 @@ function renderGuestList(filter = 'all', search = '') {
         </td>
         <td class="px-6 py-4">
           ${g.plusOne 
-            ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">+1 Guest</span>' 
+            ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#d4af37]/15 text-[#fde68a] border border-[#d4af37]/30">+1 Guest</span>' 
             : '<span class="text-slate-500 text-[11px]">Single</span>'}
         </td>
         <td class="px-6 py-4 text-right">
@@ -125,10 +125,10 @@ function filterGuestsByRSVP(filter) {
   document.querySelectorAll('.guest-filter-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.filter === filter);
     if (btn.dataset.filter === filter) {
-      btn.classList.add('bg-indigo-600', 'text-white');
+      btn.classList.add('bg-[#d4af37]', 'text-[#05070e]', 'font-bold');
       btn.classList.remove('bg-white/5', 'text-slate-400');
     } else {
-      btn.classList.remove('bg-indigo-600', 'text-white');
+      btn.classList.remove('bg-[#d4af37]', 'text-[#05070e]', 'font-bold');
       btn.classList.add('bg-white/5', 'text-slate-400');
     }
   });
@@ -259,7 +259,7 @@ function renderBudgetForEvent(eventId) {
             <span class="font-mono text-slate-300">${EventDataStore.formatCurrency(cat.spent)} / ${EventDataStore.formatCurrency(cat.allocated)}</span>
           </div>
           <div class="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-            <div class="bg-indigo-500 h-full rounded-full" style="width: ${catPercent}%"></div>
+            <div class="bg-gradient-to-r from-[#d4af37] to-[#10b981] h-full rounded-full" style="width: ${catPercent}%"></div>
           </div>
         </div>
       `;
@@ -310,18 +310,18 @@ function renderVendorsList(category) {
   }
 
   container.innerHTML = list.map(v => `
-    <div class="saas-card p-6 flex flex-col justify-between group hover:border-indigo-500/40">
+    <div class="saas-card p-6 flex flex-col justify-between group hover:border-[#d4af37]/40">
       <div>
         <div class="flex items-start justify-between gap-2 mb-3">
           <div>
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/5 text-indigo-400 border border-white/10">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#d4af37]/10 text-[#fde68a] border border-[#d4af37]/30">
               ${v.category}
             </span>
-            <h3 class="font-bold text-white text-base mt-2 group-hover:text-indigo-300 transition-colors">${v.name}</h3>
+            <h3 class="font-bold text-white text-base mt-2 group-hover:text-[#fde68a] transition-colors">${v.name}</h3>
           </div>
           <span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${
             v.status === 'Contract Signed' ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30' :
-            v.status === 'Confirmed' ? 'bg-indigo-500/15 text-indigo-300 border border-indigo-500/30' :
+            v.status === 'Confirmed' ? 'bg-[#d4af37]/15 text-[#fde68a] border border-[#d4af37]/30' :
             'bg-amber-500/15 text-amber-300 border border-amber-500/30'
           }">
             ${v.status}
@@ -342,8 +342,8 @@ function renderVendorsList(category) {
 
       <div class="pt-3 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
         <span class="truncate">${v.phone}</span>
-        <a href="mailto:${v.contact}" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white font-semibold flex items-center gap-1 transition-colors">
-          <i data-lucide="mail" class="w-3.5 h-3.5 text-indigo-400"></i>
+        <a href="mailto:${v.contact}" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-[#d4af37]/20 hover:text-[#fde68a] text-white font-semibold flex items-center gap-1 transition-colors">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-[#d4af37]"></i>
           <span>Email</span>
         </a>
       </div>
@@ -391,24 +391,24 @@ function initClientPortal() {
   const tasks = EventDataStore.getClientTasks();
 
   tasksContainer.innerHTML = tasks.map(t => `
-    <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/50 border border-white/5 hover:border-indigo-500/30 transition-colors">
+    <div class="flex items-center justify-between p-3.5 rounded-xl bg-[#080c16]/80 border border-white/5 hover:border-[#d4af37]/40 transition-colors">
       <div class="flex items-center gap-3">
         <input 
           type="checkbox" 
           ${t.completed ? 'checked' : ''} 
           onchange="EventDataStore.toggleClientTask('${t.id}'); initClientPortal();"
-          class="w-4 h-4 rounded text-indigo-600 focus:ring-0 cursor-pointer"
+          class="w-4 h-4 rounded text-[#d4af37] focus:ring-0 cursor-pointer accent-[#d4af37]"
         />
         <div>
           <span class="text-xs sm:text-sm font-semibold ${t.completed ? 'line-through text-slate-500' : 'text-white'}">
             ${t.title}
           </span>
-          <div class="text-[10px] font-semibold uppercase tracking-wider text-indigo-400 mt-0.5">
+          <div class="text-[10px] font-semibold uppercase tracking-wider text-[#d4af37] mt-0.5">
             ${t.category} • Due ${t.deadline}
           </div>
         </div>
       </div>
-      <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full ${t.completed ? 'bg-emerald-500/15 text-emerald-300' : 'bg-slate-800 text-slate-400'}">
+      <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full ${t.completed ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30' : 'bg-white/5 text-slate-400 border border-white/10'}">
         ${t.completed ? 'Complete' : 'Pending'}
       </span>
     </div>
