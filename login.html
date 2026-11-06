@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sign In — Eventexo | Unified Event Operating System</title>
+  <meta name="description" content="Sign in to your Eventexo account to access executive dashboards, guest lists, AI blueprints, and budget governance.">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23000000'/><rect x='6' y='6' width='88' height='88' rx='20' fill='none' stroke='%23ffffff' stroke-width='3' stroke-opacity='0.4'/><path d='M30 30 H70 M30 50 H58 M30 70 H70' stroke='%23ffffff' stroke-width='8' stroke-linecap='round'/></svg>">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="bg-black text-zinc-100 min-h-screen flex flex-col justify-between antialiased selection:bg-white selection:text-black">
+
+  <!-- Ambient Chrome Glow Orbs -->
+  <div class="chrome-glow-orb top-[-15%] left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-white opacity-10"></div>
+  <div class="chrome-glow-orb bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-zinc-500 opacity-10"></div>
+
+  <!-- Top Minimal Nav Header -->
+  <header class="w-full px-6 py-6 flex items-center justify-between max-w-7xl mx-auto relative z-20">
+    <a href="index.html" class="flex items-center gap-3 group">
+      <div class="w-9 h-9 rounded-xl bg-white/[0.08] border border-white/20 flex items-center justify-center shadow-sm">
+        <span class="font-extrabold text-white text-base">E</span>
+      </div>
+      <div>
+        <span class="font-bold text-white text-base tracking-tight block">EVENTEXO</span>
+        <span class="text-[9px] uppercase font-semibold tracking-widest text-zinc-400 block -mt-0.5">OPERATING SYSTEM</span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-3 text-xs text-zinc-400">
+      <span>Don't have an account?</span>
+      <a href="register.html" class="btn-chrome-outline px-3.5 py-1.5 font-semibold text-white">Create Account</a>
+    </div>
+  </header>
+
+  <!-- Main Auth Card Container -->
+  <main class="flex-1 flex items-center justify-center px-4 py-8 relative z-10">
+    <div class="w-full max-w-md glass-obsidian p-7 sm:p-9 shadow-2xl relative">
+      
+      <!-- Card Header -->
+      <div class="text-center mb-7">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-semibold bg-white/5 border border-white/10 text-zinc-300 mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span>Secure Identity Protocol</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Welcome Back</h1>
+        <p class="text-xs text-zinc-400 mt-1">Sign in to manage your productions, registries, and budgets</p>
+      </div>
+
+      <!-- Quick Social & Phone Actions -->
+      <div class="space-y-3 mb-6">
+        <!-- 1. Google Auth Button -->
+        <button onclick="handleGoogleAuth('login')" class="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/15 text-white font-semibold text-xs tracking-wide transition-all hover:scale-[1.01]">
+          <svg class="w-4 h-4" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span>Continue with Google</span>
+        </button>
+
+        <!-- 2. Phone Number Toggle Button -->
+        <button onclick="switchAuthMethod('phone')" id="btn-phone-toggle" class="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/15 text-white font-semibold text-xs tracking-wide transition-all hover:scale-[1.01]">
+          <i data-lucide="smartphone" class="w-4 h-4 text-zinc-300"></i>
+          <span>Continue with Phone Number</span>
+        </button>
+      </div>
+
+      <!-- Divider -->
+      <div class="relative flex items-center justify-center my-6">
+        <div class="border-t border-white/[0.08] w-full"></div>
+        <span class="bg-[#09090b] px-3 text-[11px] uppercase font-semibold text-zinc-400 tracking-wider absolute">or</span>
+      </div>
+
+      <!-- ================= OPTION A: EMAIL & PASSWORD FORM ================= -->
+      <div id="email-auth-section" class="space-y-4">
+        <form onsubmit="handleEmailLogin(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-zinc-300 mb-1.5">Email Address</label>
+            <div class="relative">
+              <i data-lucide="mail" class="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+              <input 
+                type="email" 
+                id="login-email" 
+                placeholder="name@company.com" 
+                value="shreyansh@eventexo.com"
+                required 
+                class="w-full bg-black border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors"
+              />
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label class="text-xs font-semibold text-zinc-300">Password</label>
+              <a href="#" onclick="showAuthToast('Password Reset', 'A password reset link was sent to your registered address.', 'mail')" class="text-[11px] text-zinc-400 hover:text-white transition-colors">Forgot Password?</a>
+            </div>
+            <div class="relative">
+              <i data-lucide="lock" class="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+              <input 
+                type="password" 
+                id="login-password" 
+                placeholder="••••••••••••" 
+                value="Eventexo2027!"
+                required 
+                class="w-full bg-black border border-white/10 rounded-xl pl-10 pr-10 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors"
+              />
+              <button type="button" onclick="togglePasswordVisibility('login-password', this)" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-zinc-400 pt-1">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" checked class="w-3.5 h-3.5 rounded text-white focus:ring-0 accent-white" />
+              <span>Remember this device</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-chrome w-full py-3 text-xs font-bold tracking-wide flex items-center justify-center gap-2 shadow-lg mt-2">
+            <span>Sign In to Eventexo</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- ================= OPTION B: PHONE NUMBER INPUT FORM ================= -->
+      <div id="phone-auth-section" class="hidden space-y-4">
+        <form onsubmit="handleSendPhoneOTP(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-zinc-300 mb-1.5">Mobile Phone Number</label>
+            <div class="flex gap-2">
+              <select id="phone-country-code" class="bg-black border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-white w-28">
+                <option value="+91">+91 (IN 🇮🇳)</option>
+                <option value="+1">+1 (US 🇺🇸)</option>
+                <option value="+44">+44 (UK 🇬🇧)</option>
+                <option value="+971">+971 (AE 🇦🇪)</option>
+                <option value="+65">+65 (SG 🇸🇬)</option>
+              </select>
+              <div class="relative flex-1">
+                <input 
+                  type="tel" 
+                  id="phone-number-input" 
+                  placeholder="98200 12345" 
+                  value="98200 45678"
+                  required 
+                  class="w-full bg-black border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors"
+                />
+              </div>
+            </div>
+            <p class="text-[11px] text-zinc-400 mt-1.5">We will send a 6-digit verification code via SMS.</p>
+          </div>
+
+          <button type="submit" class="btn-chrome w-full py-3 text-xs font-bold tracking-wide flex items-center justify-center gap-2 shadow-lg">
+            <span>Send Verification Code</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+
+          <button type="button" onclick="switchAuthMethod('email')" class="w-full text-center text-xs text-zinc-400 hover:text-white transition-colors py-1">
+            Back to email sign in
+          </button>
+        </form>
+      </div>
+
+      <!-- ================= OPTION C: 6-DIGIT OTP VERIFICATION FORM ================= -->
+      <div id="otp-verify-section" class="hidden space-y-5">
+        <div class="text-center">
+          <div class="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center mx-auto mb-2 text-white">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-sm font-bold text-white">Enter 6-Digit Code</h3>
+          <p class="text-[11px] text-zinc-400 mt-0.5">Sent to <span id="otp-target-phone" class="font-mono text-white font-semibold">+91 98200 45678</span></p>
+        </div>
+
+        <form onsubmit="handleVerifyOTP(event)" class="space-y-5">
+          <!-- 6 Digit Input Boxes -->
+          <div class="flex justify-center gap-2">
+            <input type="text" maxlength="1" id="otp-1" onkeyup="handleOTPInput(event, 1)" class="w-11 h-12 text-center text-lg font-bold font-mono bg-black border border-white/20 rounded-xl text-white focus:outline-none focus:border-white focus:bg-white/5" />
+            <input type="text" maxlength="1" id="otp-2" onkeyup="handleOTPInput(event, 2)" class="w-11 h-12 text-center text-lg font-bold font-mono bg-black border border-white/20 rounded-xl text-white focus:outline-none focus:border-white focus:bg-white/5" />
+            <input type="text" maxlength="1" id="otp-3" onkeyup="handleOTPInput(event, 3)" class="w-11 h-12 text-center text-lg font-bold font-mono bg-black border border-white/20 rounded-xl text-white focus:outline-none focus:border-white focus:bg-white/5" />
+            <input type="text" maxlength="1" id="otp-4" onkeyup="handleOTPInput(event, 4)" class="w-11 h-12 text-center text-lg font-bold font-mono bg-black border border-white/20 rounded-xl text-white focus:outline-none focus:border-white focus:bg-white/5" />
+            <input type="text" maxlength="1" id="otp-5" onkeyup="handleOTPInput(event, 5)" class="w-11 h-12 text-center text-lg font-bold font-mono bg-black border border-white/20 rounded-xl text-white focus:outline-none focus:border-white focus:bg-white/5" />
+            <input type="text" maxlength="1" id="otp-6" onkeyup="handleOTPInput(event, 6)" class="w-11 h-12 text-center text-lg font-bold font-mono bg-black border border-white/20 rounded-xl text-white focus:outline-none focus:border-white focus:bg-white/5" />
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-zinc-400">
+            <span>Didn't receive code?</span>
+            <button type="button" id="btn-resend-otp" onclick="handleSendPhoneOTP(null)" class="text-white hover:underline font-semibold flex items-center gap-1">
+              <span>Resend Code</span>
+              <span id="otp-timer-count" class="font-mono text-zinc-400"></span>
+            </button>
+          </div>
+
+          <button type="submit" class="btn-chrome w-full py-3 text-xs font-bold tracking-wide flex items-center justify-center gap-2 shadow-lg">
+            <span>Verify & Enter Console</span>
+            <i data-lucide="check" class="w-4 h-4"></i>
+          </button>
+
+          <button type="button" onclick="switchAuthMethod('phone')" class="w-full text-center text-xs text-zinc-400 hover:text-white transition-colors py-1">
+            Change phone number
+          </button>
+        </form>
+      </div>
+
+      <!-- Terms & Policy Footer -->
+      <div class="mt-7 pt-6 border-t border-white/[0.08] text-center text-[11px] text-zinc-500">
+        By signing in, you agree to Eventexo's <a href="#" class="text-zinc-400 hover:underline">Terms of Service</a> and <a href="#" class="text-zinc-400 hover:underline">Privacy Policy</a>.
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Google Auth Profile Chooser Modal Overlay -->
+  <div id="google-auth-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md items-center justify-center p-4">
+    <div class="w-full max-w-sm glass-obsidian p-6 shadow-2xl relative border border-white/20 animate-in fade-in zoom-in-95 duration-200">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span class="text-xs font-bold text-white">Sign in with Google</span>
+        </div>
+        <button onclick="closeGoogleModal()" class="text-zinc-400 hover:text-white">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-zinc-400 mb-4">Choose an account to continue to <strong>Eventexo</strong></p>
+
+      <div class="space-y-2 mb-4">
+        <!-- Profile 1 -->
+        <button onclick="completeGoogleSignIn('Shreyansh Mehta', 'shreyansh@eventexo.com', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80')" class="w-full flex items-center gap-3 p-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-left transition-colors">
+          <div class="w-9 h-9 rounded-full bg-white/20 border border-white/30 flex items-center justify-center font-bold text-white text-xs">
+            SM
+          </div>
+          <div class="flex-1 truncate">
+            <div class="text-xs font-bold text-white">Shreyansh Mehta</div>
+            <div class="text-[11px] text-zinc-400 truncate">shreyansh@eventexo.com</div>
+          </div>
+        </button>
+
+        <!-- Profile 2 -->
+        <button onclick="completeGoogleSignIn('Eventexo Production', 'production@eventexo.com', 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80')" class="w-full flex items-center gap-3 p-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-left transition-colors">
+          <div class="w-9 h-9 rounded-full bg-zinc-800 border border-white/20 flex items-center justify-center font-bold text-white text-xs">
+            EP
+          </div>
+          <div class="flex-1 truncate">
+            <div class="text-xs font-bold text-white">Eventexo Production</div>
+            <div class="text-[11px] text-zinc-400 truncate">production@eventexo.com</div>
+          </div>
+        </button>
+      </div>
+
+      <button onclick="closeGoogleModal()" class="w-full py-2 rounded-xl text-xs text-zinc-400 hover:text-white font-medium text-center">
+        Cancel
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center text-xs text-zinc-400 border-t border-white/[0.08] relative z-20">
+    &copy; 2027 Eventexo Technologies Inc. Precision event management.
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script>
+    if (window.lucide) lucide.createIcons();
+  </script>
+</body>
+</html>
